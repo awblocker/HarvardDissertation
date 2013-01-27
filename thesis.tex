@@ -1,0 +1,31 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass{harvard-thesis}
+
+% Add macros
+\include{macros}
+\newcommand{\bm}{\vec}
+
+
+\begin{document}
+
+% the front matter
+\input{frontmatter/coverpage}
+\maketitle
+\copyrightpage
+\abstractpage
+\tableofcontents
+\dedicationpage
+\authorlist
+\acknowledgments
+
+% include each chapter...
+\include{chapters/1-introduction}
+\include{chapters/2-nucleosomes}
+
+% the back matter
+\bibliography{nucleosomes}
+\bibliographystyle{plainnat}
+
+\end{document}

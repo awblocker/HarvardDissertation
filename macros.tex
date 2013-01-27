@@ -1,0 +1,24 @@
+% Macros used in thesis
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\given}{\, | \,}
+\newcommand{\mybox}[4]{\centering
+\colorbox{lightgrey}{\parbox{#1\textwidth}{\centering \vskip #3
+\begin{minipage}[t]{#2\textwidth} #4 \end{minipage} \vskip #3}}}
+
+\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\newcommand{\diagvec}[1]{\mathrm{\overrightarrow{diag}}\left(#1\right)}
+\newcommand{\unitmat}[0]{\vec{1}\vec{1}^T}
+\DeclareMathOperator{\argmax}{arg\,max}
+\newcommand{\dd}{\; \mathrm{d}}
+\DeclareMathOperator{\Unif}{Unif}
+\DeclareMathOperator{\Multinom}{Multinom}
+\DeclareMathOperator{\Bernoulli}{Bern}
+\DeclareMathOperator{\Poisson}{Poisson}
+\DeclareMathOperator{\logit}{logit}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Median}{Med}
+\newcommand{\range}[2]{\left\{#1 \ldots #2\right\}}
+\newcommand{\fnDef}[3]{#1 \,:\, #2 \rightarrow #3}
