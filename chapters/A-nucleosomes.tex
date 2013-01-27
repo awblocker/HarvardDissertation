@@ -1,117 +1,8 @@
-% !TEX program = pdfLaTeX
+%!TEX TS-program = xelatex
+% !TEX root = ../thesis.tex
 % Do not delete; used to set build system
 
-\documentclass[12pt]{article}
-%\RequirePackage[OT1]{fontenc}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{mathabx}
-\usepackage{natbib}
-  \bibpunct{(}{)}{;}{a}{,}{,}
-\usepackage{graphicx}
-\usepackage{bm}
-\usepackage[vlined]{algorithm2e}
-\usepackage[pdftex,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,bookmarks=false,pdfpagemode=None]{hyperref}
-\usepackage{verbatim}
-\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
-\usepackage{setspace}
-\usepackage{rotating}
-\usepackage{rotfloat}
-
-\usepackage{fancyhdr}
-\headheight 0pt 
-\rhead{}
-%\chead{}
-\lhead{}
-%\rfoot{Right bottom}
-\cfoot{\thepage}
-%\lfoot{Left bottom}
-\renewcommand{\headrulewidth}{0pt} %{0.4pt}
-\renewcommand{\footrulewidth}{0pt} %{0.4pt}
-
-%\doublespacing
-\onehalfspacing
-%\singlespacing 
-
-\def\pythonstyle{}
-
-% Defining new commands
-\newcommand{\bv}{\begin{array}}
-%\stackrel{d}{=}
-\newcommand{\myfig}[1]{Figure~\ref{fig:#1}}
-\newcommand{\mysec}[1]{Section~\ref{sec:#1}}
-\newcommand{\myeq}[1]{Equation~\ref{eq:#1}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\g}{\, | \,}
-\newcommand{\mybox}[4]{\centering
-\colorbox{lightgrey}{\parbox{#1\textwidth}{\centering \vskip #3
-\begin{minipage}[t]{#2\textwidth} #4 \end{minipage} \vskip #3}}}
-
-\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
-\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
-\newcommand{\diagvec}[1]{\mathrm{\overrightarrow{diag}}\left(#1\right)}
-\newcommand{\unitmat}[0]{\vec{1}\vec{1}^T}
-\DeclareMathOperator{\argmax}{arg\,max}
-\newcommand{\dd}{\; \mathrm{d}}
-\DeclareMathOperator{\Unif}{Unif}
-\DeclareMathOperator{\Multinom}{Multinom}
-\DeclareMathOperator{\Bernoulli}{Bern}
-\DeclareMathOperator{\Poisson}{Poisson}
-\DeclareMathOperator{\logit}{logit}
-\DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator{\Cov}{Cov}
-\DeclareMathOperator{\Median}{Med}
-\newcommand{\range}[2]{\left\{#1 \ldots #2\right\}}
-\newcommand{\fnDef}[3]{#1 \,:\, #2 \rightarrow #3}
-
-\newtheorem{example}{Example}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newtheorem{fact}{Fact}
-\newtheorem{note}{Note}
-\newtheorem{definition}{Definition}
-\newtheorem{assumption}{Assumption}
-\newtheorem{problem}{Problem}
-
-\pdfminorversion=4 
-
-\begin{document}
-
-\ifx \pythonstyle \undefined
-\else
-\AlgoDontDisplayBlockMarkers \SetAlgoNoEnd \SetAlgoNoLine%
-\SetStartEndCondition{ }{}{}%
-\SetKwProg{Fn}{def}{\string:}{}%
-\SetKw{KwTo}{in}\SetKwFunction{Range}{range}%
-\SetKwFor{For}{for}{\string:}{}%
-\SetKwIF{If}{ElseIf}{Else}{if}{:}{elif}{else:}{}%
-\SetKwFor{While}{while}{:}{fintq}%
-\fi
-
-\graphicspath{{./figures/}}
-
-\pagestyle{empty}
-
-\title{Online supplement for ``Template-based estimation of genome-wide nucleosome positioning via distributed HMC''}
-%\author{Alexander W. Blocker \and Edoardo M. Airoldi\thanks{Alexander W.~Blocker is a PhD candidate in the Department of Statistics at Harvard University (ablocker@fas.harvard.edu). Edoardo M.~Airoldi is an Assistant Professor of Statistics at Harvard University, a Principal Investigator at the Broad Institute of MIT \& Harvard, and an Alfred P. Sloan Research Fellow (airoldi@fas.harvard.edu). The authors wish to thank Xu Zhou and Erin O'Shea for providing data and valuable insights, and FAS Science Division Research Computing Group at Harvard University. This work was partially supported by the National Science Foundation under grants IIS-1017967, DMS-1106980 and CAREER IIS-1149662, and by the National Institute of Health under grant R01 GM096193.} }
-\date{}
-
-\maketitle
-
-\begin{abstract}
-This supplement provides details of the distributed HMC algorithm used in the paper and an approximate EM algorithm that can be used to provide starting values for the HMC sampler.
-It also includes additional figures for the power analysis presented in Section 4.3 of the paper.
-\end{abstract}
-
-\tableofcontents 
-
-\clearpage
-
-\pagestyle{fancy}
-
-%%% %%% %%% 
-\appendix
+\chapter{Online supplement for ``Template-based estimation of genome-wide nucleosome positioning via distributed HMC''}
 
 \section{Algorithmic details of inference}
 
@@ -225,9 +116,9 @@ where $W = \diag{\bm y / \bm \lambda\mbox{**}2}$.
 Due to the convolution structure of $X$, all matrix-vector products involving $X$ and $X^\top$ can be reduced to convolutions of vectors with the template vector $\bm t$.
 This also enables efficient computation of the Hessian's diagonal, as
 \begin{align}
-\bm \lambda &= X \bm \beta = (\bm 0_{\lfloor \ell_0 / 2 \rfloor}^\top \; \bm \beta^\top \; \bm 0_{\lfloor \ell_0 / 2 \rfloor}^\top)^\top \Asterisk \bm t \\
-X^\top (\bm 1 - y / \bm \lambda) &= (\bm 1 - y / \bm \lambda) \Asterisk \bm t \ , \\
-\diag{X'WX} &= (\bm y / \bm \lambda\mbox{**}2) \Asterisk \bm t\mbox{**}2 \ .
+\bm \lambda &= X \bm \beta = (\bm 0_{\lfloor \ell_0 / 2 \rfloor}^\top \; \bm \beta^\top \; \bm 0_{\lfloor \ell_0 / 2 \rfloor}^\top)^\top \convolution \bm t \\
+X^\top (\bm 1 - y / \bm \lambda) &= (\bm 1 - y / \bm \lambda) \convolution \bm t \ , \\
+\diag{X'WX} &= (\bm y / \bm \lambda\mbox{**}2) \convolution \bm t\mbox{**}2 \ .
 \end{align}
 %
 This reduces the computational complexity of these evaluations to $O(B \log B)$ for each update of each subvector of $\bm \beta$.
@@ -482,27 +373,28 @@ The one-to-one substitution of time and processors possible on the cloud makes i
 
 \subsection{Reproducibility analysis---comparability of cluster-level estimators}
 
-\ifx\nofigures\undefined
-\begin{figure}[h!]
-\includegraphics[width=\textwidth]{figure_cluster_reproducibility_methods}
+\begin{FPfigure}
+\includegraphics[width=0.95\textheight,angle=90]{figures/nucleosomes/figure_cluster_reproducibility_methods}
 \caption{Joint distributions of of model-based and read-based estimates of cluster-level properties. \label{fig:methodComparison}}
-\end{figure}
-\fi
+\end{FPfigure}
+\afterpage{\clearpage}
 
 \subsection{Power analysis---cluster locations}
 \label{sec:cluster}
 
-\begin{sidewaysfigure}
+\begin{FPfigure}
 \centering
-\includegraphics[page=1,width=0.95\textwidth]{plots_compare_power}
+\includegraphics[page=1,width=0.95\textheight,angle=90]{figures/nucleosomes/plots_compare_power}
 \caption{Power of model-based and Parzen window methods to detect cluster centers $\pm 5$bp vs. coverage by alternative position offset (rows) and effective magnitude of primary position (columns)}
-\end{sidewaysfigure}
+\end{FPfigure}
+\afterpage{\clearpage}
 
-\begin{sidewaysfigure}
+\begin{FPfigure}
 \centering
-\includegraphics[page=5,width=0.95\textwidth]{plots_compare_power}
+\includegraphics[page=5,width=0.95\textheight,angle=90]{figures/nucleosomes/plots_compare_power}
 \caption{Mean absolute position errors for model-based and Parzen window methods vs. coverage by alternative position offset (rows) and effective magnitude of primary position (columns)}
-\end{sidewaysfigure}
+\end{FPfigure}
+\afterpage{\clearpage}
 
 \clearpage
 
@@ -511,36 +403,31 @@ The one-to-one substitution of time and processors possible on the cloud makes i
 
 \subsubsection{Primary positions}
 
-\begin{sidewaysfigure}
+\begin{FPfigure}
 \centering
-\includegraphics[page=1,width=0.95\textwidth]{plots_power_pm3}
+\includegraphics[page=1,width=0.95\textheight,angle=90]{figures/nucleosomes/plots_power_pm3}
 \caption{Power of model-based method to detect individual primary positions $\pm 5$bp vs. coverage by alternative position offset (rows) and effective magnitude of primary position (columns)}
-\end{sidewaysfigure}
+\end{FPfigure}
+\afterpage{\clearpage}
 
-\begin{sidewaysfigure}
-\includegraphics[page=5,width=0.95\textwidth]{plots_power_pm3}
+\begin{FPfigure}
+\includegraphics[page=5,width=0.95\textheight,angle=90]{figures/nucleosomes/plots_power_pm3}
 \caption{Mean absolute position errors of model-based method for individual primary positions vs. coverage by alternative position offset (rows) and effective magnitude of primary position (columns)}
-\end{sidewaysfigure}
+\end{FPfigure}
+\afterpage{\clearpage}
 \clearpage
 
 
 \subsubsection{Alternative positions}
 
-\begin{sidewaysfigure}
-\includegraphics[page=9,width=\textwidth]{plots_power_pm3}
+\begin{FPfigure}
+\includegraphics[page=9,width=0.95\textheight,angle=90]{figures/nucleosomes/plots_power_pm3}
 \caption{Power of model-based method to detect individual alternative positions $\pm 5$bp vs. coverage by alternative position offset (rows) and effective magnitude of alternative position (columns)}
-\end{sidewaysfigure}
+\end{FPfigure}
+\afterpage{\clearpage}
 
-\begin{sidewaysfigure}
-\includegraphics[page=13,width=\textwidth]{plots_power_pm3}
+\begin{FPfigure}
+\includegraphics[page=13,width=0.95\textheight,angle=90]{figures/nucleosomes/plots_power_pm3}
 \caption{Mean absolute position errors of model-based method for individual alternative positions vs. coverage by alternative position offset (rows) and effective magnitude of alternative position (columns)}
-\end{sidewaysfigure}
-
-\clearpage
-
-\bibliographystyle{plainnat}
-%\bibliographystyle{imsart-nameyear}
-\bibliography{references,litReview,supplement,relatedStatisticalWork}
-
-
-\end{document}
+\end{FPfigure}
+\afterpage{\clearpage}

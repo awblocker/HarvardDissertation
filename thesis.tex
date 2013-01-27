@@ -3,9 +3,26 @@
 
 \documentclass{harvard-thesis}
 
+\usepackage{algorithm2e}
+
 % Add macros
-\include{macros}
 \newcommand{\bm}{\vec}
+\newcommand{\convolution}{*}
+
+\def\pythonstyle{}
+
+\ifx \pythonstyle \undefined
+\else
+\AlgoDontDisplayBlockMarkers \SetAlgoNoEnd \SetAlgoNoLine%
+\SetStartEndCondition{ }{}{}%
+\SetKwProg{Fn}{def}{\string:}{}%
+\SetKw{KwTo}{in}\SetKwFunction{Range}{range}%
+\SetKwFor{For}{for}{\string:}{}%
+\SetKwIF{If}{ElseIf}{Else}{if}{:}{elif}{else:}{}%
+\SetKwFor{While}{while}{:}{fintq}%
+\fi
+
+\include{macros}
 
 
 \begin{document}
@@ -27,5 +44,9 @@
 % the back matter
 \bibliography{nucleosomes}
 \bibliographystyle{plainnat}
+
+\appendix
+
+\include{chapters/A-nucleosomes}
 
 \end{document}

@@ -29,7 +29,6 @@
 \RequirePackage[tight,nice]{units}
 \RequirePackage{verbatim}
 \RequirePackage{url}
-\usepackage{algorithm2e}
 
 %Begin Andy's package additions
 \usepackage{pdfsync} %do pdf synchronization [andy]
