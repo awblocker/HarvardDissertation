@@ -1,8 +1,9 @@
+# Github LaTeX default
 *.acn
 *.acr
 *.alg
 *.aux
-*.bbl
+#*.bbl
 *.blg
 *.dvi
 *.fdb_latexmk
@@ -30,3 +31,9 @@
 *.vrb
 *.xdy
 *.tdo
+# Temporary file
+*~
+*.sw*
+*.bak
+# Original files from kdiff3
+*.orig
