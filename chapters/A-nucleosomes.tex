@@ -105,11 +105,13 @@ First, define $\bm \lambda = X \bm \beta$, $\bm m = (\mu_{s_k} \mbox{ for } k = 
 Also, for vectors of equal dimension, let $/$ denote entrywise division and $**$ denote entrywise powers.
 Then,
 \begin{align}
-\log p(\bm \theta | \bm \mu, \bm \sigma^2) &= -\bm 1^\top X \bm \beta + \sum_k y_k \log \left( \bm x_k^T \bm \beta \right) -
-  \frac{1}{2} \sum_k \frac{(\theta_k - \mu_{s_k})^2}{\sigma^2_{s_k}}
-  + \mathrm{const} \ , \\
+\log p(\bm \theta | \bm \mu, \bm \sigma^2) &= -\bm 1^\top X \bm \beta + \sum_k y_k \log \left( \bm x_k^T \bm \beta \right) \\
+\nonumber
+&\phantom{=} - \frac{1}{2} \sum_k \frac{(\theta_k - \mu_{s_k})^2}{\sigma^2_{s_k}} + \mathrm{const} \ , \\
 \nabla_{\bm \theta} \log p(\bm \theta | \bm \mu, \bm \sigma^2) &= -\diag{\bm \beta} X^\top (\bm 1 - \bm y / \bm \lambda) - (\bm \theta - \bm m) / \bm v \ , \\
-\nabla_{\bm \theta} \nabla_{\bm \theta^\top} \log p(\bm \theta | \bm \mu, \bm \sigma^2) &= -\diag{\bm \beta} X'WX \diag{\bm \beta} - \diag{\bm \beta} X' (\bm 1 - \bm y
+\nabla_{\bm \theta} \nabla_{\bm \theta^\top} \log p(\bm \theta | \bm \mu, \bm \sigma^2) &= -\diag{\bm \beta} X'WX \diag{\bm \beta} \\
+\nonumber
+&\phantom{=} - \diag{\bm \beta} X' (\bm 1 - \bm y
 / \bm \lambda) - \diag{\bm 1 / \bm \sigma^2} \label{eq:hessian} \ ,
 \end{align}
 where $W = \diag{\bm y / \bm \lambda\mbox{**}2}$.
