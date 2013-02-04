@@ -1,338 +1,210 @@
-\begin{thebibliography}{34}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{37}
+\newcommand{\enquote}[1]{``#1''}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[Albert et~al.(2007{\natexlab{a}})Albert, Mavrich, Tomsho, Qi, Zanton,
-  Schuster, and Pugh]{Albert2007}
-Istvan Albert, Travis~N Mavrich, Lynn~P Tomsho, Ji~Qi, Sara~J Zanton, Stephan~C
-  Schuster, and B~Franklin Pugh.
-\newblock {Translational and rotational settings of H2A.Z nucleosomes across
-  the Saccharomyces cerevisiae genome.}
-\newblock \emph{Nature}, 446\penalty0 (7135):\penalty0 572--6, March
-  2007{\natexlab{a}}.
-\newblock ISSN 1476-4687.
-\newblock \doi{10.1038/nature05632}.
-\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/17392789}.
+\bibitem[{Albert et~al.(2007{\natexlab{a}})Albert, Mavrich, Tomsho, Qi, Zanton,
+  Schuster, and Pugh}]{Albert2007}
+Albert, I., Mavrich, T.~N., Tomsho, L.~P., Qi, J., Zanton, S.~J., Schuster,
+  S.~C., and Pugh, B.~F. (2007{\natexlab{a}}), \enquote{{Translational and
+  rotational settings of H2A.Z nucleosomes across the Saccharomyces cerevisiae
+  genome.}} \textit{Nature}, 446, 572--6.
 
-\bibitem[Albert et~al.(2007{\natexlab{b}})Albert, Mavrich, Tomsho, Qi, Zanton,
-  Schuster, and Pugh]{Albert2007a}
-Istvan Albert, Travis~N Mavrich, Lynn~P Tomsho, Ji~Qi, Sara~J Zanton, Stephan~C
-  Schuster, and B~Franklin Pugh.
-\newblock {Translational and rotational settings of H2A.Z nucleosomes across
-  the Saccharomyces cerevisiae genome.}
-\newblock \emph{Nature}, 446\penalty0 (7135):\penalty0 572--6, March
-  2007{\natexlab{b}}.
-\newblock ISSN 1476-4687.
-\newblock \doi{10.1038/nature05632}.
-\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/17392789}.
+\bibitem[{Albert et~al.(2007{\natexlab{b}})Albert, Mavrich, Tomsho, Qi, Zanton,
+  Schuster, and Pugh}]{Albert2007a}
+--- (2007{\natexlab{b}}), \enquote{{Translational and rotational settings of
+  H2A.Z nucleosomes across the Saccharomyces cerevisiae genome.}}
+  \textit{Nature}, 446, 572--6.
 
-\bibitem[Barski and Zhao(2009)]{bars:zhao:2009}
-A.~Barski and K.~Zhao.
-\newblock Genomic location analysis by {C}h{IP}-{S}eq.
-\newblock \emph{Journal of Cellular Biochemistry}, 107:\penalty0 11--18, 2009.
+\bibitem[{Barski and Zhao(2009)}]{bars:zhao:2009}
+Barski, A. and Zhao, K. (2009), \enquote{Genomic location analysis by
+  {C}h{IP}-{S}eq,} \textit{Journal of Cellular Biochemistry}, 107, 11--18.
 
-\bibitem[Brogaard et~al.(2012)Brogaard, Xi, Wang, and Widom]{Brogaard2012}
-Kristin Brogaard, Liqun Xi, Ji-Ping Wang, and Jonathan Widom.
-\newblock {A map of nucleosome positions in yeast at base-pair resolution.}
-\newblock \emph{Nature}, 486\penalty0 (7404):\penalty0 496--501, June 2012.
-\newblock ISSN 1476-4687.
-\newblock \doi{10.1038/nature11142}.
-\newblock URL \url{http://www.nature.com/doifinder/10.1038/nature11142
-  http://www.ncbi.nlm.nih.gov/pubmed/22722846}.
+\bibitem[{Brogaard et~al.(2012)Brogaard, Xi, Wang, and Widom}]{Brogaard2012}
+Brogaard, K., Xi, L., Wang, J.-P., and Widom, J. (2012), \enquote{{A map of
+  nucleosome positions in yeast at base-pair resolution.}} \textit{Nature},
+  486, 496--501.
 
-\bibitem[Cairns et~al.(2011)Cairns, Spyrou, Stark, Smith, Lynch, and
-  Tavar\'{e}]{Cairns2011}
-Jonathan Cairns, Christiana Spyrou, Rory Stark, Mike~L Smith, Andy~G Lynch, and
-  Simon Tavar\'{e}.
-\newblock {BayesPeak--an R package for analysing ChIP-seq data.}
-\newblock \emph{Bioinformatics (Oxford, England)}, 27\penalty0 (5):\penalty0
-  713--4, March 2011.
-\newblock ISSN 1367-4811.
-\newblock \doi{10.1093/bioinformatics/btq685}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3042177\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Cairns et~al.(2011)Cairns, Spyrou, Stark, Smith, Lynch, and
+  Tavar\'{e}}]{Cairns2011}
+Cairns, J., Spyrou, C., Stark, R., Smith, M.~L., Lynch, A.~G., and Tavar\'{e},
+  S. (2011), \enquote{{BayesPeak--an R package for analysing ChIP-seq data.}}
+  \textit{Bioinformatics (Oxford, England)}, 27, 713--4.
 
-\bibitem[Flores and Orozco(2011)]{Flores2011}
-Oscar Flores and Modesto Orozco.
-\newblock {nucleR: a package for non-parametric nucleosome positioning.}
-\newblock \emph{Bioinformatics (Oxford, England)}, 27\penalty0 (15):\penalty0
-  2149--50, August 2011.
-\newblock ISSN 1367-4811.
-\newblock \doi{10.1093/bioinformatics/btr345}.
-\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/21653521}.
+\bibitem[{Flores and Orozco(2011)}]{Flores2011}
+Flores, O. and Orozco, M. (2011), \enquote{{nucleR: a package for
+  non-parametric nucleosome positioning.}} \textit{Bioinformatics (Oxford,
+  England)}, 27, 2149--50.
 
-\bibitem[Fu et~al.(2012)Fu, Tang, Feng, Liu, and Zhang]{Fu2012}
-Kai Fu, Qianzi Tang, Jianxing Feng, X~Shirley Liu, and Yong Zhang.
-\newblock {DiNuP: a systematic approach to identify regions of differential
-  nucleosome positioning.}
-\newblock \emph{Bioinformatics (Oxford, England)}, 28\penalty0 (15):\penalty0
-  1965--71, August 2012.
-\newblock ISSN 1367-4811.
-\newblock \doi{10.1093/bioinformatics/bts329}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3400967\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Fu et~al.(2012)Fu, Tang, Feng, Liu, and Zhang}]{Fu2012}
+Fu, K., Tang, Q., Feng, J., Liu, X.~S., and Zhang, Y. (2012), \enquote{{DiNuP:
+  a systematic approach to identify regions of differential nucleosome
+  positioning.}} \textit{Bioinformatics (Oxford, England)}, 28, 1965--71.
 
-\bibitem[Gkikopoulos et~al.(2011)Gkikopoulos, Schofield, Singh, Pinskaya,
-  Mellor, Smolle, Workman, Barton, and Owen-Hughes]{Gkikopoulos2011}
-T.~Gkikopoulos, P.~Schofield, V.~Singh, M.~Pinskaya, J.~Mellor, M.~Smolle,
-  J.~L. Workman, G.~J. Barton, and T.~Owen-Hughes.
-\newblock {A Role for Snf2-Related Nucleosome-Spacing Enzymes in Genome-Wide
-  Nucleosome Organization}.
-\newblock \emph{Science}, 333\penalty0 (6050):\penalty0 1758--1760, September
-  2011.
-\newblock ISSN 0036-8075.
-\newblock \doi{10.1126/science.1206097}.
-\newblock URL \url{http://www.sciencemag.org/cgi/doi/10.1126/science.1206097}.
+\bibitem[{Gkikopoulos et~al.(2011)Gkikopoulos, Schofield, Singh, Pinskaya,
+  Mellor, Smolle, Workman, Barton, and Owen-Hughes}]{Gkikopoulos2011}
+Gkikopoulos, T., Schofield, P., Singh, V., Pinskaya, M., Mellor, J., Smolle,
+  M., Workman, J.~L., Barton, G.~J., and Owen-Hughes, T. (2011), \enquote{{A
+  Role for Snf2-Related Nucleosome-Spacing Enzymes in Genome-Wide Nucleosome
+  Organization},} \textit{Science}, 333, 1758--1760.
 
-\bibitem[Gupta(2007)]{Gupta2007}
-Mayetri Gupta.
-\newblock {Generalized hierarchical markov models for the discovery of
-  length-constrained sequence features from genome tiling arrays.}
-\newblock \emph{Biometrics}, 63\penalty0 (3):\penalty0 797--805, September
-  2007.
-\newblock ISSN 0006-341X.
-\newblock \doi{10.1111/j.1541-0420.2007.00760.x}.
-\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/17825011}.
+\bibitem[{Gupta(2007)}]{Gupta2007}
+Gupta, M. (2007), \enquote{{Generalized hierarchical markov models for the
+  discovery of length-constrained sequence features from genome tiling
+  arrays.}} \textit{Biometrics}, 63, 797--805.
 
-\bibitem[Jansen and Verstrepen(2011)]{Jansen2011}
-An~Jansen and Kevin~J Verstrepen.
-\newblock {Nucleosome Positioning in Saccharomyces cerevisiae.}
-\newblock \emph{Microbiology and molecular biology reviews : MMBR}, 75\penalty0
-  (2):\penalty0 301--20, June 2011.
-\newblock ISSN 1098-5557.
-\newblock \doi{10.1128/MMBR.00046-10}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3122627\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Jansen and Verstrepen(2011)}]{Jansen2011}
+Jansen, A. and Verstrepen, K.~J. (2011), \enquote{{Nucleosome Positioning in
+  Saccharomyces cerevisiae.}} \textit{Microbiology and molecular biology
+  reviews : MMBR}, 75, 301--20.
 
-\bibitem[Langmead et~al.(2009)Langmead, Trapnell, Pop, and
-  Salzberg]{lang:trap:pop:salz:2009}
-B.~Langmead, C.~Trapnell, M.~Pop, and S.~L. Salzberg.
-\newblock Ultrafast and memory-efficient alignment of short dna sequences to
-  the human genome.
-\newblock \emph{Genome Biology}, 10\penalty0 (3):\penalty0 R25, 2009.
+\bibitem[{Langmead et~al.(2009)Langmead, Trapnell, Pop, and
+  Salzberg}]{lang:trap:pop:salz:2009}
+Langmead, B., Trapnell, C., Pop, M., and Salzberg, S.~L. (2009),
+  \enquote{Ultrafast and memory-efficient alignment of short DNA sequences to
+  the human genome,} \textit{Genome Biology}, 10, R25.
 
-\bibitem[Lee et~al.(2007)Lee, Tillo, Bray, Morse, Davis, Hughes, and
-  Nislow]{Lee2007}
-William Lee, Desiree Tillo, Nicolas Bray, Randall~H Morse, Ronald~W Davis,
-  Timothy~R Hughes, and Corey Nislow.
-\newblock {A high-resolution atlas of nucleosome occupancy in yeast.}
-\newblock \emph{Nature genetics}, 39\penalty0 (10):\penalty0 1235--44, October
-  2007.
-\newblock ISSN 1546-1718.
-\newblock \doi{10.1038/ng2117}.
-\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/17873876}.
+\bibitem[{Lee et~al.(2007)Lee, Tillo, Bray, Morse, Davis, Hughes, and
+  Nislow}]{Lee2007}
+Lee, W., Tillo, D., Bray, N., Morse, R.~H., Davis, R.~W., Hughes, T.~R., and
+  Nislow, C. (2007), \enquote{{A high-resolution atlas of nucleosome occupancy
+  in yeast.}} \textit{Nature genetics}, 39, 1235--44.
 
-\bibitem[Mitra and Gupta(2011)]{Mitra2011}
-Ritendranath Mitra and Mayetri Gupta.
-\newblock {A continuous-index Bayesian hidden Markov model for prediction of
-  nucleosome positioning in genomic DNA.}
-\newblock \emph{Biostatistics (Oxford, England)}, 12\penalty0 (3):\penalty0
-  462--77, July 2011.
-\newblock ISSN 1468-4357.
-\newblock \doi{10.1093/biostatistics/kxq077}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3114652\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Mitra and Gupta(2011)}]{Mitra2011}
+Mitra, R. and Gupta, M. (2011), \enquote{{A continuous-index Bayesian hidden
+  Markov model for prediction of nucleosome positioning in genomic DNA.}}
+  \textit{Biostatistics (Oxford, England)}, 12, 462--77.
 
-\bibitem[Mueller(2000)]{Mueller2000}
-Odilo Mueller.
-\newblock {High precision restriction fragment sizing with the Agilent 2100
-  Bioanalyzer Application Note}.
-\newblock 2000.
+\bibitem[{Mueller(2000)}]{Mueller2000}
+Mueller, O. (2000), \enquote{{High precision restriction fragment sizing with
+  the Agilent 2100 Bioanalyzer Application Note},} .
 
-\bibitem[Park(2009)]{park:2009}
-P.~J. Park.
-\newblock {C}h{IP}-{S}eq: {A}dvantages and challenges of a maturing technology.
-\newblock \emph{Nature Reviews Genetics Genet.}, 10:\penalty0 669--680, 2009.
+\bibitem[{Nash(2000)}]{Nash2000}
+Nash, S. (2000), \enquote{{A survey of truncated-Newton methods},}
+  \textit{{Journal of Computational and Applied Mathematics}}, 124, 45--59.
 
-\bibitem[Pepke et~al.(2009)Pepke, Wold, and Mortazavi]{Pepke2009}
-Shirley Pepke, Barbara Wold, and Ali Mortazavi.
-\newblock {Computation for ChIP-seq and RNA-seq studies.}
-\newblock \emph{Nature methods}, 6\penalty0 (11 Suppl):\penalty0 S22--32,
-  November 2009.
-\newblock ISSN 1548-7105.
-\newblock \doi{10.1038/nmeth.1371}.
-\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/19844228}.
+\bibitem[{Neal(2010)}]{Neal2010}
+Neal, R. (2010), \enquote{{MCMC using Hamiltonian dynamics},} \textit{{Handbook
+  of Markov Chain Monte Carlo}}, 54, 113--162.
 
-\bibitem[Polishko et~al.(2012)Polishko, Ponts, {Le Roch}, and
-  Lonardi]{Polishko2012}
-Anton Polishko, Nadia Ponts, Karine~G {Le Roch}, and Stefano Lonardi.
-\newblock {NORMAL: accurate nucleosome positioning using a modified Gaussian
-  mixture model.}
-\newblock \emph{Bioinformatics (Oxford, England)}, 28\penalty0 (12):\penalty0
-  242--9, June 2012.
-\newblock ISSN 1367-4811.
-\newblock \doi{10.1093/bioinformatics/bts206}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3371838\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Park(2009)}]{park:2009}
+Park, P.~J. (2009), \enquote{{C}h{IP}-{S}eq: {A}dvantages and challenges of a
+  maturing technology,} \textit{Nature Reviews Genetics Genet.}, 10, 669--680.
 
-\bibitem[Rashid et~al.(2011)Rashid, Giresi, Ibrahim, Sun, and Lieb]{Rashid2011}
-Naim~U Rashid, Paul~G Giresi, Joseph~G Ibrahim, Wei Sun, and Jason~D Lieb.
-\newblock {ZINBA integrates local covariates with DNA-seq data to identify
+\bibitem[{Pepke et~al.(2009)Pepke, Wold, and Mortazavi}]{Pepke2009}
+Pepke, S., Wold, B., and Mortazavi, A. (2009), \enquote{{Computation for
+  ChIP-seq and RNA-seq studies.}} \textit{Nature methods}, 6, S22--32.
+
+\bibitem[{Polishko et~al.(2012)Polishko, Ponts, {Le Roch}, and
+  Lonardi}]{Polishko2012}
+Polishko, A., Ponts, N., {Le Roch}, K.~G., and Lonardi, S. (2012),
+  \enquote{{NORMAL: accurate nucleosome positioning using a modified Gaussian
+  mixture model.}} \textit{Bioinformatics (Oxford, England)}, 28, 242--9.
+
+\bibitem[{Rashid et~al.(2011)Rashid, Giresi, Ibrahim, Sun, and
+  Lieb}]{Rashid2011}
+Rashid, N.~U., Giresi, P.~G., Ibrahim, J.~G., Sun, W., and Lieb, J.~D. (2011),
+  \enquote{{ZINBA integrates local covariates with DNA-seq data to identify
   broad and narrow regions of enrichment, even within amplified genomic
-  regions.}
-\newblock \emph{Genome biology}, 12\penalty0 (7):\penalty0 R67, January 2011.
-\newblock ISSN 1465-6914.
-\newblock \doi{10.1186/gb-2011-12-7-r67}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3218829\&tool=pmcentrez\&rendertype=abstract}.
+  regions.}} \textit{Genome biology}, 12, R67.
 
-\bibitem[Schwartzman et~al.(2011)Schwartzman, Jaffe, Gavrilov, and
-  Meyer]{Schwartzman2011a}
-Armin Schwartzman, Andrew Jaffe, Yulia Gavrilov, and Clifford~A Meyer.
-\newblock Multiple testing of local maxima for detection of peaks in
-  {C}h{IP}-{S}eq data.
-\newblock 2011.
+\bibitem[{Schwartzman et~al.(2011)Schwartzman, Jaffe, Gavrilov, and
+  Meyer}]{Schwartzman2011a}
+Schwartzman, A., Jaffe, A., Gavrilov, Y., and Meyer, C.~A. (2011),
+  \enquote{Multiple Testing of Local Maxima for Detection of Peaks in
+  {C}h{IP}-{S}eq Data,} .
 
-\bibitem[Segal et~al.(2006)Segal, {Fondufe-Mittendorf}, Chen, Thastrom, Field,
-  Moore, Wang, and Widom]{sega:fond:chen:thas:2006}
-E.~Segal, Y.~{Fondufe-Mittendorf}, L.~Chen, A.~Thastrom, Y.~Field, I.~K. Moore,
-  J.~Z. Wang, and J.~Widom.
-\newblock A genomic code for nucleosome positioning.
-\newblock \emph{Nature}, 42:\penalty0 772--778, 2006.
+\bibitem[{Segal et~al.(2006)Segal, {Fondufe-Mittendorf}, Chen, Thastrom, Field,
+  Moore, Wang, and Widom}]{sega:fond:chen:thas:2006}
+Segal, E., {Fondufe-Mittendorf}, Y., Chen, L., Thastrom, A., Field, Y., Moore,
+  I.~K., Wang, J.~Z., and Widom, J. (2006), \enquote{A Genomic Code for
+  Nucleosome Positioning,} \textit{Nature}, 42, 772--778.
 
-\bibitem[Shivaswamy et~al.(2008)Shivaswamy, Bhinge, Zhao, Jones, Hirst, and
-  Iyer]{Shivaswamy2008}
-Sushma Shivaswamy, Akshay Bhinge, Yongjun Zhao, Steven Jones, Martin Hirst, and
-  Vishwanath~R Iyer.
-\newblock {Dynamic remodeling of individual nucleosomes across a eukaryotic
-  genome in response to transcriptional perturbation.}
-\newblock \emph{PLoS biology}, 6\penalty0 (3):\penalty0 e65, March 2008.
-\newblock ISSN 1545-7885.
-\newblock \doi{10.1371/journal.pbio.0060065}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2267817\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Shivaswamy et~al.(2008)Shivaswamy, Bhinge, Zhao, Jones, Hirst, and
+  Iyer}]{Shivaswamy2008}
+Shivaswamy, S., Bhinge, A., Zhao, Y., Jones, S., Hirst, M., and Iyer, V.~R.
+  (2008), \enquote{{Dynamic remodeling of individual nucleosomes across a
+  eukaryotic genome in response to transcriptional perturbation.}} \textit{PLoS
+  biology}, 6, e65.
 
-\bibitem[Storey and Tibshirani(2003)]{StoreyTibshirani2003}
-J.D. Storey and R.~Tibshirani.
-\newblock Statistical significance for genomewide studies.
-\newblock \emph{Proceedings of the National Academy of Sciences of the United
-  States of America}, 100\penalty0 (16):\penalty0 9440, 2003.
+\bibitem[{Storey and Tibshirani(2003)}]{StoreyTibshirani2003}
+Storey, J. and Tibshirani, R. (2003), \enquote{Statistical significance for
+  genomewide studies,} \textit{Proceedings of the National Academy of Sciences
+  of the United States of America}, 100, 9440.
 
-\bibitem[Sun et~al.(2009{\natexlab{a}})Sun, Buck, Patel, and Davis]{Sun2009b}
-Wei Sun, Michael~J Buck, Mukund Patel, and Ian~J Davis.
-\newblock {Improved ChIP-chip analysis by a mixture model approach.}
-\newblock \emph{BMC bioinformatics}, 10:\penalty0 173, January
-  2009{\natexlab{a}}.
-\newblock ISSN 1471-2105.
-\newblock \doi{10.1186/1471-2105-10-173}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2700807\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Sun et~al.(2009{\natexlab{a}})Sun, Buck, Patel, and Davis}]{Sun2009b}
+Sun, W., Buck, M.~J., Patel, M., and Davis, I.~J. (2009{\natexlab{a}}),
+  \enquote{{Improved ChIP-chip analysis by a mixture model approach.}}
+  \textit{BMC bioinformatics}, 10, 173.
 
-\bibitem[Sun et~al.(2009{\natexlab{b}})Sun, Xie, Xu, Grunstein, and
-  Li]{Sun2009a}
-Wei Sun, Wei Xie, Feng Xu, Michael Grunstein, and Ker-Chau Li.
-\newblock {Dissecting nucleosome free regions by a segmental semi-Markov
-  model.}
-\newblock \emph{PloS one}, 4\penalty0 (3):\penalty0 e4721, January
-  2009{\natexlab{b}}.
-\newblock ISSN 1932-6203.
-\newblock \doi{10.1371/journal.pone.0004721}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2648986\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Sun et~al.(2009{\natexlab{b}})Sun, Xie, Xu, Grunstein, and
+  Li}]{Sun2009a}
+Sun, W., Xie, W., Xu, F., Grunstein, M., and Li, K.-C. (2009{\natexlab{b}}),
+  \enquote{{Dissecting nucleosome free regions by a segmental semi-Markov
+  model.}} \textit{PloS one}, 4, e4721.
 
-\bibitem[Tirosh(2012)]{Tirosh2012}
-Itay Tirosh.
-\newblock {Computational analysis of nucleosome positioning.}
-\newblock \emph{Methods in molecular biology (Clifton, N.J.)}, 833:\penalty0
-  443--9, January 2012.
-\newblock ISSN 1940-6029.
-\newblock \doi{10.1007/978-1-61779-477-3\_27}.
-\newblock URL \url{http://www.springerlink.com/index/10.1007/978-1-61779-477-3
-  http://www.ncbi.nlm.nih.gov/pubmed/22183610}.
+\bibitem[{Tirosh(2012)}]{Tirosh2012}
+Tirosh, I. (2012), \enquote{{Computational analysis of nucleosome
+  positioning.}} \textit{Methods in molecular biology (Clifton, N.J.)}, 833,
+  443--9.
 
-\bibitem[Tsankov et~al.(2010)Tsankov, Thompson, Socha, Regev, and
-  Rando]{Tsankov2010}
-Alexander~M Tsankov, Dawn~Anne Thompson, Amanda Socha, Aviv Regev, and Oliver~J
-  Rando.
-\newblock {The role of nucleosome positioning in the evolution of gene
-  regulation.}
-\newblock \emph{PLoS biology}, 8\penalty0 (7):\penalty0 e1000414, January 2010.
-\newblock ISSN 1545-7885.
-\newblock \doi{10.1371/journal.pbio.1000414}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2897762\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Tsankov et~al.(2010)Tsankov, Thompson, Socha, Regev, and
+  Rando}]{Tsankov2010}
+Tsankov, A.~M., Thompson, D.~A., Socha, A., Regev, A., and Rando, O.~J. (2010),
+  \enquote{{The role of nucleosome positioning in the evolution of gene
+  regulation.}} \textit{PLoS biology}, 8, e1000414.
 
-\bibitem[Weiner et~al.(2010)Weiner, Hughes, Yassour, Rando, and
-  Friedman]{Weiner2010}
-Assaf Weiner, Amanda Hughes, Moran Yassour, Oliver~J Rando, and Nir Friedman.
-\newblock {High-resolution nucleosome mapping reveals transcription-dependent
-  promoter packaging.}
-\newblock \emph{Genome research}, 20\penalty0 (1):\penalty0 90--100, January
-  2010.
-\newblock ISSN 1549-5469.
-\newblock \doi{10.1101/gr.098509.109}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2798834\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{van Dyk et~al.(2006)van Dyk, Connors, Esch, Freeman, Kang, Karovska,
+  Kashyap, Siemiginowska, and Zezas}]{VanDykEtAl2006}
+van Dyk, D., Connors, A., Esch, D., Freeman, P., Kang, H., Karovska, M.,
+  Kashyap, V., Siemiginowska, A., and Zezas, A. (2006), \enquote{{Deconvolution
+  in high-energy astrophysics: Science, instrumentation, and methods},}
+  \textit{Bayesian Analysis}, 1, 189--236.
 
-\bibitem[Yassour et~al.(2008)Yassour, Kaplan, Jaimovich, and
-  Friedman]{yass:kapl:jaim:frie:2008}
-M.~Yassour, T.~Kaplan, A.~Jaimovich, and N.~Friedman.
-\newblock Nucleosome positioning from tiling microarray data.
-\newblock \emph{Bioinformatics 24}, 24:\penalty0 i139--146, 2008.
+\bibitem[{Weiner et~al.(2010)Weiner, Hughes, Yassour, Rando, and
+  Friedman}]{Weiner2010}
+Weiner, A., Hughes, A., Yassour, M., Rando, O.~J., and Friedman, N. (2010),
+  \enquote{{High-resolution nucleosome mapping reveals transcription-dependent
+  promoter packaging.}} \textit{Genome research}, 20, 90--100.
 
-\bibitem[Yuan and Liu(2008)]{Yuan2008}
-Guo-Cheng Yuan and Jun~S Liu.
-\newblock {Genomic sequence is highly predictive of local nucleosome
-  depletion.}
-\newblock \emph{PLoS computational biology}, 4\penalty0 (1):\penalty0 e13,
-  January 2008.
-\newblock ISSN 1553-7358.
-\newblock \doi{10.1371/journal.pcbi.0040013}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2211532\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Yassour et~al.(2008)Yassour, Kaplan, Jaimovich, and
+  Friedman}]{yass:kapl:jaim:frie:2008}
+Yassour, M., Kaplan, T., Jaimovich, A., and Friedman, N. (2008),
+  \enquote{Nucleosome Positioning from Tiling Microarray Data,}
+  \textit{Bioinformatics 24}, 24, i139--146.
 
-\bibitem[Yuan et~al.(2005)Yuan, Liu, Dion, Slack, Wu, Altschuler, and
-  Rando]{Yuan2005}
-Guo-Cheng Yuan, Yuen-Jong Liu, Michael~F Dion, Michael~D Slack, Lani~F Wu,
-  Steven~J Altschuler, and Oliver~J Rando.
-\newblock {Genome-scale identification of nucleosome positions in S.
-  cerevisiae.}
-\newblock \emph{Science}, 309\penalty0 (5734):\penalty0 626--30, July 2005.
-\newblock ISSN 1095-9203.
-\newblock \doi{10.1126/science.1112178}.
-\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/15961632}.
+\bibitem[{Yuan and Liu(2008)}]{Yuan2008}
+Yuan, G.-C. and Liu, J.~S. (2008), \enquote{{Genomic sequence is highly
+  predictive of local nucleosome depletion.}} \textit{PLoS computational
+  biology}, 4, e13.
 
-\bibitem[Zhang et~al.(2012)Zhang, Robertson, Woo, Hoffman, and
-  Gottardo]{Zhang2012}
-Xuekui Zhang, Gordon Robertson, Sangsoon Woo, Brad~G Hoffman, and Raphael
-  Gottardo.
-\newblock {Probabilistic inference for nucleosome positioning with MNase-based
-  or sonicated short-read data.}
-\newblock \emph{PloS one}, 7\penalty0 (2):\penalty0 e32095, January 2012.
-\newblock ISSN 1932-6203.
-\newblock \doi{10.1371/journal.pone.0032095}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3290535\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Yuan et~al.(2005)Yuan, Liu, Dion, Slack, Wu, Altschuler, and
+  Rando}]{Yuan2005}
+Yuan, G.-C., Liu, Y.-J., Dion, M.~F., Slack, M.~D., Wu, L.~F., Altschuler,
+  S.~J., and Rando, O.~J. (2005), \enquote{{Genome-scale identification of
+  nucleosome positions in S. cerevisiae.}} \textit{Science}, 309, 626--30.
 
-\bibitem[Zhang et~al.(2008)Zhang, Liu, Meyer, Eeckhoute, Johnson, Bernstein,
-  Nusbaum, Myers, Brown, Li, and Liu]{Zhang2008}
-Yong Zhang, Tao Liu, Clifford~a Meyer, J\'{e}r\^{o}me Eeckhoute, David~S
-  Johnson, Bradley~E Bernstein, Chad Nusbaum, Richard~M Myers, Myles Brown, Wei
-  Li, and X~Shirley Liu.
-\newblock {Model-based analysis of ChIP-Seq (MACS).}
-\newblock \emph{Genome biology}, 9\penalty0 (9):\penalty0 R137, January 2008.
-\newblock ISSN 1465-6914.
-\newblock \doi{10.1186/gb-2008-9-9-r137}.
-\newblock URL
-  \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2592715\&tool=pmcentrez\&rendertype=abstract}.
+\bibitem[{Zhang et~al.(2012)Zhang, Robertson, Woo, Hoffman, and
+  Gottardo}]{Zhang2012}
+Zhang, X., Robertson, G., Woo, S., Hoffman, B.~G., and Gottardo, R. (2012),
+  \enquote{{Probabilistic inference for nucleosome positioning with MNase-based
+  or sonicated short-read data.}} \textit{PloS one}, 7, e32095.
 
-\bibitem[Zhou et~al.(2012)Zhou, Blocker, Airoldi, and
-  {O'Shea}]{Xu:Alex:Edo:Erin:2011}
-X.~Zhou, A.~W. Blocker, E.~M. Airoldi, and E.~K. {O'Shea}.
-\newblock A genome-wide analysis of chromatine remodeling after phosphate
-  starvation.
-\newblock Manuscript, 2012.
+\bibitem[{Zhang et~al.(2008)Zhang, Liu, Meyer, Eeckhoute, Johnson, Bernstein,
+  Nusbaum, Myers, Brown, Li, and Liu}]{Zhang2008}
+Zhang, Y., Liu, T., Meyer, C.~a., Eeckhoute, J., Johnson, D.~S., Bernstein,
+  B.~E., Nusbaum, C., Myers, R.~M., Brown, M., Li, W., and Liu, X.~S. (2008),
+  \enquote{{Model-based analysis of ChIP-Seq (MACS).}} \textit{Genome biology},
+  9, R137.
 
-\bibitem[Zhu et~al.(1997)Zhu, Byrd, Lu, and Nocedal]{lbfgsb1997}
-Ciyou Zhu, Richard~H. Byrd, Peihuang Lu, and Jorge Nocedal.
-\newblock Algorithm 778: L-bfgs-b: Fortran subroutines for large-scale
-  bound-constrained optimization.
-\newblock \emph{ACM Trans. Math. Softw.}, 23:\penalty0 550--560, December 1997.
-\newblock ISSN 0098-3500.
-\newblock \doi{http://doi.acm.org/10.1145/279232.279236}.
-\newblock URL \url{http://doi.acm.org/10.1145/279232.279236}.
+\bibitem[{Zhou et~al.(2012)Zhou, Blocker, Airoldi, and
+  {O'Shea}}]{Xu:Alex:Edo:Erin:2011}
+Zhou, X., Blocker, A.~W., Airoldi, E.~M., and {O'Shea}, E.~K. (2012),
+  \enquote{A genome-wide analysis of chromatine remodeling after phosphate
+  starvation,} Manuscript.
+
+\bibitem[{Zhu et~al.(1997)Zhu, Byrd, Lu, and Nocedal}]{lbfgsb1997}
+Zhu, C., Byrd, R.~H., Lu, P., and Nocedal, J. (1997), \enquote{Algorithm 778:
+  L-BFGS-B: Fortran subroutines for large-scale bound-constrained
+  optimization,} \textit{ACM Trans. Math. Softw.}, 23, 550--560.
 
 \end{thebibliography}
