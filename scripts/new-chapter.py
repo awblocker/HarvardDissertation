@@ -4,28 +4,80 @@
 #
 # Created by Jordan Suchow.
 # http://jwsu.ch/ow
+#
+# Heavily modified by Alexander Blocker.
+# http://www.awblocker.com
 
+import fileinput
 import os
 import sys
+import re
+import argparse
 
-scripts_dir = '/scripts'
-chapters_dir = '/chapters'
-templates_dir = '/templates'
+kScriptsDir = 'scripts'
+kChaptersDir = 'chapters'
+kTemplatesDir = 'templates'
 
-main_dir = sys.path[0].replace(scripts_dir,'')
+def main(argv):
+  parser = argparse.ArgumentParser()
+  parser.add_argument("chapters", nargs='+',metavar='CHAPTER',
+                      help='Name of chapter to build.')
+  parser.add_argument("--appendix", action='store_true',
+                      help='Make appendices instead of regular chapters.')
+  
+  # Parse arguments
+  args = parser.parse_args(argv)
 
-# find the highest chapter number
-chapter_list = os.listdir(main_dir + chapters_dir + '/')
-chapter_list.remove('.DS_Store')
-highest_chapter = max([int(chapter.replace('chapter', '').replace('.tex','')) for chapter in chapter_list])
-	
-# copy the template chapter to the chapters directory
-os.chdir(main_dir + templates_dir)
-high_chapter_string = str((highest_chapter))
-new_chapter_string = str((highest_chapter + 1))
-os.system('cp -R chapter.tex ../chapters/chapter' + new_chapter_string + '.tex')
+  # Check for conflict
+  if args.appendix:
+    chapter_pattern = 'appendix-%s.tex'
+    re_chapter = re.compile('appendix-.*\.tex')
+  else:
+    chapter_pattern = 'chapter-%s.tex'
+    re_chapter = re.compile('chapter-.*\.tex')
 
-# add the chapter to the thesis
-os.system('sed -i -e \'s/' + high_chapter_string + '}/' + high_chapter_string + '}\\\include{chapters\/chapter' + new_chapter_string + '}/g\' ' + '../thesis.tex')
-# exit terminal
-os.system('exit')
+  chapter_list = os.listdir(kChaptersDir + '/')
+  chapter_list = [fname for fname in chapter_list if re_chapter.match(fname)]
+  for chapter in args.chapters:
+    # Build filename for new chapter
+    new_chapter_fname = chapter_pattern % chapter
+    new_chapter_name, _ = os.path.splitext(new_chapter_fname)
+  
+    # Check for conflicts
+    if new_chapter_fname in chapter_list:
+      print >> sys.stderr, '%s already exists. Will not overwrite.'
+      continue
+    
+    # copy the template chapter to the chapters directory
+    os.system('cp -R %(templateDir)s/chapter.tex %(chapterDir)s/%(chapter)s' %
+              {'templateDir' : kTemplatesDir, 'chapterDir' : kChaptersDir,
+               'chapter' : new_chapter_fname})
+    
+    # Find last chapter in thesis
+    with open('thesis.tex', 'rb') as f:
+      max_chapter = 0
+      if args.appendix:
+        for i, line in enumerate(f):
+          if re.search('\\include{%s/%s' % (kChaptersDir, 'appendix-'), line):
+            max_chapter = i
+      
+      if max_chapter == 0:
+        for i, line in enumerate(f):
+          if re.search('\\include{%s/%s' % (kChaptersDir, 'chapter-'), line):
+            max_chapter= i
+
+    # add the chapter to the thesis
+    f = fileinput.input('thesis.tex', inplace=True)
+    for i, line in enumerate(f):
+      print line,
+      if i == max_chapter:
+        print '\\include{%s/%s}' % (kChaptersDir, new_chapter_name)
+
+    f.close()
+
+  # exit terminal
+  return 0
+
+if __name__ == '__main__':
+  sys.exit(main(sys.argv[1:]))
+
