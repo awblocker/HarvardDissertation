@@ -15,7 +15,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{harvard-thesis}[2011/09/09 v0.1.1 Harvard University Thesis Class]
-\LoadClass[11pt, oneside, letterpaper]{book}
+\LoadClass[12pt, oneside, letterpaper]{book}
 
 
 %these should be inpreamble of .tex file, not .cls
