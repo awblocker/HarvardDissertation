@@ -418,7 +418,10 @@ center; vertical lines at $\pm l_0 / 2$ (solid) and nucleosome center (dashed).
 \end{figure}
 \fi
 
-The resulting log-likelihood for the observed fragment lengths is $\sum_{j = 1}^{M} \log p(l_j)$.
+The resulting log-likelihood for the observed fragment lengths is
+\begin{equation}
+\ell(q) = \sum_{j = 1}^{M} \log p(l_j) \ .
+\end{equation}
 We maximize this numerically, using a multivariate logit transformation on the values of $q(k)$ to avoid bounded optimization.
 Using the L-BFGS-B algorithm \citep{lbfgsb1997} on a laptop with a Core i5 processor and 8GB of RAM, this maximization requires approximately 40 seconds for a typical experiment.
 This computation scales only with the number of unique fragment lengths observed, so it cannot become bottleneck for this method.
@@ -680,17 +683,17 @@ The first set of quantities summarize distributions of errors in estimated posit
 
 Detection of a cluster was defined as a best-match distance of less than 5bp between the inferred and true cluster center ($\kappa_m$).
 Figure \ref{fig:powerCluster} summarizes our key findings, showing the relative power of each method against the effective magnitude of the primary position, the offset of the alternative positions, and gene-level coverage.
-Tables \ref{tab:clusterAnova} provides the results of a design-based ANOVA of the mean absolute errors of  estimated cluster locations, by gene, and Table \ref{tab:clusterGlm} provides the results of a logistic regression of power on the design factors.
 %
-\ifx\nofigures\undefined
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/nucleosomes/figure_power_cluster_3-panel}
 \caption{Power vs. effective magnitude (left), alternative position offset (center), and coverage (right) for Parzen window and cluster estimand methods \label{fig:powerCluster}}
 \end{figure}
 %
-\begin{table}
-\centering{}%
+Tables \ref{tab:clusterAnova} provides the results of a design-based ANOVA of the mean absolute errors of  estimated cluster locations, by gene, and Table \ref{tab:clusterGlm} provides the results of a logistic regression of power on the design factors.
+
+\begin{FPtable}
+\begin{sideways}
 \begin{tabular}{lr|rr|rr}
 \hline 
  &  & \multicolumn{2}{c|}{Cluster Estimand} & \multicolumn{2}{c}{Parzen Window}\tabularnewline
@@ -706,14 +709,16 @@ Offset:Magnitude  & 72  & 23535.40  & 303.09 & 19172.33  & 251.47 \tabularnewlin
 Coverage:Offset:Magnitude  & 648  & 950.25  & 1.36  & 947.80  & 1.38 \tabularnewline
 Residuals  & 10090  & 10881.93  &  & 10684.31  & \tabularnewline
 \hline 
-\end{tabular}\caption{Analysis of variance of absolute errors in cluster centers for cluster
-estimand and Parzen window methods. All factors and interactions were
-statistically significant with $p<0.0001$.
-\label{tab:clusterAnova}}
-\end{table}
-%
-\begin{table}[ht]
-\centering{}%
+\end{tabular}
+\end{sideways}
+\caption{Analysis of variance of absolute errors in cluster centers for cluster estimand and Parzen window methods. All factors and interactions were statistically significant with $p<0.0001$.
+\label{tab:clusterAnova}
+\vspace{72pt}}
+\end{FPtable}
+\afterpage{\clearpage}
+
+\begin{FPtable}
+\begin{sideways}
 \begin{tabular}{r|rr|rr}
 \hline 
  & \multicolumn{2}{c|}{Cluster Estimand} & \multicolumn{2}{c}{Parzen Window}\tabularnewline
@@ -729,13 +734,17 @@ Coverage$\cdot$Effective Magnitude  & 1.7927  & 3.20  & 0.9037  & 2.02 \tabularn
 Offset$\cdot$Effective Magnitude  & 8.9842  & 22.27  & 6.9932  & 21.15 \tabularnewline
 Coverage$\cdot$Offset$\cdot$Effective Magnitude  & 2.1476  & 2.52  & 1.8962  & 2.84 \tabularnewline
 \hline 
-\end{tabular}\caption{Logistic regression of power on design factors as continuous variables
+\end{tabular}
+\end{sideways}
+\caption{Logistic regression of power on design factors as continuous variables
 cluster estimand and Parzen Window method. Are regressors are normalized
 to have range $[0,1]$.
-\label{tab:clusterGlm}}
-\end{table}
-\fi
-%
+\label{tab:clusterGlm}
+\vspace{144pt}}
+\end{FPtable}
+\afterpage{\clearpage}
+
+
 For estimating cluster locations, the proposed method dominates the Parzen-window estimator both in terms of power, with average difference of 2.1\%, and mean absolute error (not shown) across all conditions.
 Power ranges from approximately $12\%$ to $100\%$ over all factor combinations in our experiments for both methods, while mean absolute position errors range from approximately 0.1 to 60bp.
 Our method provided an average power of 85\%, while the Parzen window method's average power was 83\%.
@@ -774,8 +783,8 @@ Tables \ref{tab:detectionAnova} provides the results of a design-based ANOVA of 
 \caption{Power vs. effective magnitude (left), alternative position offset (center), and coverage (right) for detection of primary and alternative positions $\pm 3$bp \label{fig:powerLocal}}
 \end{figure}
 
-\begin{table}[t!]
-\centering{}%
+\begin{FPtable}
+\begin{sideways}
 \begin{tabular}{l|rrr|rrr}
 \hline 
  & \multicolumn{3}{c|}{Primary Positions} & \multicolumn{3}{c}{Alternative Positions}\tabularnewline
@@ -791,15 +800,19 @@ Offset:Magnitude  & 72  & 2964.07  & 16.07{*} & 72  & 154557.47  & 3167.31{*} \t
 Coverage:Offset:Magnitude  & 648  & 1043.81  & 0.63\phantom{*}  & 648  & 3968.16  & 9.04{*} \tabularnewline
 Residuals  & 10090  & 25847.85  &  & 8100  & 5489.74  & \tabularnewline
 \hline 
-\end{tabular}\caption{Analysis of variance of absolute position errors for the detection
+\end{tabular}
+\end{sideways}
+\caption{Analysis of variance of absolute position errors for the detection
 of primary and alternative positions using local concentration estimands.
 {*} indicates that a factor was statistically significant with $p<0.0001$.
 Remaining factors had $p$-values larger than 0.95.
-\label{tab:detectionAnova}}
-\end{table}
-%
-\begin{table}[t!]
-\centering{}%
+\label{tab:detectionAnova}
+\vspace{72pt}}
+\end{FPtable}
+\afterpage{\clearpage}
+
+\begin{FPtable}
+\begin{sideways}
 \begin{tabular}{r|rr|rr}
 \hline 
  & \multicolumn{2}{c|}{Primary Positions} & \multicolumn{2}{c}{Alternative Positions}\tabularnewline
@@ -815,11 +828,15 @@ Coverage$\cdot$Effective Magnitude  & -0.7448  & -5.31  & -0.3608  & -3.75 \tabu
 Offset$\cdot$Effective Magnitude  & 0.9623  & 2.62  & 7.8374  & 55.50 \tabularnewline
 Coverage$\cdot$Offset$\cdot$Effective Magnitude  & -0.3217  & -0.95  & 8.7109  & 31.84 \tabularnewline
 \hline 
-\end{tabular}\caption{Logistic regression of power on design factors as continuous variables
+\end{tabular}
+\end{sideways}
+\caption{Logistic regression of power on design factors as continuous variables
 for primary and alternative positions. Are regressors are normalized
 to have range $[0,1]$.
-\label{tab:detectionGlm}}
-\end{table}
+\label{tab:detectionGlm}
+\vspace{72pt}}
+\end{FPtable}
+\afterpage{\clearpage}
 \fi
 
 Power ranges from approximately 64\% to 100\% for primary positions and from approximately 2\% to 100\% for alternative positions across all combinations of factors, while mean absolute position errors range from 0.389 to 6.61bp and from 2.17 to 41.8bp, respectively.
