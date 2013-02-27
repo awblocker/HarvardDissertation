@@ -1,4 +1,4 @@
-\begin{thebibliography}{65}
+\begin{thebibliography}{90}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
@@ -19,6 +19,25 @@ Albert, I., Mavrich, T.~N., Tomsho, L.~P., Qi, J., Zanton, S.~J., Schuster,
   H2A.Z nucleosomes across the Saccharomyces cerevisiae genome.}}
   \textit{Nature}, 446, 572--6.
 
+\bibitem[{Anderson et~al.(2010)Anderson, Zavagno, Rod\'{o}n, Russeil, Abergel,
+  Ade, Andr\'{e}, Arab, Baluteau, Bernard, Blagrave, Bontemps, Boulanger,
+  Cohen, Compi\`{e}gne, Cox, Dartois, Davis, Emery, Fulton, Gry, Habart, Huang,
+  Joblin, Jones, Kirk, Lagache, Lim, Madden, Makiwa, Martin,
+  Miville-Desch\^{e}nes, Molinari, Moseley, Motte, Naylor, Okumura, {Pinheiro
+  Gon\c{c}alves}, Polehampton, Saraceno, Sauvage, Sidher, Spencer, Swinyard,
+  Ward-Thompson, and White}]{Anderson2010}
+Anderson, L.~D., Zavagno, A., Rod\'{o}n, J.~A., Russeil, D., Abergel, A., Ade,
+  P., Andr\'{e}, P., Arab, H., Baluteau, J.-P., Bernard, J.-P., Blagrave, K.,
+  Bontemps, S., Boulanger, F., Cohen, M., Compi\`{e}gne, M., Cox, P., Dartois,
+  E., Davis, G., Emery, R., Fulton, T., Gry, C., Habart, E., Huang, M., Joblin,
+  C., Jones, S.~C., Kirk, J.~M., Lagache, G., Lim, T., Madden, S., Makiwa, G.,
+  Martin, P., Miville-Desch\^{e}nes, M.-A., Molinari, S., Moseley, H., Motte,
+  F., Naylor, D.~A., Okumura, K., {Pinheiro Gon\c{c}alves}, D., Polehampton,
+  E., Saraceno, P., Sauvage, M., Sidher, S., Spencer, L., Swinyard, B.,
+  Ward-Thompson, D., and White, G.~J. (2010), \enquote{{The physical properties
+  of the dust in the RCW 120 H ii region as seen by Herschel},}
+  \textit{Astronomy and Astrophysics}, 518, L99.
+
 \bibitem[{Barski and Zhao(2009)}]{bars:zhao:2009}
 Barski, A. and Zhao, K. (2009), \enquote{Genomic location analysis by
   {C}h{IP}-{S}eq,} \textit{Journal of Cellular Biochemistry}, 107, 11--18.
@@ -27,9 +46,17 @@ Barski, A. and Zhao, K. (2009), \enquote{Genomic location analysis by
 Berger, J.~O. (1985), \textit{{Statistical Decision Theory and Bayesian
   Analysis}}, Springer, 2nd ed.
 
+\bibitem[{Berger and Bernardo(1992)}]{Berger1992}
+Berger, J.~O. and Bernardo, J.~M. (1992), \enquote{{On the Development of
+  Reference Priors},} \textit{Bayesian Statistics}, 4, 35----60.
+
+\bibitem[{Blackwell(1951)}]{Blackwell51}
+Blackwell, D. (1951), \enquote{Comparison of experiments,} \textit{Proceeding
+  of 2nd Berkeley Symposium on Probability and Statistics}, 1, 93--102.
+
 \bibitem[{Blackwell(1953)}]{Blackwell53}
-Blackwell, D. (1953), \enquote{Equivalent comparisons of experiments,}
-  \textit{Annals of Statistics}, 24(2), 265--272.
+--- (1953), \enquote{Equivalent comparisons of experiments,} \textit{Annals of
+  Statistics}, 24(2), 265--272.
 
 \bibitem[{Blocker and Protopapas(2012)}]{Blocker2012}
 Blocker, A.~W. and Protopapas, P. (2012), \enquote{{Semi-parametric Robust
@@ -71,6 +98,10 @@ Cairns, J., Spyrou, C., Stark, R., Smith, M.~L., Lynch, A.~G., and Tavar\'{e},
 \bibitem[{{Chandra X-Ray Center}(2012)}]{ChandraSDP}
 {Chandra X-Ray Center} (2012), \enquote{{SDP: Standard Data Processing},} .
 
+\bibitem[{Cox(1975)}]{Cox1975}
+Cox, D. (1975), \enquote{Partial likelihood,} \textit{Biometrika}, 62,
+  269--276.
+
 \bibitem[{Cox(1972)}]{Cox1972}
 Cox, D.~R. (1972), \enquote{{Regression Models and Life-Tables},}
   \textit{Journal of the Royal Statistical Society. Series B (Methodological)},
@@ -79,6 +110,27 @@ Cox, D.~R. (1972), \enquote{{Regression Models and Life-Tables},}
 \bibitem[{Davey(2012)}]{Davey2012}
 Davey, A. (2012), \enquote{{Massive Data Streams},} \textit{Presented at
   SolarStat 2012}.
+
+\bibitem[{D\'{e}sert et~al.(2008)D\'{e}sert, Mac\'{\i}as-P\'{e}rez, Mayet,
+  Giardino, Renault, Aumont, Beno\^{\i}t, Bernard, Ponthieu, and
+  Tristram}]{Desert2008}
+D\'{e}sert, F.-X., Mac\'{\i}as-P\'{e}rez, J.~F., Mayet, F., Giardino, G.,
+  Renault, C., Aumont, J., Beno\^{\i}t, A., Bernard, J.-P., Ponthieu, N., and
+  Tristram, M. (2008), \enquote{{Submillimetre point sources from the Archeops
+  experiment: very cold clumps in the Galactic plane},} \textit{Astronomy and
+  Astrophysics}, 481, 411--421.
+
+\bibitem[{Dupac et~al.(2003)Dupac, Bernard, Boudet, Giard, Lamarre, M�ny,
+  Pajot, Ristorcelli, Serra, Stepnik, and Torre}]{Dupac2003}
+Dupac, X., Bernard, J.-P., Boudet, N., Giard, M., Lamarre, J.-M., M�ny, C.,
+  Pajot, F., Ristorcelli, I., Serra, G., Stepnik, B., and Torre, J.-P. (2003),
+  \enquote{{Inverse temperature dependence of the dust submillimeter spectral
+  index},} \textit{Astronomy and Astrophysics}, 404, L11--L15.
+
+\bibitem[{Farrell(1968)}]{Farrell1968}
+Farrell, R.~H. (1968), \enquote{{On a Necessary and Sufficient Condition for
+  Admissibility of Estimators When Strictly Convex Loss is Used},} \textit{The
+  Annals of Mathematical Statistics}, 39, 23--28.
 
 \bibitem[{Flores and Orozco(2011)}]{Flores2011}
 Flores, O. and Orozco, M. (2011), \enquote{{nucleR: a package for
@@ -89,6 +141,21 @@ Flores, O. and Orozco, M. (2011), \enquote{{nucleR: a package for
 Fu, K., Tang, Q., Feng, J., Liu, X.~S., and Zhang, Y. (2012), \enquote{{DiNuP:
   a systematic approach to identify regions of differential nucleosome
   positioning.}} \textit{Bioinformatics (Oxford, England)}, 28, 1965--71.
+
+\bibitem[{Geisser and Eddy(1979)}]{Geisser1979}
+Geisser, S. and Eddy, W. (1979), \enquote{{A predictive approach to model
+  selection},} \textit{Journal of the American Statistical Association}, 74,
+  153--160.
+
+\bibitem[{Geman(2012)}]{Geman2012}
+Geman, D. (2012), \enquote{{Order statistics and gene regulation},}
+  \textit{Medallion Lecture at Joint Statistical Meetings}.
+
+\bibitem[{Geman et~al.(2004)Geman, D'Avignon, Naiman, and Winslow}]{Geman2004}
+Geman, D., D'Avignon, C., Naiman, D.~Q., and Winslow, R.~L. (2004),
+  \enquote{{Classifying Gene Expression Profiles from Pairwise mRNA
+  Comparisons},} \textit{Statistical applications in genetics and molecular
+  biology}, 3.
 
 \bibitem[{Gkikopoulos et~al.(2011)Gkikopoulos, Schofield, Singh, Pinskaya,
   Mellor, Smolle, Workman, Barton, and Owen-Hughes}]{Gkikopoulos2011}
@@ -110,19 +177,45 @@ Gupta, M. (2007), \enquote{{Generalized hierarchical markov models for the
   discovery of length-constrained sequence features from genome tiling
   arrays.}} \textit{Biometrics}, 63, 797--805.
 
+\bibitem[{Hartigan(1964)}]{Hartigan1964}
+Hartigan, J. (1964), \enquote{{Invariant prior distributions},} \textit{The
+  Annals of Mathematical Statistics}, 35, 836--845.
+
 \bibitem[{Ioannidis and Khoury(2011)}]{Ioannidis2011}
 Ioannidis, J. P.~A. and Khoury, M.~J. (2011), \enquote{{Improving validation
   practices in ``omics'' research.}} \textit{Science (New York, N.Y.)}, 334,
   1230--2.
+
+\bibitem[{Irizarry et~al.(2003)Irizarry, Hobbs, Beazer-barclay, Antonellis,
+  Scherf, and Speed}]{Irizarry2003}
+Irizarry, R.~A., Hobbs, B., Beazer-barclay, Y.~D., Antonellis, K.~J., Scherf,
+  U., and Speed, T.~P. (2003), \enquote{{Exploration, normalization, and
+  summaries of high density oligonucleotide array probe level data},}
+  \textit{Biostatistics}, 4, 249--264.
+
+\bibitem[{Irizarry et~al.(2006)Irizarry, Wu, and Jaffee}]{Irizarry2006}
+Irizarry, R.~A., Wu, Z., and Jaffee, H.~A. (2006), \enquote{{Comparison of
+  Affymetrix GeneChip expression measures.}} \textit{Bioinformatics (Oxford,
+  England)}, 22, 789--94.
 
 \bibitem[{Jansen and Verstrepen(2011)}]{Jansen2011}
 Jansen, A. and Verstrepen, K.~J. (2011), \enquote{{Nucleosome Positioning in
   Saccharomyces cerevisiae.}} \textit{Microbiology and molecular biology
   reviews : MMBR}, 75, 301--20.
 
+\bibitem[{Jeffreys(1946)}]{Jeffreys1946}
+Jeffreys, H. (1946), \enquote{{An Invariant Form for the Prior Probability in
+  Estimation Problems},} \textit{Proceedings of the Royal Society A:
+  Mathematical, Physical and Engineering Sciences}, 186, 453--461.
+
 \bibitem[{Kadane(1993)}]{Kadane1993}
 Kadane, J.~B. (1993), \enquote{{Several Bayesians: A review},} \textit{Test},
   2, 1--32.
+
+\bibitem[{Kass and Wasserman(1996)}]{Kass1996}
+Kass, R.~E. and Wasserman, L. (1996), \enquote{{The Selection of Prior
+  Distributions by Formal Rules},} \textit{Journal of the American Statistical
+  Association}, 91, 1343--1370.
 
 \bibitem[{Kelly et~al.(2012)Kelly, Shetty, Stutz, Kauffmann, Goodman, and
   Launhardt}]{Kelly2012}
@@ -156,6 +249,12 @@ Lindley, D., Tversky, A., and Brown, R. (1979), \enquote{{On the reconciliation
   of probability assessments},} \textit{Journal of the Royal Statistical
   Society. Series A.}, 142, 146--180.
 
+\bibitem[{McGee and Chen(2006)}]{McGee2006}
+McGee, M. and Chen, Z. (2006), \enquote{{Parameter estimation for the
+  exponential-normal convolution model for background correction of Affymetrix
+  GeneChip data},} \textit{Statistical applications in genetics and molecular
+  biology}, 5, Article 24.
+
 \bibitem[{Meng(1994)}]{Meng1994}
 Meng, X.-L. (1994), \enquote{{Multiple-imputation inferences with uncongenial
   sources of input (with discussion)},} \textit{Statistical Science}, 9,
@@ -165,6 +264,12 @@ Meng, X.-L. (1994), \enquote{{Multiple-imputation inferences with uncongenial
 Meng, X.-L. and Romero, M. (2003), \enquote{{Discussion: Efficiency and
   Self-efficiency With Multiple Imputation Inference},} \textit{International
   Statistical Review}, 71, 607--618.
+
+\bibitem[{Meng and Xie(2012)}]{Meng2012}
+Meng, X.-L. and Xie, X. (2012), \enquote{{I} Got More Data, My Model Is More
+  Refined, But My Estimator Is Getting Worse! {Am} {I} Just Dumb?}
+  \textit{Econometric Reviews (special issue on Bayesian Inference and
+  Information Theoretic Methods: In Memory of Arnold Zellner)}, to appear.
 
 \bibitem[{Mitra and Gupta(2011)}]{Mitra2011}
 Mitra, R. and Gupta, M. (2011), \enquote{{A continuous-index Bayesian hidden
@@ -183,6 +288,10 @@ Nash, S. (2000), \enquote{{A survey of truncated-Newton methods},}
 Neal, R. (2010), \enquote{{MCMC using Hamiltonian dynamics},} \textit{{Handbook
   of Markov Chain Monte Carlo}}, 54, 113--162.
 
+\bibitem[{Neyman and Scott(1948)}]{NeymanScott1948}
+Neyman, J. and Scott, E.~L. (1948), \enquote{Consistent Estimates Based on
+  Partially Consistent Observations,} \textit{Econometrica}, 16, pp. 1--32.
+
 \bibitem[{Nguyen et~al.(2009)Nguyen, Wainwright, and Jordan}]{Nguyen2009}
 Nguyen, X., Wainwright, M.~J., and Jordan, M.~I. (2009), \enquote{{On surrogate
   loss functions and f -divergences},} \textit{The Annals of Statistics}, 37,
@@ -191,6 +300,17 @@ Nguyen, X., Wainwright, M.~J., and Jordan, M.~I. (2009), \enquote{{On surrogate
 \bibitem[{Nielsen(2003)}]{Nielsen2003}
 Nielsen, S. r.~F. (2003), \enquote{{Proper and Improper Multiple Imputation},}
   \textit{International Statistical Review}, 71, 593--607.
+
+\bibitem[{Paradis et~al.(2010)Paradis, Veneziani, Noriega-Crespo, Paladini,
+  Piacentini, Bernard, de~Bernardis, Calzoletti, Faustini, Martin, Masi,
+  Montier, Natoli, Ristorcelli, Thompson, Traficante, and
+  Molinari}]{Paradis2010}
+Paradis, D., Veneziani, M., Noriega-Crespo, A., Paladini, R., Piacentini, F.,
+  Bernard, J.~P., de~Bernardis, P., Calzoletti, L., Faustini, F., Martin, P.,
+  Masi, S., Montier, L., Natoli, P., Ristorcelli, I., Thompson, M.~A.,
+  Traficante, A., and Molinari, S. (2010), \enquote{{Variations of the spectral
+  index of dust emissivity from Hi-GAL observations of the Galactic plane},}
+  \textit{Astronomy and Astrophysics}, 520, L8.
 
 \bibitem[{Park(2009)}]{park:2009}
 Park, P.~J. (2009), \enquote{{C}h{IP}-{S}eq: {A}dvantages and challenges of a
@@ -206,12 +326,23 @@ Polishko, A., Ponts, N., {Le Roch}, K.~G., and Lonardi, S. (2012),
   \enquote{{NORMAL: accurate nucleosome positioning using a modified Gaussian
   mixture model.}} \textit{Bioinformatics (Oxford, England)}, 28, 242--9.
 
+\bibitem[{Quackenbush(2002)}]{Quackenbush2002}
+Quackenbush, J. (2002), \enquote{{Microarray data normalization and
+  transformation.}} \textit{Nature genetics}, 32 Suppl, 496--501.
+
 \bibitem[{Rashid et~al.(2011)Rashid, Giresi, Ibrahim, Sun, and
   Lieb}]{Rashid2011}
 Rashid, N.~U., Giresi, P.~G., Ibrahim, J.~G., Sun, W., and Lieb, J.~D. (2011),
   \enquote{{ZINBA integrates local covariates with DNA-seq data to identify
   broad and narrow regions of enrichment, even within amplified genomic
   regions.}} \textit{Genome biology}, 12, R67.
+
+\bibitem[{Ritchie et~al.(2007)Ritchie, Silver, Oshlack, Holmes, Diyagama,
+  Holloway, and Smyth}]{Ritchie2007}
+Ritchie, M.~E., Silver, J., Oshlack, A., Holmes, M., Diyagama, D., Holloway,
+  A., and Smyth, G.~K. (2007), \enquote{{A comparison of background correction
+  methods for two-colour microarrays.}} \textit{Bioinformatics (Oxford,
+  England)}, 23, 2700--7.
 
 \bibitem[{Rubin(1976)}]{Rubin1976}
 Rubin, D. (1976), \enquote{{Inference and missing data},} \textit{Biometrika},
@@ -255,6 +386,12 @@ Shivaswamy, S., Bhinge, A., Zhao, Y., Jones, S., Hirst, M., and Iyer, V.~R.
   eukaryotic genome in response to transcriptional perturbation.}} \textit{PLoS
   biology}, 6, e65.
 
+\bibitem[{Smyth(2005)}]{Smyth2005}
+Smyth, G.~K. (2005), \enquote{{Limma : Linear Models for Microarray Data},} in
+  \textit{Bioinformatics and Computational Biology Solutions using R and
+  Bioconductor}, eds. Gentelman, R., Carey, V., Dudoit, S., Irizarry, R., and
+  Huber, W., New York: Springer, no. 2005, pp. 397--420.
+
 \bibitem[{Storey and Tibshirani(2003)}]{StoreyTibshirani2003}
 Storey, J. and Tibshirani, R. (2003), \enquote{Statistical significance for
   genomewide studies,} \textit{Proceedings of the National Academy of Sciences
@@ -270,6 +407,12 @@ Sun, W., Buck, M.~J., Patel, M., and Davis, I.~J. (2009{\natexlab{a}}),
 Sun, W., Xie, W., Xu, F., Grunstein, M., and Li, K.-C. (2009{\natexlab{b}}),
   \enquote{{Dissecting nucleosome free regions by a segmental semi-Markov
   model.}} \textit{PloS one}, 4, e4721.
+
+\bibitem[{Tan et~al.(2005)Tan, Naiman, Xu, Winslow, and Geman}]{Tan2005}
+Tan, A.~C., Naiman, D.~Q., Xu, L., Winslow, R.~L., and Geman, D. (2005),
+  \enquote{{Simple decision rules for classifying human cancers from gene
+  expression profiles.}} \textit{Bioinformatics (Oxford, England)}, 21,
+  3896--904.
 
 \bibitem[{Tirosh(2012)}]{Tirosh2012}
 Tirosh, I. (2012), \enquote{{Computational analysis of nucleosome
@@ -300,6 +443,15 @@ van Dyk, D., Connors, A., Esch, D., Freeman, P., Kang, H., Karovska, M.,
 Weiner, A., Hughes, A., Yassour, M., Rando, O.~J., and Friedman, N. (2010),
   \enquote{{High-resolution nucleosome mapping reveals transcription-dependent
   promoter packaging.}} \textit{Genome research}, 20, 90--100.
+
+\bibitem[{Xie and Meng(2012)}]{Xie2012}
+Xie, X. and Meng, X.-L. (2012), \enquote{Exploring Multi-party Inferences: What
+  Happens When There are Three Uncongenial Models Involved?} Submitted.
+
+\bibitem[{Xie et~al.(2009)Xie, Wang, and Story}]{Xie2009}
+Xie, Y., Wang, X., and Story, M. (2009), \enquote{{Statistical methods of
+  background correction for Illumina BeadArray data.}} \textit{Bioinformatics
+  (Oxford, England)}, 25, 751--7.
 
 \bibitem[{Yassour et~al.(2008)Yassour, Kaplan, Jaimovich, and
   Friedman}]{yass:kapl:jaim:frie:2008}
