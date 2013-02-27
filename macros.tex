@@ -2,19 +2,18 @@
 
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\given}{\, | \,}
-\newcommand{\mybox}[4]{\centering
-\colorbox{lightgrey}{\parbox{#1\textwidth}{\centering \vskip #3
-\begin{minipage}[t]{#2\textwidth} #4 \end{minipage} \vskip #3}}}
 
 \newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
 \newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
 \newcommand{\diagvec}[1]{\mathrm{\overrightarrow{diag}}\left(#1\right)}
-\newcommand{\unitmat}[0]{\vec{1}\vec{1}^T}
+\newcommand{\unitmat}[0]{\vec{1}\vec{1}^{\top}}
 \DeclareMathOperator{\argmax}{arg\,max}
-\newcommand{\dd}{\; \mathrm{d}}
+\DeclareMathOperator{\argmin}{arg\,min}
+\newcommand{\dd}{\mathrm{d}}
 \DeclareMathOperator{\Unif}{Unif}
 \DeclareMathOperator{\Multinom}{Multinom}
 \DeclareMathOperator{\Bernoulli}{Bern}
+\DeclareMathOperator{\Expo}{Expo}
 \DeclareMathOperator{\Poisson}{Poisson}
 \DeclareMathOperator{\logit}{logit}
 \DeclareMathOperator{\Var}{Var}
@@ -22,3 +21,36 @@
 \DeclareMathOperator{\Median}{Med}
 \newcommand{\range}[2]{\left\{#1 \ldots #2\right\}}
 \newcommand{\fnDef}[3]{#1 \,:\, #2 \rightarrow #3}
+\DeclareMathOperator{\sign}{sign}
+
+\newcommand{\indep}[0]{\perp\!\!\!\perp}
+%\def\indep{\perp}
+
+\newtheorem{example}{Example}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{fact}{Fact}
+\newtheorem{note}{Note}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{problem}{Problem}
+\newtheorem{result}{Result}
+
+% Macros for generic two-phase problem
+\newcommand{\param}{\theta}
+\newcommand{\pobs}{p_Y}
+\newcommand{\psci}{p_X}
+\newcommand{\pproc}{p_T}
+\newcommand{\pwork}{\tilde{p}_X}
+\newcommand{\pywork}{\tilde{p}_Y}
+\newcommand{\obsparam}{\xi}
+\newcommand{\workparam}{\eta}
+
+% Macros for estimators
+\newcommand{\est}{\hat{\param}} % Generic MLE
+\newcommand{\multiestinf}{\bar{\param}_{\infty}} % MI asymptotic estimator
+
+% Macros for procedures
+\newcommand{\proc}{\mathcal{P}}
