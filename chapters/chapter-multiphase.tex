@@ -1,3 +1,7 @@
+%!TEX TS-program = xelatex
+% !TEX root = ../thesis.tex
+% Do not delete; used to set build system
+
 \begin{savequote}[75mm] 
 Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo.
 \qauthor{Quoteauthor Lastname} 
@@ -193,6 +197,7 @@ These procedures  need not correspond to inference under any  complete-data mode
 We summarize the structure of this model in Figure \ref{multiphase:fig:models}.
 
 \begin{figure}
+\centering
 \includegraphics[height=2in]{figures/multiphase/diagram_model_vertical}
 \caption{Graphical diagram of our  generic two-phase setting. The preprocessor  observes $Y$ from the original data generating process and outputs $T$, with $X$ as missing data. The downstream analyst observes the preprocessor's output $T$ and has both $X$ and $Y$ missing.\label{multiphase:fig:models}}
 \end{figure}
@@ -317,6 +322,7 @@ But such techniques are not the only way to generate risk monotone procedures fr
 This is analogous to self-efficiency, which can be achieved by procedures that are neither Bayesian nor MLE \citep{Meng1994,Xie2012}.
 
 \begin{figure}
+\centering
 \includegraphics[height=1in]{figures/multiphase/diagram_risk-monotone.eps}
 \caption{Illustration of risk-monotone ``basis'' construction. In this case, $T_1$ and $T_2$ for the basis set of statistics. Each of these has three descendants ($T_3, T_5, T_7$ from $T_1$ and $T_4, T_6, T_8$ from $T_2$). These descendants are deterministic functions of their parent, but they are not deterministic functions of any other basis statistics. Given correctly-specified models for $T_1$ and $T_2$, a risk monotone procedure can be constructed for all statistics ($T_1, \ldots, T_8$) shown here as described in the text.
 \label{multiphase:fig:risk-monotone}}
@@ -1096,7 +1102,7 @@ Returning to our theoretical directions, we see the tools discussed in Section \
 Development of, for instance, efficient likelihood approximations with formal error bounds has direct import for computation as well as the theory of multiphase inference; indeed, the computational perspective can inform theoretical development at least as much as theory can inform computation.
 Thus, we believe that building a theory of multiphase inference can yield a set of concrete computational tools as well as new principles for the practice of statistics.
 
-\section*{Acknowledgments}
+\section{Acknowledgments}
 We would like to acknowledge support from the Arthur P. Dempster Award and partial financial support from the NSF.
 We would also like to thank Arthur P. Dempster and Steven Blyth for their generous feedback.
 This work developed from the inaugural winning submission for said award.
