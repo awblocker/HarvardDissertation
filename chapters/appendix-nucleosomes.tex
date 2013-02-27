@@ -7,16 +7,16 @@
 \section{Algorithmic details of inference}
 
 \subsection{Distributed HMC sampler}
-\label{sec:mcmc}
+\label{supp:nucleosomes:sec:mcmc}
 
 Recall that the model specified in Section 2 is:
 \begin{align}
- \label{eq:observation_model}
+ \label{supp:nucleosomes:eq:observation_model}
   y_k|\lambda_k         & \sim \hbox{Poisson } (\lambda_k) \\
- \label{eq:linear_model}
+ \label{supp:nucleosomes:eq:linear_model}
   \lambda_{(N\times 1)} & \equiv X_{(N\times (N - \ell_0))} ~ \beta_{((N - \ell_0)\times 1)}, \\
 \nonumber & \quad \beta_k>0 \hbox{ for } k=\lfloor \ell_0 / 2 \rfloor + 1 \dots N - \lfloor \ell_0 / 2 \rfloor \\
-\label{eq:positioning_model}
+\label{supp:nucleosomes:eq:positioning_model}
   \log \beta_k        & \sim \hbox{Normal } (\mu_{s_k},\sigma^2_{s_k})
 \end{align}
 given a segmentation function $\fnDef{s}{\range{1}{N}}{\range{1}{S}}$, which maps the $N$ base pair locations to $S$ regions in which coefficients $\beta_k$ can be assumed to be identically distributed.
@@ -50,7 +50,7 @@ where $\bar{\theta}_s^{(r-1)} = \frac{1}{n_s} \sum_{k : s_k = s} \theta_k^{(r-1)
 These are standard conjugate updates and have computational and memory complexity $O(N)$.
 
 \subsubsection{Distributed HMC update for \texorpdfstring{$\bm \beta$}{beta}}
-\label{sec:distributedHMC}
+\label{supp:nucleosomes:sec:distributedHMC}
 
 The draws in step 2 proceed in two stages, using two partitions of $\bm \beta$.
 The first starts at the beginning of $\bm \beta$ and proceeds forward with subvectors of length at most $B$ separated by $2w$, yielding
@@ -60,7 +60,7 @@ D_2 &= \bm \beta_{[B/2 + 1 : 3B/2]}, \bm \beta_{[3B/2 + 2w + 1 : 5B/2 + 2w]}, \l
 \end{align}
 The subvectors within each partition are conditionally-independent given the $(\bm \mu, \bm \sigma^2)$ and the entries of $\bm \beta$ separating them.
 Hence, we can update them in parallel across multiple processors.
-The basic structure of these updates follows Algorithm \ref{alg:master}.
+The basic structure of these updates follows Algorithm \ref{supp:nucleosomes:alg:master}.
 %
 \begin{algorithm}%[ht]
  \hspace{-8pt} \textbf{Distributed HMC update}\\
@@ -96,7 +96,7 @@ The basic structure of these updates follows Algorithm \ref{alg:master}.
  }
 }
 
- \caption{Distributed HMC update \label{alg:master}}
+ \caption{Distributed HMC update \label{supp:nucleosomes:alg:master}}
 \end{algorithm}
 
 The individual, worker-level HMC updates are done on $\bm \theta = \log \bm \beta$ and follow the standard leapfrog-based HMC procedure outlined in \citet{Neal2010}.
@@ -112,7 +112,7 @@ Then,
 \nabla_{\bm \theta} \nabla_{\bm \theta^\top} \log p(\bm \theta | \bm \mu, \bm \sigma^2) &= -\diag{\bm \beta} X'WX \diag{\bm \beta} \\
 \nonumber
 &\phantom{=} - \diag{\bm \beta} X' (\bm 1 - \bm y
-/ \bm \lambda) - \diag{\bm 1 / \bm \sigma^2} \label{eq:hessian} \ ,
+/ \bm \lambda) - \diag{\bm 1 / \bm \sigma^2} \label{supp:nucleosomes:eq:hessian} \ ,
 \end{align}
 where $W = \diag{\bm y / \bm \lambda\mbox{**}2}$.
 Due to the convolution structure of $X$, all matrix-vector products involving $X$ and $X^\top$ can be reduced to convolutions of vectors with the template vector $\bm t$.
@@ -124,7 +124,7 @@ X^\top (\bm 1 - y / \bm \lambda) &= (\bm 1 - y / \bm \lambda) \convolution \bm t
 \end{align}
 %
 This reduces the computational complexity of these evaluations to $O(B \log B)$ for each update of each subvector of $\bm \beta$.
-Our block-level HMC steps are detailed in Algorithm \ref{alg:hmc}.
+Our block-level HMC steps are detailed in Algorithm \ref{supp:nucleosomes:alg:hmc}.
 %
 \begin{algorithm}%[ht]
 
@@ -166,7 +166,7 @@ Draw $u ~ \Unif[0,1]$\;
 \Else {
 \Return{$(\bm{\tilde \theta}_0, 0)$} \tcc*{Reject update}
 }
- \caption{Worker-level HMC update \label{alg:hmc}}
+ \caption{Worker-level HMC update \label{supp:nucleosomes:alg:hmc}}
 \end{algorithm}
 %
 In practice, we fix $\epsilon_{\min} = 0.001$, $\epsilon_{\max} = 0.1$, and $L = 100$.
@@ -181,21 +181,21 @@ Each worker process requires $O(B \log B)$ memory to run the distributed HMC upd
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Approximate EM algorithm}
-\label{sec:approxem}
+\label{supp:nucleosomes:sec:approxem}
 
-We develop an approximate EM algorithm, based on a Gaussian approximation of the conditional posterior of $\bm \theta$, as to obtain starting values for the MCMC sampler given in \ref{sec:mcmc}.
+We develop an approximate EM algorithm, based on a Gaussian approximation of the conditional posterior of $\bm \theta$, as to obtain starting values for the MCMC sampler given in \ref{supp:nucleosomes:sec:mcmc}.
 It provides a high-quality initialization for $\bm \beta$, $\bm \mu$, and $\bm \sigma^2$.
 Simpler initializations are possible, but obtaining high-quality initial estimates can greatly reduce the number of MCMC iterations required for reliable inferences.
 
 \subsubsection{Choice initial estimator}
-\label{sec:objective}
+\label{supp:nucleosomes:sec:objective}
 
 We use $\hat \theta_k = E \left[ \theta_k | \bm y, \hat \mu_{s_k}, \hat \sigma^2_{s_k} \right]$ as an initial point estimate of $\theta_k$.
-The distributed HMC sampler presented in Section \ref{sec:mcmc} yields information on the complete marginal posterior of $\bm \theta$ via simulation but, given the scale of this problem, an optimization-based approach is useful as a fast initialization method.
-The approximate EM algorithm described in Section \ref{sec:approximate_em} provides both approximate marginal MAP estimates of the parameters $\bm \mu$ and $\bm \sigma^2$ and estimates of the target conditional expectations $\hat \theta_k$.
+The distributed HMC sampler presented in Section \ref{supp:nucleosomes:sec:mcmc} yields information on the complete marginal posterior of $\bm \theta$ via simulation but, given the scale of this problem, an optimization-based approach is useful as a fast initialization method.
+The approximate EM algorithm described in Section \ref{supp:nucleosomes:sec:approximate_em} provides both approximate marginal MAP estimates of the parameters $\bm \mu$ and $\bm \sigma^2$ and estimates of the target conditional expectations $\hat \theta_k$.
 
 \subsubsection{Approximate EM algorithm via Laplace approximation}
-\label{sec:approximate_em}
+\label{supp:nucleosomes:sec:approximate_em}
 
 We implement an approximate EM algorithm to provide initial estimates of $(\bm \theta, \bm \mu, \bm \sigma)$.
 In the E-step, we build an approximation of the conditional posterior of ${\bm \theta}$ given $(\bm y, \hat {\bm\mu}, \hat{\bm\sigma}^2)$ to estimate the $Q$ function, detailed below.
@@ -209,7 +209,7 @@ In the E-step, the objective is to compute
 \end{equation}
 %
 The log joint posterior for $(\bm \mu, \bm \sigma^2, \bm \theta)$ is given by
-\begin{eqnarray}\label{eq:logPosterior}
+\begin{eqnarray}\label{supp:nucleosomes:eq:logPosterior}
  \log p(\bm \theta, \bm \mu, \bm \sigma^2 | \bm y, \bm s, \tau_0) &=& -\sum_k
 \bm x_k^T \beta_k + \sum_k y_k \log \left( \bm x_k^T \beta_k \right)  \\
  \nonumber && - \frac{1}{2} \sum_k \log \sigma^2_{s_k} -
@@ -239,7 +239,7 @@ Thus, these conditional posteriors are nearly Gaussian and a Laplace approximati
 To compute the Laplace approximation, we first find the posterior mode of
 $\theta_k$ given $(\bm \mu^{(r-1)}, \bm \sigma^{2\,(r-1)})$. This amounts to
 maximizing
-\begin{equation}\label{eq:gFunction}
+\begin{equation}\label{supp:nucleosomes:eq:gFunction}
  g(\bm \theta) = -\sum_k \bm x_k^T \beta_k +
 \sum_k y_k \log \left( \bm x_k^T \beta_k \right) -
 \frac{1}{2} \sum_k \frac{(\theta_k - \mu_{s_k})^2}{\sigma^2_{s_k}}
@@ -254,11 +254,11 @@ The Laplace approximation then consists of substituting a Gaussian distribution 
 \paragraph{M-step}
 %
 The M-step consists of maximizing $Q_t(\bm \mu, \bm \sigma^2)$ with respect to $\mu_{s_k}$ and $\sigma^2_{s_k}$.
-We obtain two simple closed-form solutions, summarized in Equations \ref{eq:mstep-mu} and \ref{eq:mstep-sigmasq}:
-\begin{eqnarray} \label{eq:mstep-mu}
+We obtain two simple closed-form solutions, summarized in Equations \ref{supp:nucleosomes:eq:mstep-mu} and \ref{supp:nucleosomes:eq:mstep-sigmasq}:
+\begin{eqnarray} \label{supp:nucleosomes:eq:mstep-mu}
 \hat{\mu}_{s} &=& \frac{1}{1 + \tau_0} \Big(\frac{1}{n_s}
  \sum_{k:s_k = s} \hat{\theta}_k \Big) +
- \frac{\tau_0}{1 + \tau_0} \mu_0 \\ \label{eq:mstep-sigmasq}
+ \frac{\tau_0}{1 + \tau_0} \mu_0 \\ \label{supp:nucleosomes:eq:mstep-sigmasq}
 \hat{\sigma}^2_{s} &=& \frac{\frac{1}{n_s} \sum_{k:s_k = s}
  (\hat{\theta}_k - \hat{\mu}_{s})^2
  + \frac{1}{n_s} \sum_{k:s_k = s} \hat{V}_k +
@@ -272,15 +272,15 @@ Algorithmically, the $\hat{V}_k$ term introduced by the EM algorithm prevents $\
 % AWB: Perhaps add pointer to new algorithm without blocked E-step for overview of process; seems less necessary at this point
 
 \subsubsection{Distributed approximate E-step}
-\label{sec:parallelization}
+\label{supp:nucleosomes:sec:parallelization}
 
-We use the conditional independence structure of $\bm \beta$ given $(\bm \mu, \bm \sigma^2)$ and partitions discussed in Section \ref{sec:distributedHMC} to distribute our approximate E-step across multiple processors.
+We use the conditional independence structure of $\bm \beta$ given $(\bm \mu, \bm \sigma^2)$ and partitions discussed in Section \ref{supp:nucleosomes:sec:distributedHMC} to distribute our approximate E-step across multiple processors.
 Given each partition of $\bm \theta$, we update the Laplace approximations in parallel, by finding the mode of the conditional posterior subvector-by-subvector.
 The overall algorithm is blockwise coordinate ascent within each approximate E-step, with each E-step consisting of iterative maximization of $\log p(\bm \theta | \bm y, \bm \mu, \bm \sigma^2 )$ using different subsets of $\bm \theta$ (corresponding to different blocks) in each iteration.
 This converges to the maximum of $g(\bm \theta)$ given $\bm \mu^{(r-1)}$ and $\bm \sigma^{2\,(r-1)}$.
 
 The approximate E-step considers each block in each of the four configurations, during one iteration. 
-More details are give in Section \ref{sec:mpi}.
+More details are give in Section \ref{supp:nucleosomes:sec:mpi}.
 Within each block $m_1:m_2$, we maximize $\log p(\bm \theta_{m_1:m_2} | \bm y, \bm \mu, \bm \sigma^2, \bm \theta_{-(m_1:m_2)} )$ numerically via L-BFGS-B or a truncated Newton algorithm \citep{lbfgsb1997, Nash2000}; the latter is typically more efficient in this application.
 We carry out this maximization directly, avoiding the data augmentation typically used in additive Poisson models of this type \citep[e.g.,][]{VanDykEtAl2006}. 
 Such data augmentation would require storing and computing at least $(2w+1)N$ additional variables, provide slower convergence, and slow the overall computation substantially.
@@ -293,7 +293,7 @@ The diagonal approximation works well in our setting, even though one would expe
 However, due to the use of exchangeable local regularization, the Hessian is typically diagonally-dominant.
 The diagonal approximation is quite accurate; we observed few differences to 2-3 significant digits in comparisons of the estimated Hessian and its inverse on small portions of the genome (single ORFs with promoters, approximately 1,000 to 10,000bp in length).
 %
-We lay out the overall structure of this approximate EM algorithm in Algorithm \ref{alg:deconvolve}.
+We lay out the overall structure of this approximate EM algorithm in Algorithm \ref{supp:nucleosomes:alg:deconvolve}.
 
 \begin{algorithm}%[ht]
 \hspace{-8pt} \textbf{Outline of Approximate EM Algorithm} \\
@@ -312,17 +312,17 @@ We lay out the overall structure of this approximate EM algorithm in Algorithm \
     \bm \mu, \bm \sigma^2 | \bm y, \bm s, \tau_0) | \bm \mu_{(t-1)}, \bm
     \sigma^2_{(t-1)}, \bm s, \bm \tau_0 \right]$
  }
- \caption{Approximate EM Algorithm \label{alg:deconvolve}}
+ \caption{Approximate EM Algorithm \label{supp:nucleosomes:alg:deconvolve}}
 \end{algorithm}
 
 \subsubsection{Algorithmic details}
-\label{sec:mpi}
+\label{supp:nucleosomes:sec:mpi}
 
-The algorithm outlined in Section \ref{sec:approximate_em} can be implemented on distributed systems with MPI, using the same techniques as the MCMC algorithm presented in Section \ref{sec:mcmc}.
+The algorithm outlined in Section \ref{supp:nucleosomes:sec:approximate_em} can be implemented on distributed systems with MPI, using the same techniques as the MCMC algorithm presented in Section \ref{supp:nucleosomes:sec:mcmc}.
 Due to the use of a quasi-Newton optimization algorithm within each worker's approximate E-step, its computational complexity scales $O(B^2)$ for each such update.
 However, it scales $O(N)$ in the length of genome given a fixed block size $B$.
 Memory requirements are $O(N)$ for the master process running the M-step and coordinating the approximate E-step and $O(B^2)$ (independent of $N$) for the worker processes running the approximate E-step updates.
-We lay out the details of this parallel approximate E-step in Algorithm \ref{alg:parallel}.
+We lay out the details of this parallel approximate E-step in Algorithm \ref{supp:nucleosomes:alg:parallel}.
 
 \begin{algorithm}%[ht]
  \hspace{-8pt} \textbf{Parallel Implementation of Approximate E-Step}\\
@@ -360,7 +360,7 @@ We lay out the details of this parallel approximate E-step in Algorithm \ref{alg
  \tcc{Compute approximate variance, if needed}
  Compute approximate $\Var \left[ \theta_k | \bm y, \mu_{s_k}, \sigma^2_{s_k}  \right]$ using sparse Cholesky decomposition or diagonal approximation to Hessian\;
 
- \caption{Approximate E-Step \label{alg:parallel}}
+ \caption{Approximate E-Step \label{supp:nucleosomes:alg:parallel}}
 \end{algorithm}
 
 We this algorithm process a chromosome with $1.5e6$ base pairs in only 11 minutes using 256 threads on Amazon EC2; a chromosome with $2.4e5$ base pairs requires only 1 minute.
@@ -377,12 +377,12 @@ The one-to-one substitution of time and processors possible on the cloud makes i
 
 \begin{FPfigure}
 \includegraphics[width=0.95\textheight,angle=90]{figures/nucleosomes/figure_cluster_reproducibility_methods}
-\caption{Joint distributions of of model-based and read-based estimates of cluster-level properties. \label{fig:methodComparison}}
+\caption{Joint distributions of of model-based and read-based estimates of cluster-level properties. \label{supp:nucleosomes:fig:methodComparison}}
 \end{FPfigure}
 \afterpage{\clearpage}
 
 \subsection{Power analysis---cluster locations}
-\label{sec:cluster}
+\label{supp:nucleosomes:sec:cluster}
 
 \begin{FPfigure}
 \centering
@@ -401,7 +401,7 @@ The one-to-one substitution of time and processors possible on the cloud makes i
 \clearpage
 
 \subsection{Power analysis---local concentrations}
-\label{sec:detection}
+\label{supp:nucleosomes:sec:detection}
 
 \subsubsection{Primary positions}
 
