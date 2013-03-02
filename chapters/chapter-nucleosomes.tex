@@ -694,8 +694,17 @@ Figure \ref{nucleosomes:fig:powerCluster} summarizes our key findings, showing t
 %
 Tables \ref{nucleosomes:tab:clusterAnova} provides the results of a design-based ANOVA of the mean absolute errors of  estimated cluster locations, by gene, and Table \ref{nucleosomes:tab:clusterGlm} provides the results of a logistic regression of power on the design factors.
 
-\begin{FPtable}
-\begin{sideways}
+For estimating cluster locations, the proposed method dominates the Parzen-window estimator both in terms of power, with average difference of 2.1\%, and mean absolute error (not shown) across all conditions.
+Power ranges from approximately $12\%$ to $100\%$ over all factor combinations in our experiments for both methods, while mean absolute position errors range from approximately 0.1 to 60bp.
+Our method provided an average power of 85\%, while the Parzen window method's average power was 83\%.
+Power shows a strong dependence on the local distribution of nucleosome positions; the accuracy in identifying the cluster centers of primary positions is reduced by the presence of stable alternative positions.
+The spacing between primary and alternative positions also affects power substantially, with power diminishing by approximately 30\% as the offset increase from 0 to 35bp.
+Power increases slightly for both methods at offsets of 40 and 45bp.
+The relative performance of the proposed method is largest for offsets over 30bp, with a difference in power of 7\% at 45bp.
+Power shows little marginal dependence upon local coverage with only a 6\% change in power over the range of coverages for both methods.
+
+\begin{table}
+\centering
 \begin{tabular}{lr|rr|rr}
 \hline 
  &  & \multicolumn{2}{c|}{Cluster Estimand} & \multicolumn{2}{c}{Parzen Window}\tabularnewline
@@ -712,15 +721,12 @@ Coverage:Offset:Magnitude  & 648  & 950.25  & 1.36  & 947.80  & 1.38 \tabularnew
 Residuals  & 10090  & 10881.93  &  & 10684.31  & \tabularnewline
 \hline 
 \end{tabular}
-\end{sideways}
 \caption{Analysis of variance of absolute errors in cluster centers for cluster estimand and Parzen window methods. All factors and interactions were statistically significant with $p<0.0001$.
-\label{nucleosomes:tab:clusterAnova}
-\vspace{72pt}}
-\end{FPtable}
-\afterpage{\clearpage}
-
-\begin{FPtable}
-\begin{sideways}
+\label{nucleosomes:tab:clusterAnova}}
+\end{table}
+%
+\begin{table}
+\centering
 \begin{tabular}{r|rr|rr}
 \hline 
  & \multicolumn{2}{c|}{Cluster Estimand} & \multicolumn{2}{c}{Parzen Window}\tabularnewline
@@ -737,24 +743,11 @@ Offset$\cdot$Effective Magnitude  & 8.9842  & 22.27  & 6.9932  & 21.15 \tabularn
 Coverage$\cdot$Offset$\cdot$Effective Magnitude  & 2.1476  & 2.52  & 1.8962  & 2.84 \tabularnewline
 \hline 
 \end{tabular}
-\end{sideways}
 \caption{Logistic regression of power on design factors as continuous variables
 cluster estimand and Parzen Window method. Are regressors are normalized
 to have range $[0,1]$.
-\label{nucleosomes:tab:clusterGlm}
-\vspace{144pt}}
-\end{FPtable}
-\afterpage{\clearpage}
-
-
-For estimating cluster locations, the proposed method dominates the Parzen-window estimator both in terms of power, with average difference of 2.1\%, and mean absolute error (not shown) across all conditions.
-Power ranges from approximately $12\%$ to $100\%$ over all factor combinations in our experiments for both methods, while mean absolute position errors range from approximately 0.1 to 60bp.
-Our method provided an average power of 85\%, while the Parzen window method's average power was 83\%.
-Power shows a strong dependence on the local distribution of nucleosome positions; the accuracy in identifying the cluster centers of primary positions is reduced by the presence of stable alternative positions.
-The spacing between primary and alternative positions also affects power substantially, with power diminishing by approximately 30\% as the offset increase from 0 to 35bp.
-Power increases slightly for both methods at offsets of 40 and 45bp.
-The relative performance of the proposed method is largest for offsets over 30bp, with a difference in power of 7\% at 45bp.
-Power shows little marginal dependence upon local coverage with only a 6\% change in power over the range of coverages for both methods.
+\label{nucleosomes:tab:clusterGlm}}
+\end{table}
 
 The ANOVA and logistic regression analyses support these observations and provide further insights into the role of interactions between the design factors.
 ANOVA results in Table \ref{nucleosomes:tab:clusterAnova} indicate that alternative position offset, effective magnitude, and their interaction account for the vast majority of variation in absolute position errors (approximately 75\% of total variation and 94\% of explained variation) for both methods.
@@ -785,36 +778,44 @@ Tables \ref{nucleosomes:tab:detectionAnova} provides the results of a design-bas
 \caption{Power vs. effective magnitude (left), alternative position offset (center), and coverage (right) for detection of primary and alternative positions $\pm 3$bp \label{nucleosomes:fig:powerLocal}}
 \end{figure}
 
-\begin{FPtable}
-\begin{sideways}
+\begin{table}
+\centering
 \begin{tabular}{l|rrr|rrr}
 \hline 
  & \multicolumn{3}{c|}{Primary Positions} & \multicolumn{3}{c}{Alternative Positions}\tabularnewline
 \hline 
  & Df  & Sum Sq  & F value  & Df  & Sum Sq  & F value \tabularnewline
 \hline 
-Coverage & 9  & 1453.02  & 63.02{*} & 9  & 11136.04  & 1825.67{*} \tabularnewline
-Offset  & 9  & 5837.60  & 253.20{*}  & 8  & 34614.74  & 6384.17{*} \tabularnewline
-Magnitude  & 9  & 116496.93  & 5052.88{*}  & 9  & 74825.85  & 12267.12{*} \tabularnewline
-Coverage:Offset  & 81  & 147.78  & 0.71\phantom{*}  & 72  & 5331.20  & 109.25{*} \tabularnewline
-Coverage:Magnitude  & 81  & 1292.48  & 6.23{*}  & 81  & 4532.05  & 82.55{*} \tabularnewline
-Offset:Magnitude  & 72  & 2964.07  & 16.07{*} & 72  & 154557.47  & 3167.31{*} \tabularnewline
-Coverage:Offset:Magnitude  & 648  & 1043.81  & 0.63\phantom{*}  & 648  & 3968.16  & 9.04{*} \tabularnewline
-Residuals  & 10090  & 25847.85  &  & 8100  & 5489.74  & \tabularnewline
+Coverage & 9  & 1453  & 63{*} & 9  & 11136  & 1826{*} \tabularnewline
+Offset  & 9  & 5838  & 253.20{*}  & 8  & 34615  & 6385{*} \tabularnewline
+Magnitude  & 9  & 116497  & 5053{*}  & 9  & 74826  & 12267{*} \tabularnewline
+Coverage:Offset  & 81  & 148  & 0.7\phantom{*}  & 72  & 5331  & 110{*} \tabularnewline
+Coverage:Magnitude  & 81  & 1292  & 6{*}  & 81  & 4532  & 83{*} \tabularnewline
+Offset:Magnitude  & 72  & 2964  & 16{*} & 72  & 154557  & 3167{*} \tabularnewline
+Coverage:Offset:Magnitude  & 648  & 1044  & 0.6\phantom{*}  & 648  & 3968.16  & 9.04{*} \tabularnewline
+Residuals  & 10090  & 25848  &  & 8100  & 5490  & \tabularnewline
 \hline 
 \end{tabular}
-\end{sideways}
 \caption{Analysis of variance of absolute position errors for the detection
 of primary and alternative positions using local concentration estimands.
 {*} indicates that a factor was statistically significant with $p<0.0001$.
 Remaining factors had $p$-values larger than 0.95.
-\label{nucleosomes:tab:detectionAnova}
-\vspace{72pt}}
-\end{FPtable}
-\afterpage{\clearpage}
+\label{nucleosomes:tab:detectionAnova}}
+\end{table}
+\fi
 
-\begin{FPtable}
-\begin{sideways}
+Power ranges from approximately 64\% to 100\% for primary positions and from approximately 2\% to 100\% for alternative positions across all combinations of factors, while mean absolute position errors range from 0.389 to 6.61bp and from 2.17 to 41.8bp, respectively.
+The sensitivity of power and absolute position errors to the experimental factors differs between primary and alternative positions.
+
+For primary positions, the power increases as the effective magnitude of the primary position increases and decreases as the offset to the alternative position increases.
+The ANOVA results in Table \ref{nucleosomes:tab:detectionAnova} suggest that the majority of variation in absolute estimation errors for primary positions (75\% of total and 90\% of explained) is driven by the relative magnitude of primary and alternative positions.
+Coverage plays a minor role in the variation of these errors, even when including all of its interactions.
+The logistic regression results in Table \ref{nucleosomes:tab:detectionGlm} tell a similar story, with effective magnitude of the primary position and its interaction with the offset to the alternative position showing a strong positive effect on power.
+Other effects are considerably smaller.
+
+
+\begin{table}
+\centering
 \begin{tabular}{r|rr|rr}
 \hline 
  & \multicolumn{2}{c|}{Primary Positions} & \multicolumn{2}{c}{Alternative Positions}\tabularnewline
@@ -831,24 +832,11 @@ Offset$\cdot$Effective Magnitude  & 0.9623  & 2.62  & 7.8374  & 55.50 \tabularne
 Coverage$\cdot$Offset$\cdot$Effective Magnitude  & -0.3217  & -0.95  & 8.7109  & 31.84 \tabularnewline
 \hline 
 \end{tabular}
-\end{sideways}
 \caption{Logistic regression of power on design factors as continuous variables
 for primary and alternative positions. Are regressors are normalized
 to have range $[0,1]$.
-\label{nucleosomes:tab:detectionGlm}
-\vspace{72pt}}
-\end{FPtable}
-\afterpage{\clearpage}
-\fi
-
-Power ranges from approximately 64\% to 100\% for primary positions and from approximately 2\% to 100\% for alternative positions across all combinations of factors, while mean absolute position errors range from 0.389 to 6.61bp and from 2.17 to 41.8bp, respectively.
-The sensitivity of power and absolute position errors to the experimental factors differs between primary and alternative positions.
-
-For primary positions, the power increases as the effective magnitude of the primary position increases and decreases as the offset to the alternative position increases.
-The ANOVA results in Table \ref{nucleosomes:tab:detectionAnova} suggest that the majority of variation in absolute estimation errors for primary positions (75\% of total and 90\% of explained) is driven by the relative magnitude of primary and alternative positions.
-Coverage plays a minor role in the variation of these errors, even when including all of its interactions.
-The logistic regression results in Table \ref{nucleosomes:tab:detectionGlm} tell a similar story, with effective magnitude of the primary position and its interaction with the offset to the alternative position showing a strong positive effect on power.
-Other effects are considerably smaller.
+\label{nucleosomes:tab:detectionGlm}}
+\end{table}
 
 For alternative positions, the power increases as effective magnitude of the primary position, the offset to the alternative position, and the coverage increase.
 The ANOVA results in Table \ref{nucleosomes:tab:detectionAnova} show that the majority of the variation in absolute estimation errors for alternative positions is accounted for by the offset-magnitude interaction (52\% of total, 53\% of explained), with the marginal contributions of magnitude, offset, and coverage accounting for most of the remaining variation (41\% of total, 42\% of explained).
