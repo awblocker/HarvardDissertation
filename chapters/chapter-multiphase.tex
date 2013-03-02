@@ -631,7 +631,14 @@ This will preserve sufficiency for $\param$ under any scientific model $\psci(X 
 If $\pobs(Y | X, \obsparam)$ is correctly specified and satisfies (\ref{multiphase:e:obsm}), then any collection of individual sufficient statistics $\{T_i : i=1 \ldots r\}$ with each $T_i$ sufficient for $(X_i, \obsparam_i)$ is jointly sufficient for $(\param, \obsparam)$ in the sense of (\ref{multiphase:e:con1}) for all $\psci(X | \param)$.
 \end{theorem}
 \begin{proof}
-By assumption, we have $\pobs(Y_i | X_i, \obsparam_i) = h_i(Y_i) p_T(T_i | X_i, \obsparam_i)$ $\forall i$. Hence, $\pobs(Y | \theta) = \int_X \left[ \prod_{i=1}^r \pobs(Y_i | X_i, \obsparam_i) \right] \psci(X | \theta) \dd X = \left[ \prod_{i=1}^r h_i(Y_i) \right] \int_X \left[ \prod_{i=1}^r p_T(T_i | X_i, \obsparam_i) \right] \psci(X | \theta) \dd X$, so $\{T_i : i=1 \ldots r\}$ is sufficient for $\theta$.
+By assumption, we have $\pobs(Y_i | X_i, \obsparam_i) = h_i(Y_i) p_T(T_i | X_i, \obsparam_i)$ $\forall i$. Hence,
+\begin{align}
+\nonumber
+\pobs(Y | \theta) &= \int_X \left[ \prod_{i=1}^r \pobs(Y_i | X_i, \obsparam_i) \right] \psci(X | \theta) \dd X \\
+\nonumber
+&= \left[ \prod_{i=1}^r h_i(Y_i) \right] \int_X \left[ \prod_{i=1}^r p_T(T_i | X_i, \obsparam_i) \right] \psci(X | \theta) \dd X,
+\end{align}
+so $\{T_i : i=1 \ldots r\}$ is sufficient for $\theta$.
 \end{proof}
 %
 Theorem \ref{multiphase:thm:safe} provides a universal, safe strategy for sufficient preprocessing and a lower bound on the compression attainable from distributed sufficient preprocessing.
