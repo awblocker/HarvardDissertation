@@ -46,7 +46,7 @@
 %End Andy's package additions
 
 \RequirePackage{lettrine}%big letter at start of chapter
-\RequirePackage[width=5in, letterpaper]{geometry}
+\RequirePackage[width=6.5in, height=8.5in, letterpaper]{geometry}
 
 
 \RequirePackage{fancyhdr} 
@@ -130,7 +130,7 @@
 	\vspace{20pt}
 	\sc Abstract \\ \rm
 	\end{center}
-	\begin{doublespace} %Harvard registrar requests that abstract is double spaced
+	\begin{doublespace} % Harvard registrar requests that abstract is double spaced
 	\input{frontmatter/abstract}
 	\end{doublespace}
 	\newpage \lhead{} \rhead{}
@@ -178,8 +178,8 @@
 %End Andy Spacing
 
 
-%Andy's Numbering Fixf
-%Fix the figure counting so that it isn't affected by sections so as to be complient with harvard's annoying rule that says Figure 4.2.x cannot be followed by Figure 4.5.1.
+%Andy's Numbering Fix
+%Fix the figure counting so that it isn't affected by sections so as to be compliant with Harvard’s annoying rule that says Figure 4.2.x cannot be followed by Figure 4.5.1.
 \usepackage{chngcntr}
 
 %The way it will now work is that figures will have two numbers and the first number will increment by chapter and the second number will increment within a chapter irrespective of section
