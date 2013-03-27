@@ -705,6 +705,8 @@ Power shows little marginal dependence upon local coverage with only a 6\% chang
 
 \begin{table}
 \centering
+\caption{Analysis of variance of absolute errors in cluster centers for cluster estimand and Parzen window methods. All factors and interactions were statistically significant with $p<0.0001$.
+\label{nucleosomes:tab:clusterAnova}}
 \begin{tabular}{lr|rr|rr}
 \hline 
  &  & \multicolumn{2}{c|}{Cluster Estimand} & \multicolumn{2}{c}{Parzen Window}\tabularnewline
@@ -721,12 +723,13 @@ Coverage:Offset:Magnitude  & 648  & 950.25  & 1.36  & 947.80  & 1.38 \tabularnew
 Residuals  & 10090  & 10881.93  &  & 10684.31  & \tabularnewline
 \hline 
 \end{tabular}
-\caption{Analysis of variance of absolute errors in cluster centers for cluster estimand and Parzen window methods. All factors and interactions were statistically significant with $p<0.0001$.
-\label{nucleosomes:tab:clusterAnova}}
 \end{table}
 %
 \begin{table}
 \centering
+\caption{Logistic regression of power on design factors as continuous variables cluster estimand and Parzen Window method.
+Are regressors are normalized to have range $[0,1]$.
+\label{nucleosomes:tab:clusterGlm}}
 \begin{tabular}{r|rr|rr}
 \hline 
  & \multicolumn{2}{c|}{Cluster Estimand} & \multicolumn{2}{c}{Parzen Window}\tabularnewline
@@ -743,10 +746,6 @@ Offset$\cdot$Effective Magnitude  & 8.9842  & 22.27  & 6.9932  & 21.15 \tabularn
 Coverage$\cdot$Offset$\cdot$Effective Magnitude  & 2.1476  & 2.52  & 1.8962  & 2.84 \tabularnewline
 \hline 
 \end{tabular}
-\caption{Logistic regression of power on design factors as continuous variables
-cluster estimand and Parzen Window method. Are regressors are normalized
-to have range $[0,1]$.
-\label{nucleosomes:tab:clusterGlm}}
 \end{table}
 
 The ANOVA and logistic regression analyses support these observations and provide further insights into the role of interactions between the design factors.
@@ -780,6 +779,11 @@ Tables \ref{nucleosomes:tab:detectionAnova} provides the results of a design-bas
 
 \begin{table}
 \centering
+\caption{Analysis of variance of absolute position errors for the detection
+of primary and alternative positions using local concentration estimands.
+{*} indicates that a factor was statistically significant with $p<0.0001$.
+Remaining factors had $p$-values larger than 0.95.
+\label{nucleosomes:tab:detectionAnova}}
 \begin{tabular}{l|rrr|rrr}
 \hline 
  & \multicolumn{3}{c|}{Primary Positions} & \multicolumn{3}{c}{Alternative Positions}\tabularnewline
@@ -796,11 +800,6 @@ Coverage:Offset:Magnitude  & 648  & 1044  & 0.6\phantom{*}  & 648  & 3968.16  & 
 Residuals  & 10090  & 25848  &  & 8100  & 5490  & \tabularnewline
 \hline 
 \end{tabular}
-\caption{Analysis of variance of absolute position errors for the detection
-of primary and alternative positions using local concentration estimands.
-{*} indicates that a factor was statistically significant with $p<0.0001$.
-Remaining factors had $p$-values larger than 0.95.
-\label{nucleosomes:tab:detectionAnova}}
 \end{table}
 \fi
 
@@ -816,6 +815,10 @@ Other effects are considerably smaller.
 
 \begin{table}
 \centering
+\caption{Logistic regression of power on design factors as continuous variables
+for primary and alternative positions. Are regressors are normalized
+to have range $[0,1]$.
+\label{nucleosomes:tab:detectionGlm}}
 \begin{tabular}{r|rr|rr}
 \hline 
  & \multicolumn{2}{c|}{Primary Positions} & \multicolumn{2}{c}{Alternative Positions}\tabularnewline
@@ -832,10 +835,6 @@ Offset$\cdot$Effective Magnitude  & 0.9623  & 2.62  & 7.8374  & 55.50 \tabularne
 Coverage$\cdot$Offset$\cdot$Effective Magnitude  & -0.3217  & -0.95  & 8.7109  & 31.84 \tabularnewline
 \hline 
 \end{tabular}
-\caption{Logistic regression of power on design factors as continuous variables
-for primary and alternative positions. Are regressors are normalized
-to have range $[0,1]$.
-\label{nucleosomes:tab:detectionGlm}}
 \end{table}
 
 For alternative positions, the power increases as effective magnitude of the primary position, the offset to the alternative position, and the coverage increase.
