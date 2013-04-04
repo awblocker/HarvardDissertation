@@ -1,3 +1,7 @@
+%!TEX TS-program = xelatex
+% !TEX root = ../thesis.tex
+% Do not delete; used to set build system
+
 \begin{savequote}[75mm] 
 Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo.
 \qauthor{Quoteauthor Lastname} 
@@ -5,62 +9,965 @@ Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin moles
 
 \chapter{Full-proteome absolute quantitation from label-free MSMS experiments}
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
+\section{Introduction}
+\label{proteomics:sec:intro}
 
-Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum, magna diam molestie sapien, non aliquet massa pede eu diam. Aliquam iaculis. Fusce et ipsum et nulla tristique facilisis. Donec eget sem sit amet ligula viverra gravida. Etiam vehicula urna vel turpis. Suspendisse sagittis ante a urna. Morbi a est quis orci consequat rutrum. Nullam egestas feugiat felis. Integer adipiscing semper ligula. Nunc molestie, nisl sit amet cursus convallis, sapien lectus pretium metus, vitae pretium enim wisi id lectus. Donec vestibulum. Etiam vel nibh. Nulla facilisi. Mauris pharetra. Donec augue. Fusce ultrices, neque id dignissim ultrices, tellus mauris dictum elit, vel lacinia enim metus eu nunc.
+Absolute concentrations of proteins in a biological sample are the estimands of interest for elucidating molecular dynamics that regulate functions within a cell \citep{Ishihama:2005ir} and for combining data from multiple experiments and labs for meta-analysis.
+Historically, measuring the concentration of many proteins in one experiment has been difficult \citep{Ghaemmagham:2003tu}. 
+The expression of a gene is often used as a proxy for the concentration of the corresponding gene products, including proteins, with important caveats.
+%(I HAVE NO IDEA WHAT THESE REFERENCES ARE TO) \citep{limitations of gene expression, bad correlation, %burge-splicing, our correlation paper}. 
+In recent years a new field of high throughput proteomics has emerged, in which biologists and biochemists have begun exploring the next level of biological complexity with Fourier transform mass spectrometers  \citep{Scigelova:2006p10560,Scigelova:2011dt}.
+This technology provides a shift in our ability to measure the concentration of proteins and other small molecules.
+ While low throughput proteomic studies have been able to identify a few important proteins involved in  each function, high throughput mass spectrometers aim to deliver a fine grained view of cellular activity at an unprecedented scale and precision.
+%
+This new technology enables the direct estimation of absolute protein concentrations from the relative intensities of protein fragments in a biological sample, in principle.
 
-Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
+In practice, the measurement process implemented by mass spectrometers introduces systematic biases that must be accounted for  to obtain valid estimates of absolute protein concentrations.
+Proteins are relatively large macromolecules, made by folded sequences of aminoacids. 
+They are enzymatically digested into fragments, which are amenable to analysis by mass spectrometry \citep{Thakur:2011kz}. 
+% Introduce distinction between fragments (unidentified peptides) and peptides (identified up to a modification or charge state).
+Protein fragments are generally referred to as {\em peptides}; throughout this paper, fragments with the same sequence but distinct characteristics (e.g., charge states and chemical modifications) are considered {\em distinct} peptides. 
+%A typical biological sample contains hundreds of thousands of peptides. 
+These peptides are analyzed by two separate mass spectrometers to produce quantitative summaries \citep{Steen:2004tk}. 
+However, because of sample complexity and instrument limitations, not all of the peptides can be analyzed in the second-stage of mass spectrometry to have their sequence identified. 
+The instrument is programmed to select the most abundant peptides in the first stage of mass spectrometry for sequencing, at any given time. This multi-stage measurement process results in a systematic sequence identification bias favoring peptides from proteins that are abundant in the sample.
 
-Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo, sed imperdiet lectus est ornare odio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin consectetuer velit in dui. Phasellus wisi purus, interdum vitae, rutrum accumsan, viverra in, velit. Sed enim risus, congue non, tristique in, commodo eu, metus. Aenean tortor mi, imperdiet id, gravida eu, posuere eu, felis. Mauris sollicitudin, turpis in hendrerit sodales, lectus ipsum pellentesque ligula, sit amet scelerisque urna nibh ut arcu. Aliquam in lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla placerat aliquam wisi. Mauris viverra odio. Quisque fermentum pulvinar odio. Proin posuere est vitae ligula. Etiam euismod. Cras a eros.
+Figure \ref{proteomics:fig:Mass_Spec_Overview} illustrates the measurement process and the key quantities for the absolute quantitation problem in more details.
+In Figure \ref{proteomics:fig:Mass_Spec_Overview}A, a culture of approximately $10^{8}$ cells are opened, their proteins are extracted and then digested with an enzyme into fragments. 
+In Figure \ref{proteomics:fig:Mass_Spec_Overview}B, the fragments are separated in time by leveraging their affinity to bind water molecules (high performance liquid chromatography), and charged with ions (electrospray ionization).
+At this stage, fragments with the same aminoacid sequence are present in a number of different states as a result of ion charges, \emph{in vivo} post-translational modifications and \emph{in vitro} chemical modifications from the sample preparation \citep{Michalski:2011gm}. 
+Fragments that are ionized within the same short time window are jointly analyzed by a first mass spectrometer (MS1).
+This step results in measurements $\xi_{t}(r)$ each of which quantifies the intensity\footnote{Intuitively, intensity is a pure number that corresponds to the magnitude of the Fourier coefficient associated with peptides with mass-to-charge ratio $r$. Modern mass spectrometers generally measure the amplitudes at which ionized protein fragments spin around a magnet over time. The Fourier spectrum $\xi(f)$ of the cumulative amplitude time series of a  mixture of ionized fragments provides Fourier coefficients for each frequency $f$. Frequency $f$ is then associated to fragments with  mass-to-charge ratio $r$ according to $f=C/r$, where $C$ encodes instrument geometry and settings.} %%% brief explanation of intensity %%%
+ $\xi$ corresponding to ionized fragments with mass-to-charge ratio $r$, analyzed within a time window indexed by $t$.
+%
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\textwidth]{figures/proteomics/MS_Overview_small}
+ \caption{MS proteomics overview. 
+ (A) From cells to protein fragments. 
+ (B) Fragments are separated in time, charged with ions, then analyzed using two mass spectrometers.
+ (C) The HPLC separates the peptide
+mixture as well as determining the relative abundance of the mixture
+at each time point. MS1 determines the intensities of each compontent
+of the mixture at the given timepoint. Finally, the MS2 determines
+the sequence of a subset of peptide states.}
+ \label{proteomics:fig:Mass_Spec_Overview}
+\end{figure}
+%
+The intensities are taken as a proxy for relative abundance, within a time window. %%% move to footnote? does this break the flow?
+% m/z in dalton/charge
+% (obs m - true m)/(tr m)*1M in ppm
+% f = k*B/(2*\pi*m/z) with f=axial freq, B=force of EM field, and m/z as above -- in orbitrap
+A subset of peptides analyzed in this step is selected, based on their intensity, to be further fragmented into bits by collision with a gas (CID) and have these bits analyzed by a second mass spectrometer (MS2). 
+This step results in an additional set of intensity measurements for bits of ionized fragments with distinct mass-to-charge ratios.
+Figure \ref{proteomics:fig:Mass_Spec_Overview}C illustrates quantitative summaries of the analysis steps in 1B.
+The rightmost panel of \ref{proteomics:fig:Mass_Spec_Overview}C shows the marginal intensity $\int\xi_t(r)dr$ over time; the box highlights a time window $t$ that corresponds to a local intensity peak.
+The middle panel of \ref{proteomics:fig:Mass_Spec_Overview}C shows the intensity spectrum $\xi_t(r)$ for ionized fragments with mass-to-charge ratios $r\in R$, within the selected time window $t$, obtained in MS1; the box highlights a specific fragment with mass-to-charge ratio $r$ with moderate intensity.
+The leftmost panel of \ref{proteomics:fig:Mass_Spec_Overview}C shows the intensity spectrum obtained in MS2 for the bits of the fragments with mass-to-charge ratio $r$ selected in MS1. The sequence of these fragments can be determined by analyzing differences in mass-to-charge between adjacent peaks in the MS2 spectrum.
 
-Nunc auctor bibendum eros. Maecenas porta accumsan mauris. Etiam enim enim, elementum sed, bibendum quis, rhoncus non, metus. Fusce neque dolor, adipiscing sed, consectetuer et, lacinia sit amet, quam. Suspendisse wisi quam, consectetuer in, blandit sed, suscipit eu, eros. Etiam ligula enim, tempor ut, blandit nec, mollis eu, lectus. Nam cursus. Vivamus iaculis. Aenean risus purus, pharetra in, blandit quis, gravida a, turpis. Donec nisl. Aenean eget mi. Fusce mattis est id diam. Phasellus faucibus interdum sapien. Duis quis nunc. Sed enim.
+%Peptides with exactly the same mass-to-charge ratio and sequence bits cannot be distinguished, but this occurs quite rarely give the accuracy of the instrument (1-2 parts-per-million) and the combinatorial explosion in the number of peptides---possible fragments times possible ion charge states times possible post-translational and chemical modifications.
 
-Pellentesque vel dui sed orci faucibus iaculis. Suspendisse dictum magna id purus tincidunt rutrum. Nulla congue. Vivamus sit amet lorem posuere dui vulputate ornare. Phasellus mattis sollicitudin ligula. Duis dignissim felis et urna. Integer adipiscing congue metus. Nam pede. Etiam non wisi. Sed accumsan dolor ac augue. Pellentesque eget lectus. Aliquam nec dolor nec tellus ornare venenatis. Nullam blandit placerat sem. Curabitur quis ipsum. Mauris nisl tellus, aliquet eu, suscipit eu, ullamcorper quis, magna. Mauris elementum, pede at sodales vestibulum, nulla tortor congue massa, quis pellentesque odio dui id est. Cras faucibus augue.
+% two stat problems: identification/matching, absolute abundance estimation.
 
-Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce magna mi, porttitor quis, convallis eget, sodales ac, urna. Phasellus luctus venenatis magna. Vivamus eget lacus. Nunc tincidunt convallis tortor. Duis eros mi, dictum vel, fringilla sit amet, fermentum id, sem. Phasellus nunc enim, faucibus ut, laoreet in, consequat id, metus. Vivamus dignissim. Cras lobortis tempor velit. Phasellus nec diam ac nisl lacinia tristique. Nullam nec metus id mi dictum dignissim. Nullam quis wisi non sem lobortis condimentum. Phasellus pulvinar, nulla non aliquam eleifend, tortor wisi scelerisque felis, in sollicitudin arcu ante lacinia leo.
+From a statistical perspective, 
+the problem is to estimate absolute proteins concentrations $\{\zeta_i:i\in I\}$ from peptide-level intensities $\{\xi_t(r):t\in T,r\in R\}$.
+Because of noise in the observed intensities, this problem is typically divided in two closely related tasks: identification and quantitation.
+%
+ In the identification task, the intensity and mass-to-charge data are used to detect which peptides are present in the sample above noise, in terms their most likely sequence, their charge and possible chemical and post-translational modifications. In a typical run, hundreds of thousands of unique peptides are simultaneously detected. The observed spectrum of each detected peptide is then compared to the theoretical spectra of the all peptides that would be generated by digesting the proteins in the sample with a specific enzyme. 
+%%% not sure about this, perhaps we compare to protein spectra directly and do sub-string matching?
+For example, the enzyme Trypsin digests Arginine (R) and Lysine (K) aminoacids, so each protein is expected to be fragmented into peptides by removing all Arginines and Lysines from its aminoacid sequence.
+The identification task essentially consists of multiple testing: observed peptide spectra in a sample are matched to theoretical protein spectra obtained by post-processing known protein sequences from a database. 
+Currently, several methods for peptide/protein identification  exist in the literature \citep{.}.
+The identification task essentially maps the raw intensity measurements of mass-to-charge ratios $\{\xi_t(r) : r\in R\}$ in each time window to a better organized set of intensities $\{y_{iklt}\}$. Intensities are now associated to peptides with the same sequence, indexed by $k$, which are possibly present in distinct states, i.e., modifications and ion charge, indexed by $l$, and which are matched to a specific protein, indexed by $i$. 
+%
+Moreover, any given peptide $ikl$ is typically observed across adjacent time windows $t\in\Delta_{ikl}$, as illustrated in the rightmost panel of Figure \ref{proteomics:fig:Mass_Spec_Overview}C.
+%
+We consider the problem of estimating the absolute concentration $\zeta_i$ of all proteins in a sample from observed summed peptide intensities, $y_{ikl}^{obs} = \sum_{t\in\Delta_{ikl}} y_{iklt}^{obs}$. The summed intensity of a given peptide $y_{ikl}$ is proportional to the number of  molecules $\zeta_i$ of that peptide present in the mass spectrometer \citep{Old:2005jf,Scigelova:2011dt}.
+%%
+%In the quantitation task, the collection of labeled intensities $\{y_{iklt}\}$ is used to estimate absolute concentrations $\{\zeta_i:i\in I\}$ of all the proteins detected in a biological sample.
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
+%relative is same protein across samples
+%absolute is all/different proteins within sample and/or across samples
 
-Cras sed ante. Phasellus in massa. Curabitur dolor eros, gravida et, hendrerit ac, cursus non, massa. Aliquam lorem. In hac habitasse platea dictumst. Cras eu mauris. Quisque lacus. Donec ipsum. Nullam vitae sem at nunc pharetra ultricies. Vivamus elit eros, ullamcorper a, adipiscing sit amet, porttitor ut, nibh. Maecenas adipiscing mollis massa. Nunc ut dui eget nulla venenatis aliquet. Sed luctus posuere justo. Cras vehicula varius turpis. Vivamus eros metus, tristique sit amet, molestie dignissim, malesuada et, urna.
+%- model of the complex measurement process
+%- take advantage of the natural hierarchy protein/peptides/states
+%- achieve efficiency through analytic work
+%  - avoid rev-jump by clever integration
+%  - laplace approximation for e-step (are we using/could e be using gauss-hermite easily?)
+%  - two clever rejection samplers
+%  - hyper-parameter reparameterizations
+%
+%I think you've hit the major points.  I would really like to stress that our main motivating factor was a modeling the measurement process as best we could and then we worried about how to do the inference.  Additionally, we should stress the efficiency of our sampling scheme, since this was where most of the work went into (we could have just RW/RJMH every draw) so that the final product is actually usable for biologists.  Just because this is going to JASA, I want to stress that our goal is to make the best tool for biologists, not make the sexiest model for statisticians.  
+%
+%One additional point that should show up somewhere in the paper is an indication of how the model structure allows information to propagate through the hierarchy so that we can effectively estimate various parameters (means and variances mainly) for proteins where there is almost no observed information.  
 
-Cras dictum. Maecenas ut turpis. In vitae erat ac orci dignissim eleifend. Nunc quis justo. Sed vel ipsum in purus tincidunt pharetra. Sed pulvinar, felis id consectetuer malesuada, enim nisl mattis elit, a facilisis tortor nibh quis leo. Sed augue lacus, pretium vitae, molestie eget, rhoncus quis, elit. Donec in augue. Fusce orci wisi, ornare id, mollis vel, lacinia vel, massa.
+%In this paper, we consider the absolute protein quantitation task.
+%We rely on existing methods for identification.
+%
+%We develop the quantitation task. We discuss extensions to a joint solutions in Section \ref{proteomics:.}.
+%In this paper, we develop a methods for absolute protein quantitation.
+%Include paper plan
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
+%ideally: model-based to correct non-ignorable missing data, unsupervised, 
 
-Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum, magna diam molestie sapien, non aliquet massa pede eu diam. Aliquam iaculis. Fusce et ipsum et nulla tristique facilisis. Donec eget sem sit amet ligula viverra gravida. Etiam vehicula urna vel turpis. Suspendisse sagittis ante a urna. Morbi a est quis orci consequat rutrum. Nullam egestas feugiat felis. Integer adipiscing semper ligula. Nunc molestie, nisl sit amet cursus convallis, sapien lectus pretium metus, vitae pretium enim wisi id lectus. Donec vestibulum. Etiam vel nibh. Nulla facilisi. Mauris pharetra. Donec augue. Fusce ultrices, neque id dignissim ultrices, tellus mauris dictum elit, vel lacinia enim metus eu nunc.
+ %%% %%% %%%
+ %%% %%% %%%
 
-Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
+\subsection{Related work}
 
-Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo, sed imperdiet lectus est ornare odio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin consectetuer velit in dui. Phasellus wisi purus, interdum vitae, rutrum accumsan, viverra in, velit. Sed enim risus, congue non, tristique in, commodo eu, metus. Aenean tortor mi, imperdiet id, gravida eu, posuere eu, felis. Mauris sollicitudin, turpis in hendrerit sodales, lectus ipsum pellentesque ligula, sit amet scelerisque urna nibh ut arcu. Aliquam in lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla placerat aliquam wisi. Mauris viverra odio. Quisque fermentum pulvinar odio. Proin posuere est vitae ligula. Etiam euismod. Cras a eros.
+There are two main threads of literature for protein quantitation: relative and absolute quantitation. 
+In relative quantitation, the estimand of interest is the concentration of proteins in a sample, or condition, relative to their concentrations in another sample, or condition. By contrast, absolute quantitation requires the ability to estimate the concentrations of all proteins in a single sample, relative to one another---as we discuss in Section \ref{proteomics:sec:estimand} the estimands $\{\zeta_i:i\in I\}$ are obtained by combining these quantities with the total amount of protein measured in the sample.
 
-Nunc auctor bibendum eros. Maecenas porta accumsan mauris. Etiam enim enim, elementum sed, bibendum quis, rhoncus non, metus. Fusce neque dolor, adipiscing sed, consectetuer et, lacinia sit amet, quam. Suspendisse wisi quam, consectetuer in, blandit sed, suscipit eu, eros. Etiam ligula enim, tempor ut, blandit nec, mollis eu, lectus. Nam cursus. Vivamus iaculis. Aenean risus purus, pharetra in, blandit quis, gravida a, turpis. Donec nisl. Aenean eget mi. Fusce mattis est id diam. Phasellus faucibus interdum sapien. Duis quis nunc. Sed enim.
+While much work has been done for the protein identification problem \citep{}, little efforts has been put into the quantitation problem. 
+This is due, in part, to the misconception that the measurements produced by the mass spectrometer are extremely accurate and thus there is no need for any statistics after identification. This argument, however, is flawed. It ignores the selection bias implemented at multiple data collection stages inside the instrument, which is especially serious when the goal is to quantify low concentration peptides and proteins. In our work, we proposed a modeling framework that is able to account for and mitigate the selection bias. 
 
-Pellentesque vel dui sed orci faucibus iaculis. Suspendisse dictum magna id purus tincidunt rutrum. Nulla congue. Vivamus sit amet lorem posuere dui vulputate ornare. Phasellus mattis sollicitudin ligula. Duis dignissim felis et urna. Integer adipiscing congue metus. Nam pede. Etiam non wisi. Sed accumsan dolor ac augue. Pellentesque eget lectus. Aliquam nec dolor nec tellus ornare venenatis. Nullam blandit placerat sem. Curabitur quis ipsum. Mauris nisl tellus, aliquet eu, suscipit eu, ullamcorper quis, magna. Mauris elementum, pede at sodales vestibulum, nulla tortor congue massa, quis pellentesque odio dui id est. Cras faucibus augue.
+Most of the existing literature is devoted to the relative quantitation task. In this case, the consequences of selection bias are arguably mitigated, at least from an empirical perspective. Because of this, the methods available for relative quantitation do not involve statistical modeling. Rather, they are based on observable summaries produced by the identification procedures, including spectral counts and summed integrated intensity \citep{}. As we show in Section \ref{proteomics:}, these methods perform poorly when adapted to the task of absolute quantitation as the estimates often span a limited range of absolute concentrations \citep{Schulze:2010fk}.
 
-Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce magna mi, porttitor quis, convallis eget, sodales ac, urna. Phasellus luctus venenatis magna. Vivamus eget lacus. Nunc tincidunt convallis tortor. Duis eros mi, dictum vel, fringilla sit amet, fermentum id, sem. Phasellus nunc enim, faucibus ut, laoreet in, consequat id, metus. Vivamus dignissim. Cras lobortis tempor velit. Phasellus nec diam ac nisl lacinia tristique. Nullam nec metus id mi dictum dignissim. Nullam quis wisi non sem lobortis condimentum. Phasellus pulvinar, nulla non aliquam eleifend, tortor wisi scelerisque felis, in sollicitudin arcu ante lacinia leo.
+There are only a handful of (model-free) methods for absolute quantitation, and they take very different approaches.
+ A brute force approach consists of estimating a mapping between the concentrations of selected peptides in the sample and features of these peptides, and then apply this map to predict absolute ... \citep{Lu:2006p10143}. 
+ % EDO : NEEDS EDITING. THIS STATEMENT IS INCORRECT, BUT THAT'S WHAT THE SENTENCE SHOULD SAY
+ More recently, a similar approach has been suggested that relies on principal component analysis and a kernel ... \citep{Dicker:2010ea}.
+ An alternative approach relies on a different experimental protocol and technology, but ... \citep{Luo:2009ff}.
+ Perhaps closest to our approach, \citet{Karpievitch:2009wb} develop a model that posits a non-ignorable observation model. The observation model is specified on peptide-level intensities. We show that there is little information at the peptide-level about the censoring process that can be leveraged to correct for the selection bias. Instead, our model specifies the observation model in terms of the intensities of peptides in different charge and chemical modification states, a level of measurement where  information about the selection bias can be found in the shared number of states among peptides present a high and low concentrations in the sample. 
+Generally, existing methods for absolute quantitation also suffer from limited range of the estimated concentrations \citep{Schulze:2010fk}.
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
+%
+%\begin{figure}[t]
+% \centering
+% \includegraphics[width=0.49\textwidth]{figures/proteomics/Figure2.pdf}
+% %% EDO :: FIX AXES ON EITHER PANEL -- IT'S THE OPPOSITE 
+% \includegraphics[width=0.45\textwidth]{figures/proteomics/Relative_Estimand_Example_Plot.pdf}
+% \caption{An illustration of the technical challenges for absolute and relative quantitation (left panel). The empirical relation obtained for an estimator based on spectral counting (right panel).}
+% \label{proteomics:fig:Technical_Challenges}
+%\end{figure}
+%
+%To appreciate the challenges that arise in relative and absolute quantitation, consider the mapping between absolute protein concentration, i.e., the estimand $\Theta$, and three possible estimators $\widehat\Theta^i(Y)$, illustrated in the left panel of Figure \ref{proteomics:fig:Technical_Challenges}.
+%The ideal estimator $\widehat\Theta^a$ implies accurate estimates across a wide range of concentrations (black, solid line).
+%Existing methods $\widehat\Theta^b,\widehat\Theta^c$ produce biased estimates that span a narrow range of concentrations (black, dashed lines).
+%%
+%Biologists argue that even a biased estimator with narrow support may seem like a good choice for estimating relative protein concentrations. For instance, consider a protein present at concentration $\theta_{11}$ in sample one and $\theta_{12}$ in sample two. As long as the relation between estimator and estimand is locally linear and the ratio $\theta_{11}/\theta_{12}$ is small, the estimation error of $\widehat\Theta^b_{11}/\widehat\Theta^b_{12}$ may be low.
+%Unfortunately, relative quantitation studies are carried out to identify proteins with big differences in concentration across samples, in which case the local linearity assumption may no longer hold and the estimation error implied by a poor estimator is most likely large.
+%%Because of this, we will argue in Section \ref{proteomics:.} that estimates of relative concentrations should be derived as rations of estimates of absolute concentrations.
+%%
+%Estimating absolute protein concentrations is the harder problem, however, since it requires unbiased estimators over a large range of concentrations to enable comparison of, say, two proteins present at concentrations $\theta_{11}$ and $\theta_{21}$ in the same sample.
+%%
+%If absolute concentrations were known for a small subset of proteins, an estimator $\widehat\Theta^c$ with systematic bias could be used for absolute quantitation. Any specific assumption for such systematic bias, for instance, linear in Figure \ref{proteomics:fig:Technical_Challenges} (black, dashed-dotted line), could be leveraged to estimate the bias on a training sample and remove the bias the on the sample of interest. This approach, however, is not satisfactory: it further assumes that the amount of bias is fixed and comparable across samples, and it disregards the non-ignorable missing data mechanism that induces the  bias. 
 
-Cras sed ante. Phasellus in massa. Curabitur dolor eros, gravida et, hendrerit ac, cursus non, massa. Aliquam lorem. In hac habitasse platea dictumst. Cras eu mauris. Quisque lacus. Donec ipsum. Nullam vitae sem at nunc pharetra ultricies. Vivamus elit eros, ullamcorper a, adipiscing sit amet, porttitor ut, nibh. Maecenas adipiscing mollis massa. Nunc ut dui eget nulla venenatis aliquet. Sed luctus posuere justo. Cras vehicula varius turpis. Vivamus eros metus, tristique sit amet, molestie dignissim, malesuada et, urna.
+ %%% %%% %%%
 
-Cras dictum. Maecenas ut turpis. In vitae erat ac orci dignissim eleifend. Nunc quis justo. Sed vel ipsum in purus tincidunt pharetra. Sed pulvinar, felis id consectetuer malesuada, enim nisl mattis elit, a facilisis tortor nibh quis leo. Sed augue lacus, pretium vitae, molestie eget, rhoncus quis, elit. Donec in augue. Fusce orci wisi, ornare id, mollis vel, lacinia vel, massa.
+\subsection{Contributions of this article}
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
+In this paper, we introduce a statistical model that combines a hierarchical intensity model with an observation model for intensity-based censoring, in Section \ref{proteomics:sec:model}.  We argue that intensity-based censoring at the level of  peptide states is informative and when properly modeled it allows robust, accurate estimation of absolute protein abundances in complex samples with concentrations spanning many orders of magnitude. ... 
 
-Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum, magna diam molestie sapien, non aliquet massa pede eu diam. Aliquam iaculis. Fusce et ipsum et nulla tristique facilisis. Donec eget sem sit amet ligula viverra gravida. Etiam vehicula urna vel turpis. Suspendisse sagittis ante a urna. Morbi a est quis orci consequat rutrum. Nullam egestas feugiat felis. Integer adipiscing semper ligula. Nunc molestie, nisl sit amet cursus convallis, sapien lectus pretium metus, vitae pretium enim wisi id lectus. Donec vestibulum. Etiam vel nibh. Nulla facilisi. Mauris pharetra. Donec augue. Fusce ultrices, neque id dignissim ultrices, tellus mauris dictum elit, vel lacinia enim metus eu nunc.
 
-Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi. Phasellus pellentesque, erat eget elementum volutpat, dolor nisl porta neque, vitae sodales ipsum nibh in ligula. Maecenas mattis pulvinar diam. Curabitur sed leo.
 
-Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo, sed imperdiet lectus est ornare odio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin consectetuer velit in dui. Phasellus wisi purus, interdum vitae, rutrum accumsan, viverra in, velit. Sed enim risus, congue non, tristique in, commodo eu, metus. Aenean tortor mi, imperdiet id, gravida eu, posuere eu, felis. Mauris sollicitudin, turpis in hendrerit sodales, lectus ipsum pellentesque ligula, sit amet scelerisque urna nibh ut arcu. Aliquam in lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla placerat aliquam wisi. Mauris viverra odio. Quisque fermentum pulvinar odio. Proin posuere est vitae ligula. Etiam euismod. Cras a eros.
 
-Nunc auctor bibendum eros. Maecenas porta accumsan mauris. Etiam enim enim, elementum sed, bibendum quis, rhoncus non, metus. Fusce neque dolor, adipiscing sed, consectetuer et, lacinia sit amet, quam. Suspendisse wisi quam, consectetuer in, blandit sed, suscipit eu, eros. Etiam ligula enim, tempor ut, blandit nec, mollis eu, lectus. Nam cursus. Vivamus iaculis. Aenean risus purus, pharetra in, blandit quis, gravida a, turpis. Donec nisl. Aenean eget mi. Fusce mattis est id diam. Phasellus faucibus interdum sapien. Duis quis nunc. Sed enim.
+ %%% %%% %%%
+ %%% %%% %%%
 
-Pellentesque vel dui sed orci faucibus iaculis. Suspendisse dictum magna id purus tincidunt rutrum. Nulla congue. Vivamus sit amet lorem posuere dui vulputate ornare. Phasellus mattis sollicitudin ligula. Duis dignissim felis et urna. Integer adipiscing congue metus. Nam pede. Etiam non wisi. Sed accumsan dolor ac augue. Pellentesque eget lectus. Aliquam nec dolor nec tellus ornare venenatis. Nullam blandit placerat sem. Curabitur quis ipsum. Mauris nisl tellus, aliquet eu, suscipit eu, ullamcorper quis, magna. Mauris elementum, pede at sodales vestibulum, nulla tortor congue massa, quis pellentesque odio dui id est. Cras faucibus augue.
 
-Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce magna mi, porttitor quis, convallis eget, sodales ac, urna. Phasellus luctus venenatis magna. Vivamus eget lacus. Nunc tincidunt convallis tortor. Duis eros mi, dictum vel, fringilla sit amet, fermentum id, sem. Phasellus nunc enim, faucibus ut, laoreet in, consequat id, metus. Vivamus dignissim. Cras lobortis tempor velit. Phasellus nec diam ac nisl lacinia tristique. Nullam nec metus id mi dictum dignissim. Nullam quis wisi non sem lobortis condimentum. Phasellus pulvinar, nulla non aliquam eleifend, tortor wisi scelerisque felis, in sollicitudin arcu ante lacinia leo.
+\section{Model}
+\label{proteomics:sec:model}
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
+\fbox{
+\begin{minipage}[t]{1\columnwidth}%
+NOTE: Using new missing data notation from here on in the text:
+\begin{eqnarray*}
+R_{ikl} & = & \begin{cases}
+0 & \text{if }y_{ikl}\text{ randomly censored}\\
+1 & \text{if }y_{ikl}\text{ NOT randomly censored}
+\end{cases}\\
+I_{ikl} & = & \begin{cases}
+0 & \text{if }y_{ikl}\text{ intensity censored}\\
+1 & \text{if }y_{ikl}\text{ NOT intensity censored}
+\end{cases}\\
+O_{ikl} & = & R_{ikl}\times I_{ikl}\\
+ & = & \begin{cases}
+0 & \text{if }y_{ikl}\text{ censored}\\
+1 & \text{if }y_{ikl}\text{ observed}
+\end{cases}
+\end{eqnarray*}
+\end{minipage}
+}
 
-Cras sed ante. Phasellus in massa. Curabitur dolor eros, gravida et, hendrerit ac, cursus non, massa. Aliquam lorem. In hac habitasse platea dictumst. Cras eu mauris. Quisque lacus. Donec ipsum. Nullam vitae sem at nunc pharetra ultricies. Vivamus elit eros, ullamcorper a, adipiscing sit amet, porttitor ut, nibh. Maecenas adipiscing mollis massa. Nunc ut dui eget nulla venenatis aliquet. Sed luctus posuere justo. Cras vehicula varius turpis. Vivamus eros metus, tristique sit amet, molestie dignissim, malesuada et, urna.
+\begin{eqnarray}
+ \gamma_{ik}\mid\mu_{i}, \tau_{i}^2  &\sim& \hbox{Normal}(\mu_{i},\tau_{i}^{2}), \, i=1,\ldots,n, \, k=1,\ldots,m_i \\
+ s_{ik} \mid \lambda, r  &\sim& 1+\hbox{ Negative-Binomial }(1-\lambda,r), \, k=1,\ldots,m_i \\
+ y_{ikl} \vert \gamma_{ik}, \sigma_{i}^2   &\sim& \hbox{Normal}(\gamma_{ik},\sigma_{i}^{2}), \, l=1,\ldots,s_{ik} \\
+ R_{ikl} \vert \pi^{rnd}, s_{ik} &\sim& \hbox{Bernoulli}(1 - \pi^{rnd}), \, l=1,\ldots,s_{ik} \\
+ I_{ikl} \vert y_{ikl}, \bm \eta, s_{ik}, R_{ikl}=1 &\sim& \hbox{Bernoulli}(1 - g(y_{ikl}, \bm \eta)), \, l=1,\ldots,s_{ik} \\
+ O_{ikl} &=& R_{ikl} \cdot I_{ikl} \\
+ Y_{obs} &=& \{y_{ikl} : O_{ikl} = 1\} \\
+ Y_{mis} &=& \{y_{ikl} : O_{ikl} = 0\}
+\end{eqnarray}
 
-Cras dictum. Maecenas ut turpis. In vitae erat ac orci dignissim eleifend. Nunc quis justo. Sed vel ipsum in purus tincidunt pharetra. Sed pulvinar, felis id consectetuer malesuada, enim nisl mattis elit, a facilisis tortor nibh quis leo. Sed augue lacus, pretium vitae, molestie eget, rhoncus quis, elit. Donec in augue. Fusce orci wisi, ornare id, mollis vel, lacinia vel, massa.
+ %%% %%% %%%
+
+\subsection{Censoring and truncation}
+
+\begin{figure}%[h!b]
+\begin{center}
+\includegraphics[width=.75\textwidth]{figures/proteomics/fig_tree_awb.pdf}
+\end{center}
+\caption{Possible missingness indicator values.\label{proteomics:fig:Missing_Data_Indicators_Tree}}
+\end{figure}
+
+\begin{theorem}\label{proteomics:thm:dominance}
+Suppose $X \sim F_X(x)$; that is, $X$ has a cumulative distribution function that can be represented as a Riemann-Stieltjes integral over $\mathbb{R}$. Let $Z | X=x \sim \Bernoulli( g(x) )$, where $g(x)$ is strictly increasing on $\mathbb{R}$ from $0$ to $1$. Then, the posterior distribution of $X$ given $Z=1$ stochastically dominates the original distribution of $X$.
+\end{theorem}
+
+ %%% %%% %%%
+
+\subsection{Estimands}
+
+\begin{eqnarray}
+\zeta_i = \log_{10} \left( \frac{T \times 10^{\mu_i}}{ \sum_{i=1}^{n} 10^{\mu_i}} \right) \label{proteomics:eq:abs_abund_estimand} 
+\end{eqnarray}
+
+
+ %%% %%% %%%
+ %%% %%% %%%
+
+
+\section{Inference and estimation}
+\label{proteomics:sec:estimation}
+
+We develop a highly efficient Monte Carlo Markov Chain algorithm to perform inference with the proposed model on proteome-wide data sets with hundreds of thousands of peptide states.
+We design a Metropolis-within-Gibbs algorithm, alternating between updates for the missing data and parameters.
+The algorithm consists of the following steps within each iteration:
+%
+\begin{enumerate}
+\item Draw the censored peptide latent variables, $\mathbf{M}\vert\mathbf{Y^{obs}}, \bm \Theta$.
+
+\begin{enumerate}
+\item Draw the number of peptide states, $\bm s \vert \mathbf{Y^{obs}}, \bm \Theta$, using rejection sampling.
+\item Draw the random censoring indicators, $\bm{W} \vert \bm s,  \mathbf{Y^{obs}}, \bm \Theta$.
+\item Draw the censored intensities, $\mathbf{Y^{cen}} \vert \bm{W},\bm{s}, \bm{Y^{obs}}, \bm{\Theta}$, using rejection sampling.
+\end{enumerate}
+\item Update the parameters $\bm \Theta$ given the complete data $(\bm Y^\mathrm{obs}, \bm M)$.
+\end{enumerate}
+%
+The updates of $\bm{\Theta} | \bm{Y^{obs}}, M$ are of a standard form.
+In Section \ref{proteomics:sec:missingDataDraw}, we provide the details of our exact update of $\bm M$ given $\bm \Theta$.
+We leave further details of our inference strategy are contained in the Appendix, which includes the complete specification the updates for $\bm \Theta$ given $\bm M$.
+
+\begin{table}
+\caption{Prior Distributions.}
+\begin{eqnarray*}
+\log(\alpha_\sigma) &\sim& N(\mu_{0 \alpha_\sigma}, v_{0 \alpha_\sigma}) \\
+\beta_\sigma &\sim& Gamma(\alpha_{0 \sigma}, \beta_{0 \sigma}) \\
+\log(\alpha_\tau) &\sim& N(\mu_{0 \alpha_\tau}, v_{0 \alpha_\tau}) \\
+\beta_\tau &\sim& Gamma(\alpha_{0 \tau}, \beta_{0 \tau}) \\
+\mbox{\ensuremath{\pi}}^{rnd} & \sim & Beta(\alpha_{0\pi}, \beta_{0\pi})\\
+\lambda & \sim & Beta(\alpha_{0 \lambda}, \beta_{0 \lambda})\\
+r & \sim & Gamma(\alpha_{0r}, \beta_{0r})
+\end{eqnarray*}
+\end{table}
+
+
+\subsection{Draw the censored peptide latent variables, $\mathbf{M} \vert \bm \Theta$.}
+\label{proteomics:sec:missingDataDraw}
+
+Drawing the missing data $\mathbf{M}=\{\mathbf{Y}^{cen},\mathbf{s}^{cen},\mathbf{R}^{cen}\}$ is the most challenging component of our algorithm.
+The dimensionality of the missing data $\mathbf{M}$ is not fixed across iterations, so standard Metropolis-Hastings techniques are not enough.
+Reversible Jump Metropolis-Hastings (RJMH) methods provide one option, but they proved too inefficient and fragile for this setting.
+Instead, we develop a partially marginalized update than draws from the exact conditional distribution of $\bm M$ given $(\bm Y^{obs}, \bm \Theta)$.
+We implement this exact draw using a ``triangular'' dependence structure, starting with the easiest draws to marginalize:
+%
+\begin{align}
+p( \bm M \mid \bm{Y}^{obs}, \bm{\Theta}) \propto & p(\bm s \mid \bm {Y}^{obs}, \bm{\Theta}) \\
+\nonumber
+ \times & p(\bm{R} \mid \bm s, \bm{Y}^{obs}, \bm{\Theta}) \\
+\nonumber
+ \times & p(\bm{Y}^{mis} \mid \bm{R}, \bm{s}, \bm{Y}^{obs}, \bm{\Theta})
+\end{align}
+%
+Using efficient numerical integration techniques and exact sampling methods, we generate exact draws from the joint posterior of the missing data using the above sequence of conditional distributions.
+Details of each of these draws is given in the following sections.
+Section \ref{proteomics:sc:draw_s_ik_mis} details the steps required to compute and sample $\bm s$ from $p(\bm s \mid \bm {Y}^{obs}, \bm{\Theta})$.
+Section \ref{proteomics:sec:r_ik_mis_post} covers $p(\bm{R} \mid \bm s, \bm{Y}^{obs}, \bm{\Theta})$.
+Section \ref{proteomics:sec:y_ikl_mis_draw} details the exact sampling strategy for $p(\bm{Y}^{mis} \mid \bm{R}, \bm{s}, \bm{Y}^{obs}, \bm{\Theta})$.
+
+\subsubsection{Drawing from $p(\bm s \mid \bm {Y}^{obs}, \bm{\Theta})$} \label{proteomics:sc:draw_s_ik_mis} 
+
+We derive the posterior of $s_{ik}$ given $(\bm {Y}^{obs}, \bm{\Theta})$ by iteratively marginalizing over the remaining components of $\bm M$.
+First, we note that the conditional posterior distribution of $\bm M$ factors by both protein and peptide, so it suffices to consider $s_{ik}$.
+This yields
+%
+\begin{align}
+ p( s_{ik} \mid \vec{y}_{ik}^{obs}, \bm{\Theta} ) \propto& p( \vec{y}_{ik}^{obs} \mid s_{ik}, \bm{\Theta} ) \cdot p(s_{ik} \mid \bm{\Theta} ) \\
+ =&
+\left[ \int_{\Reals^{s_{ik}^{mis}}} p(\vec{y}_{ik}^{obs}, \vec{y}_{ik}^{mis} \mid s_{ik}, \bm{\Theta}) \, \mathrm{d}\vec{y}_{ik}^{mis} \right] \cdot p(s_{ik} \mid \bm{\Theta}) \\
+% & \propto
+%\left(\begin{array}{c}
+%s_{ik}^{obs}+s_{ik}^{mis}\\
+%s_{ik}^{obs}
+%\end{array}\right) \cdot
+%\left[ \prod_{l=s_{ik}^{obs}+1}^{s_{ik}^{obs}+s_{ik}^{mis}} \int_{\Reals} p(y_{ikl}^{mis} \mid s_{ik}, \bm{\Theta}) \, \mathrm{d} y_{ikl}^{mis} \right] \cdot p(s_{ik} \mid \bm{\Theta}) \\
+\nonumber
+\propto&
+\left(\begin{array}{c}
+s_{ik}^{obs}+s_{ik}^{mis}\\
+s_{ik}^{obs}
+\end{array}\right) \cdot
+\left\{ 
+\prod_{l=s_{ik}^{obs}+1}^{s_{ik}^{obs}+s_{ik}^{mis}} \int_\Reals
+\left[ \sum_{R_{ikl},I_{ikl}} 
+p(y_{ikl}^{mis}, R_{ikl},I_{ikl} \mid s_{ik}, \bm{\Theta}) 
+\right]
+\, \mathrm{d}y_{ikl}^{mis} 
+\right\} \\
+&\cdot p(s_{ik} \mid \bm{\Theta}) ,
+\end{align}
+where the last relationship follows by conditioning on $\bm{Y}^{obs}$ and expansion over the missingness indicators $I_{ikl}$ and $R_{ikl}$.
+The combinatorial term enters the above expression due to the varying dimensionality of our missing data.
+
+We then focus on $p(y_{ikl}^{mis}, R_{ikl},I_{ikl} \mid s_{ik}, \bm{\Theta})$, obtaining
+\begin{align}
+\nonumber
+\sum_{R_{ikl},I_{ikl}} p(y_{ikl}^{mis}, R_{ikl},I_{ikl} \mid s_{ik}, \bm{\Theta})  =& 
+p(y_{ikl}^{mis} \mid s_{ik}, \bm{\Theta}) \cdot \Big(
+p(R_{ikl} = 0 \mid y_{ikl}^{mis}, s_{ik}, \bm{\Theta}) + \\
+& p(R_{ikl} = 1 \mid y_{ikl}^{mis}, s_{ik}, \bm{\Theta})\cdot
+p(I_{ikl} = 0 \mid R_{ikl}=0, y_{ikl}^{mis}, s_{ik}, \bm{\Theta}) \Big) \\
+=& \frac{1}{\sigma_i} \phi\left( \frac{y_{ikl}^{mis} - \gamma_{ik}}{\sigma_{i}} \right) \cdot \Big( \pi^{rnd} + (1-\pi^{rnd}) g(y_{ikl}^{mis}, \bm \eta) \Big).
+\end{align}
+%
+Integrating this expression over $y_{ikl}^{mis}$ yields
+%
+\begin{align}
+\int_\Reals p(y_{ikl}^{mis}, R_{ikl},I_{ikl} \mid s_{ik}, \bm{\Theta}) \, \mathrm{d}y_{ikl}^{mis} &=
+\pi^{rnd} +
+(1-\pi^{rnd}) \int_\Reals \frac{1}{\sigma_i} \phi\left( \frac{y_{ikl}^{mis} - \gamma_{ik}}{\sigma_{i}} \right) g(y_{ikl}^{mis}, \bm \eta) \, \mathrm{d}y_{ikl}^{mis}  \label{proteomics:eqn:normal_logit_integral} \\
+&= \pi^{rnd} + (1 - \pi^{rnd}) \pi^{int}_{ik},
+\end{align}
+%
+where we define
+\begin{equation}
+\pi^{int}_{ik} = \int_\Reals \frac{1}{\sigma_i} \phi\left( \frac{y_{ikl}^{mis} - \gamma_{ik}}{\sigma_{i}} \right) g(y_{ikl}^{mis}, \bm \eta) \, \mathrm{d}y_{ikl}^{mis} \label{proteomics:eqn:pi_IC}
+\end{equation}
+Substituting $\pi^{int}_{ik}$ from (\ref{proteomics:eqn:pi_IC}) into (\ref{proteomics:eqn:normal_logit_integral}) yields a simple form for the conditional posterior PMF of $s_{ik}$: 
+\begin{eqnarray}
+\nonumber
+p( s_{ik} \mid \vec{y}_{ik}^{obs}, \bm{\Theta} ) & \propto & 
+\left(\begin{array}{c}
+s_{ik}^{obs}+s_{ik}^{mis}\\
+s_{ik}^{obs}
+\end{array}\right) \cdot \Big( \pi^{rnd} + (1-\pi^{rnd}) \cdot \pi^{int}_{ik} \Big)^{s_{ik}^{mis}} \cdot \,  p(s_{ik} \mid \bm{\Theta}) \\
+%& = & \left(\begin{array}{c}
+%s_{ik}^{obs}+s_{ik}^{mis}\\
+%s_{ik}^{obs}
+%\end{array}\right) \cdot \Big( \pi^{rnd} + (1-\pi^{rnd}) \cdot \pi^{int}_{ik} \Big)^{s_{ik}^{mis}}  \label{proteomics:eqn:s_ik_posterior}\\
+% & & \cdot \,  NegativeBinomial(s_{ik}^{obs} + s_{ik}^{mis} -1 \mid \lambda, r, s_{ik}^{obs}) \nonumber
+& \propto & 
+(s_{ik}^{obs} + s_{ik}^{mis}) \cdot NegativeBinomial(s_{ik}^{mis} \mid 1-p_{ik}^*, \, s_{ik}^{obs} + r - 1) \label{proteomics:eqn:sik_final_posterior}
+\end{eqnarray}
+where $p_{ik}^* = (1-\lambda)(\pi^{rnd} + \pi_{ik}^{IC}(1-\pi^{rnd}))$.
+%
+The conditional posterior given by (\ref{proteomics:eqn:sik_final_posterior}) deviates from a Negative Binomial PMF only due to the constraint that $s_{ik} \geq 1$.
+
+% End of posterior derivation, start of algorithm
+
+In order to draw from the posterior of $s_{ik}^{mis}$ exactly, we develop a rejection sampler using a $NegativeBinomial(1 - p_{ik}^*, s_{ik}^{obs} + r)$ as the proposal distribution.
+If $s_{ik}^{obs}=0$, $s_{ik}^{mis} - 1 \sim NegativeBinomial(1-p_{ik}^*, \, r)$ exactly, so we consider only the $s_{ik}^{obs} > 0$ case.
+To construct this, we obtain a target-proposal ratio of 
+\begin{eqnarray*}
+\frac{p(s_{ik}^{mis}\vert\mathbf{Y^{obs}},\boldsymbol{\theta},\boldsymbol{\Sigma},\boldsymbol{\Gamma},\boldsymbol{\Delta})}{NegativeBinomial(1-p_{ik}^{*},s_{ik}^{obs}+r)} & = & \frac{c^{*}(s_{ik}^{obs}+s_{ik}^{mis})}{s_{ik}^{obs}+s_{ik}^{mis}+r-1},
+\end{eqnarray*}
+where $c^{*}$ is a constant that is not a function of $s_{ik}^{mis}$.
+This ratio is bounded by
+\begin{eqnarray*}
+\frac{c^{*}(s_{ik}^{obs}+s_{ik}^{mis})}{s_{ik}^{obs}+s_{ik}^{mis}+r-1} & \leq & \begin{cases}
+c^{*} & \text{if }r\geq1\\
+\frac{c^{*}s_{ik}^{obs}}{s_{ik}^{obs}+r-1} & \text{if }0<r<1
+\end{cases}.
+\end{eqnarray*}
+Optimizing this with respect to $c^*$ yields the following acceptance probabilities:
+\begin{eqnarray*}
+p(accept \vert X) & = & \begin{cases}
+\frac{(s_{ik}^{obs}+s_{ik}^{mis})}{(s_{ik}^{obs}+s_{ik}^{mis}+r-1)} & \text{if }r\geq1\\
+\frac{(s_{ik}^{obs}+s_{ik}^{mis})}{s_{ik}^{obs}+s_{ik}^{mis}+r-1} \times \frac{s_{ik}^{obs}+r-1}{s_{ik}^{obs}} & \text{if }0<r<1
+\end{cases}.
+\end{eqnarray*}
+
+However, the integral required to compute $\pi_{ik}^{int}$ is not generally available in closed form.
+We develop a simple, accurate numerical integration strategy based on adaptive Gauss-Hermite quadrature \citep{Liu1994}.
+We first find the mode of the integrand $\hat{y}^{mis}_{ikl}$ and its logarithm's second derivative at the mode $\hat{v}_{ik}^{mis} \equiv \frac{1}{\sigma_i^2} - \frac{\partial^2}{\partial y_{ikl}^{mis\,2}}\log\left[g(y_{ikl}^{mis}, \bm \eta) \right] \Big|_{y_{ikl}^{mis} = \hat{y}^{mis}_{ikl}}$.
+Since even this mode is not available in closed form, we use a vectorized version of Halley's method to efficiently approximate it.
+Using this information, we then approximate $\pi_{ik}^{int}$ using Gauss-Hermite quadrature, with the nodes shifted and scaled based on $\hat{y}^{mis}_{ikl}$ and $\hat{v}_{ik}^{mis}$, yielding $\hat{\pi}_{ik}^{int}$.
+For moderate values of $\eta_1$, only a small number of nodes (10 or less) are typically required for accuracy to machine precision.
+We summarize this strategy in Figure \ref{proteomics:fig:Laplace_Halleys_Outline}.% and details of these computations are available in the Appendix.
+
+The algorithm for drawing $s_{ik}^{mis}$ is given in Algorithm \ref{proteomics:alg:N-Censored-Rejection-Sampler-Algorithm}.
+See Figure \ref{proteomics:fig:s_ik^mis-Rejection-Sampler} for sample draws compared
+to the true density and the proposal negative binomial density.
+
+\begin{figure}[http]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/proteomics/Fig2_Observed_Censored_Intensity_Distributions}
+\caption{Comparisons of original, censored, and observed intensity distributions. \label{proteomics:fig:Laplace_Halleys_Outline}}
+\end{figure}
+
+\begin{algorithm}[H]
+\caption{N Censored Rejection Sampler\label{proteomics:alg:N-Censored-Rejection-Sampler-Algorithm}}
+
+\begin{enumerate}
+\item Draw $X\sim NegativeBinomial(1-\hat{p}_{ik}^{*},s_{ik}^{obs}+r)$, with $\hat{p}_{ik}^{*}=(1-\lambda)\left[\pi^{rnd}+(1-\pi^{rnd})\hat{\pi}_{ik}^{IC}\right]$
+and $U\sim Uniform(0,1)$.
+\item Accept $s_{ik}^{cen}=X$, if $U\leq\begin{cases}
+\frac{(s_{ik}^{obs}+s_{ik}^{mis})}{(s_{ik}^{obs}+s_{ik}^{mis}+r-1)} & \text{if }r\geq1\\
+\frac{(s_{ik}^{obs}+s_{ik}^{mis})}{s_{ik}^{obs}+s_{ik}^{mis}+r-1}\times\frac{s_{ik}^{obs}+r-1}{s_{ik}^{obs}} & \text{if }0<r<1
+\end{cases}$.
+\item Return to $1$ otherwise.\end{enumerate}
+\end{algorithm}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=.75\textwidth]{figures/proteomics/figure_nstates_sampler}
+\end{center}
+\caption{Expected iterations per accepted draw for $s_{ik}^{mis}$ rejection sampler for $\lambda=0.1$, $\pi^{rnd}=0.1$, and $\pi_{ik}^{IC}=.5$, with $r$ ranging from 0.5 to 5, $s_{ik}^{obs}$ ranging from 1 to 10. \label{proteomics:fig:s_ik^mis-Rejection-Sampler}}
+\end{figure}
+
+
+\subsubsection{Drawing from $p(\bm{R} \mid \bm s, \bm{Y}^{obs}, \bm{\Theta})$} \label{proteomics:sec:r_ik_mis_post}
+
+After drawing the number of states per peptide $s_ik$, we draw the latent random censoring indicators for each censored peptide, $R_{ikl}^{mis}$.
+Because random censoring occurs before intensity-based censoring, if a peptide was randomly censored ($R_{ikl}=0$), then $p(I_{ikl}=1\vert R_{ikl}=0,\bm{\Theta})=0$ and $p(O_{ikl}=1\vert R_{ikl}=0,\bm{\Theta})=0$ as outlined in Figure \ref{proteomics:fig:Missing_Data_Indicators_Tree}.
+We then obtain the posterior probability that a peptide is randomly censored given that it is missing via a straightforward application of Bayes Theorem:
+\begin{eqnarray}
+p(R_{ikl}=1\vert O_{ikl}=0,\bm{\Theta}, \bm{Y}^{obs}) & = & 1 - \frac{p(O_{ikl}=0\vert R_{ikl}=0,\bm{\Theta}, \bm{Y}^{obs})p(R_{ikl}=0\vert\bm{\Theta}, \bm{Y}^{obs})}{\sum_{r_{ikl}=0}^{1}p(O_{ikl}=0\vert R_{ikl}=r_{ikl},\bm{\Theta})p(R_{ikl}=r_{ikl}\vert\bm{\Theta}, \bm{Y}^{obs})}\nonumber \\
+% & = & \frac{1\times\pi^{rnd}}{\pi^{rnd}\times1+(1-\pi^{rnd})p(O_{ikl}=0\vert R_{ikl}=0,\bm{\Theta})}\label{proteomics:eq:w-posterior-in-text-1}\\
+% & = & \frac{\pi^{rnd}}{\pi^{rnd}+(1-\pi^{rnd})\int_{-\infty}^{\infty}p(I_{ikl}=1\vert y_{ikl},R_{ikl}=0,\bm{\Theta})p(y_{ikl}\vert R_{ikl}=0,\bm{\Theta})dY_{ikl}} \label{proteomics:r-posterior}\\
+ & = & 1 - \frac{\pi^{rnd}}{\pi^{rnd}+(1-\pi^{rnd})\pi_{ik}^{int}},
+\end{eqnarray}
+where $\pi_{ikl}^{int}$ is defined as in (\ref{proteomics:eqn:pi_IC}).
+Plugging in our numerical approximation for $\pi_{ikl}^{int}$, $\hat{\pi}_{ikl}^{int}$, we draw
+\begin{equation}
+R_{ikl} \mid \bm{Y}^{obs}, \bm{\Theta}, s_{ik} \sim Bernoulli\left(1 - \frac{\pi^{rnd}}{\pi^{rnd}+(1-\pi^{rnd})\hat{\pi}_{ik}^{int}}\right) .
+\end{equation}
+
+
+\subsubsection{Drawing from $p(\bm{Y}^{mis} \mid \bm{R}, \bm{s}, \bm{Y}^{obs}, \bm{\Theta})$}
+\label{proteomics:sec:y_ikl_mis_draw}
+
+The final step in drawing the missing data is to impute the unobserved intensities by drawing each intensity from its full conditional posterior distribution.
+The full conditional posterior is given by
+\begin{eqnarray*}
+p(y_{ikl}^{mis}\vert s_{ik}^{mis},R_{ik},\bm{\Theta}) & \propto & \begin{cases}
+\phi\left(\frac{y_{ikl} - \gamma_{ik}}{\sigma_{i}}\right) & \text{if }R_{ikl}=0 \text{ and }O_{ikl}=0\\
+\phi\left(\frac{y_{ikl} - \gamma_{ik}}{\sigma_{i}}\right) g(y_{ikl}, \bm \eta) & \text{if }R_{ikl}=1 \text{ and }O_{ikl}=0
+\end{cases} .
+\end{eqnarray*}
+For randomly censored states, where $R_{ikl}=0$, the missingness mechanism is ignorable given $R_{ikl}$.
+Hence, we simply draw $y_{ikl}^{mis}$ from its unconditional distribution,
+\begin{eqnarray*}
+p(y_{ikl}^{mis}\vert s_{ik}^{mis}, I_{ik}=0, R_{ikl}=0, \bm{\Theta}) & \sim & Normal(\gamma_{ik},\sigma_{i}^{2}).
+\end{eqnarray*}
+%
+The posterior distribution for intensity-censored states ($R_{ikl}=1$, $I_{ikl}=0$) is given by
+\begin{eqnarray}
+p(y_{ikl}^{mis}\vert O_{ikl}=0,R_{ikl}=1,\bm{\Theta}) & = & (\pi_{ik}^{int})^{-1}\frac{1}{\sigma_{i}} \phi\left(\frac{y_{ikl}^{mis}-\gamma_{ik}}{\sigma_{i}}\right) g(y_{ikl}^{mis}, \bm \eta) .
+\label{proteomics:eq:intensity-censored-posterior-text}
+\end{eqnarray}
+As this is not a standard distribution, we draw from it using a rejection sampler.
+We use information from the adaptive quadrature of Section \ref{proteomics:sc:draw_s_ik_mis} to construct an efficient proposal distribution with little additional computation.
+Specifically, we propose from a location-scale transformation of a $t_{\nu}$-distribution as
+\begin{eqnarray}
+Y_{ikl}^{*} & \sim & \hat{y}_{ikl}^{mis}+\hat{\sigma}_{ik}^{mis} \sqrt{\frac{\nu-2}{\nu}} t_{\nu},
+\end{eqnarray}
+which has expectation $\hat{y}_{ik}^{mis}$ and variance $\hat{\sigma}_{ik}^{mis})^{2}$ for $\nu>2$.
+
+The rejection sampling algorithm requires bounding the ratio of the target density to the proposal density.
+For this sampler, the given ratio has two local maxima, as shown in Figure \ref{proteomics:fig:Censored-Intensity-Rejection-Sampler-Outline-TEXT} B and C.
+The global maximum of the ratio can be either the first or third root of the log-ratio's derivative depending upon the particular relationship between $\bm \eta$, $\sigma^2_i$, and $\gamma_ik$.
+To reliably find the global maximum of the target-proposal density ratio, we use a pair of vectorized bisection searches to find the roots of the derivative of the log-ratio in two ranges: $(-\infty,\hat{y}_{ik}^{mis})$ and $(\hat{y}_{ik}^{mis},\infty)$.
+Once these roots are obtained, we simply select the one corresponding to the larger local maximum to compute acceptance probabilities.
+A graphical example of the rejection sampler is shown in Figure \ref{proteomics:fig:Censored-Intensity-Rejection-Sampler-Outline-TEXT} D, and the sampling algorithm is detailed in Algorithm \ref{proteomics:alg:Censored-Intensity-Accept-Reject-Algorithm-TEXT}.
+
+
+\begin{comment}
+\begin{eqnarray*}
+X & \sim & t_{\nu}\\
+y_{ikl}^{*} & \sim & \tilde{\sigma}_{ik}X+\tilde{\mu}_{ik}
+\end{eqnarray*}
+which has density, 
+\begin{eqnarray}
+g(y_{ikl}^{*}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl}) & = & \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\Gamma\left(\frac{\nu}{2}\right)}\left(1+\frac{(y_{ikl}^{*}-\tilde{\mu}_{ikl})^{2}}{\nu\tilde{\sigma}_{ikl}^{2}}\right)^{-\left(\frac{\nu+1}{2}\right)}\label{proteomics:eq:cen-int-proposal-density-TEXT}
+\end{eqnarray}
+
+
+, where
+\begin{eqnarray*}
+\tilde{\mu}_{ik} & \equiv & \underset{y_{ikl}^{mis}\in\mathbb{R}}{\arg\max}p(y_{ikl}^{mis}\vert I_{ikl}=0,W_{ikl}=0,\bm{\Theta})\\
+\tilde{\sigma}_{ik}^{2} & \equiv & -\left(\frac{\partial^{2}}{\partial(y_{ikl}^{mis})^{2}}\log p(y_{ikl}^{mis}\vert I_{ikl}=0,W_{ikl}=0,\bm{\Theta})\right)^{-1}\Biggr|_{y_{ikl}^{mis}=\tilde{\mu}_{ik}}
+\end{eqnarray*}
+. These location and scale parameters correspond to the approximate
+mean and variance used in the Laplace Approximation, see \subref{Drawing-n-cen-TEXT}.
+This proposal is vastly more efficient than a proposal based on $y_{ikl}$
+being $Normal(\gamma_{ik},\sigma_{i}^{2})$ at no additional computational
+cost, since we need only to recognize the relation to the Laplace
+Approximation. To use rejection sampling, we need to bound the targe-proposal
+density ratio 
+\begin{eqnarray}
+\frac{p(y_{ikl}^{mis}\vert I_{ikl}=0,W_{ikl}=0,\bm{\Theta})}{g(y_{ikl}^{mis}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})} & \leq & z_{ikl}\label{proteomics:eq:cen int target-proposal ratio TEXT}
+\end{eqnarray}
+. However, this ratio isn't strictly concave, but bimodal with a mode
+below and above $\tilde{\mu}_{ik}$; an example is shown in \figref{Censored-Intensity-Rejection-Sampler-Outline-TEXT}b.
+We use a pair of bisection searches to find the roots of the first
+derivative of the log target-proposal ratio, which is shown in \figref{Censored-Intensity-Rejection-Sampler-Outline-TEXT}c.
+We are then able to obtain the global bound on the target-proposal
+ratio and construct our rejection sampler from the posterior of the
+censored intensities exactly. The rejection sampler is outlined in
+\algref{Censored-Intensity-Accept-Reject-Algorithm} and depicted
+in \figref{Censored-Intensity-Rejection-Sampler-Outline-TEXT} d.
+\end{comment}
+
+
+\begin{figure}
+\includegraphics[width=1\textwidth]{figures/proteomics/figure_ycen_rejection_sampler.pdf}
+\caption{Censored Intensity Rejection Sampler Example\label{proteomics:fig:Censored-Intensity-Rejection-Sampler-Outline-TEXT}}
+\end{figure}
+
+
+\begin{algorithm}
+\caption{Censored Intensity Accept Reject Algorithm\label{proteomics:alg:Censored-Intensity-Accept-Reject-Algorithm-TEXT}}
+
+
+$ $Target density: $f^{mis}(y_{ikl}\vert\eta_{0},\eta_{1},\gamma_{ik},\sigma_{i}^{2})=(\pi_{ik}^{int})^{-1} \frac{1}{\sigma_{i}}\phi\left(\frac{y_{ikl}-\gamma_{ik}}{\sigma_{i}}\right) g(y_{ikl}, \bm \eta)$.
+
+Proposal density: $f^*(y_{ikl}^{*}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})=\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\Gamma\left(\frac{\nu}{2}\right)}\left(1+\frac{(y_{ikl}^{*}-\tilde{\mu}_{ikl})^{2}}{\nu\tilde{\sigma}_{ikl}^{2}}\right)^{-\left(\frac{\nu+1}{2}\right)}$.
+\begin{enumerate}
+\item Compute $z_{ikl}$:
+
+\begin{enumerate}
+\item Using bisection, find the roots of of the first derivative of the
+log density ratio, \\
+$z_{ikl}^{(1)}\equiv\underset{y_{ikl}\in[-\infty,\tilde{\mu}_{ikl})}{\arg\max}\log\left[\frac{f^{mis}(y_{ikl}\vert\eta_{0},\eta_{1},\gamma_{ik},\sigma_{i}^{2})}{f^*(y_{ikl}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})}\right]$
+and $z_{ikl}^{(2)}\equiv\underset{y_{ikl}\in(\tilde{\mu}_{ikl},\infty]}{\arg\max}\log\left[\frac{f^{mis}(y_{ikl}\vert\eta_{0},\eta_{1},\gamma_{ik},\sigma_{i}^{2})}{f^*(y_{ikl}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})}\right]$.
+\item Determine the maximum of the density ratios,\\
+ $c^* \equiv \max\left(\frac{f^{mis}(z_{ikl}^{(1)}\vert\eta_{0},\eta_{int},\gamma_{ik},\sigma_{i}^{2})}{f^*(z_{ikl}^{(1)}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})},\frac{f^{mis}(z_{ikl}^{(2)}\vert\eta_{0},\eta_{1},\gamma_{ik},\sigma_{i}^{2})}{f^*(z_{ikl}^{(2)}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})}\right)$.
+\end{enumerate}
+\item Generate $X\sim g(y_{ikl}^{*}\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})$,
+$U\sim Unif(0,1)$.
+\item Accept $y_{ikl}=X$, if $U\leq\frac{f^{mis}(X\vert\eta_{0},\eta_{int},\gamma_{ik},\sigma_{i}^{2})}{c^* f^*(X\vert\nu,\tilde{\mu}_{ikl},\tilde{\sigma}_{ikl})}$.
+\item Else, return to $2$.\end{enumerate}
+\end{algorithm}
+
+
+ %%% %%% %%%
+ %%% %%% %%%
+
+
+\section{Simulation studies}
+\label{proteomics:sec:simulations}
+
+To evaluate the performance of our method and the stability of the algorithm presented in Section \ref{proteomics:sec:estimation}, we tested our method on a set of simulated MS-MS experiments.
+We describe the design of these simulations in detail in Section \ref{proteomics:sec:doe}.
+We cover the computational performance and validation of our MCMC sampler in Section \ref{proteomics:sec:mcmc_performance}.
+In Section \ref{proteomics:sec:frequentist_evaluations}, we evaluate the frequentist properties of our Bayesian estimates, including the coverage of our posterior intervals (\ref{proteomics:sec:coverage}), the performance of the proposed method relative to standard estimators used for this class of experiments (\ref{proteomics:sec:compperf}), and the effects of biological and experimental factors the quality of estimates from each method (\ref{proteomics:sec:ancova}).
+
+ %%% %%% %%%
+ %%% %%% %%%
+ %%% %%% %%%
+
+\subsection{Design of experiments}
+\label{proteomics:sec:doe}
+
+We simulated a set of complex biological samples, spanning a broad range of abundances and protein-specific properties.
+For each such sample we simulate 54 proteins with abundances spanning 6 orders magnitude, $\mu_i= 3, \ldots, 8$, yielding 9 proteins per abundance level.
+Within each abundance level, each simulated protein consists of $m_{ik}=20,25\ldots,60$ peptides.
+With these properties fixed across replicates, we simulated 1,200 experiments from the model described in Section \ref{proteomics:sec:model}, using a probit link function for $g(\cdot, \bm \eta)$.
+These consisted for 400 replicates for each of the parameter settings provided in Table \ref{proteomics:table:sim_parameters}, each of which was based on estimates from an experiment with the given gradient length using the Sigma UPS2 standard.
+
+\begin{table}
+\begin{center}
+\caption{Parameter settings for simulation studies.
+\label{proteomics:table:sim_parameters}}
+\begin{tabular}{r|ccccccccc}
+  \hline
+Gradient & $\alpha_\tau$ & $\beta_\tau$ & $\alpha_\sigma$ & $\beta_\sigma$ & $\pi^{rnd}$ & $\eta_0$ & $\eta_1$ & $\lambda$ & $r$ \\ 
+  \hline
+   90m & 6.3 & 2.1 & 8.5 & 3.5 & 0.20 & -16 & 3.0 & 0.84 & 1.9 \\ 
+  180m & 5.3 & 1.3 & 7.0 & 4.1 & 0.21 & -14 & 2.7 & 0.79 & 1.9 \\ 
+  360m & 6.2 & 1.8 & 7.0 & 2.5 & 0.30 & -20 & 4.3 & 0.62 & 1.6 \\ 
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+%Across these experiments, we fixed our top-level parameters to the following values: $\alpha_\tau=4$, $\beta_\tau=5$, $\alpha_\sigma=8$, $\beta_\sigma=4$, $\pi^{rnd}=0.1$, $\eta_0=-6.25$, $\eta_1=1.25$, $\lambda=0.1$, and $r=3$.
+
+
+%% why these values? add a paragraph with some comments on the values; what observable properties they imply (e.g., 50% missing at .. and 10% missing at ..). how many state-level intensities (data points) on average in each data set?
+%These values were selected based upon initial estimates from experiments using the Sigma UPS2 standard.
+%They imply 50\% missingness at an intensity of $5.18$, 90\% missingness at an intensity of 3.34, and 15\% missingness at an intensity of 7.27.
+%These also imply a mean of $1.33$ possible states per peptide with 99\% having between 1 and 4 possible states.
+%The variance parameters yield $E[\sigma_i] = 1.39$ and $E[\tau_i] = 0.87$, with 95\% of their values within $(0.93, 1.90)$ and $(0.47, 1.32)$, respectively.
+%These reflect a typical regime for both the missingness mechanism and the degree of variation observed in MS-MS data.
+
+
+\subsection{MCMC performance and validation}
+\label{proteomics:sec:mcmc_performance}
+
+Our MCMC sampler produced high-quality draws from the target posterior at a low computational cost.
+Running 3,000 iterations for each replicate required an average of 267 seconds (0.088 seconds per iteration) with a standard deviation of 17.1 seconds.
+Of these 3,000 iterations, we discarded the first 1,000 as burn in.
+The mean effective sample sizes for each top-level parameter based on the remaining 2,000 draws are provided in Table \ref{proteomics:tab:effective_sample_sizes}.
+For $\mu_i$ and $\zeta_i$, we also include the mean standard deviation of effective sample sizes across proteins.
+%
+\begin{table}
+\centering
+\caption{Average effective sample sizes by parameter. $\pm$ for $\mu_{i}$
+and $\zeta_{i}$ indicates the average standard deviation of effective
+sample sizes across proteins. \label{proteomics:tab:effective_sample_sizes}}
+\begin{tabular}{r|cccccccccc}
+\hline 
+Gradient  & $\zeta_{i}$ & $\eta$  & $\lambda$ & $\mu_i$  & $\pi^{rnd}$ & $r$ & $\beta_{\sigma}$ & $\beta_{\tau}$ & $\alpha_{\sigma}$ & $\alpha_{\tau}$\tabularnewline
+\hline 
+90m  & 341$\pm$188  & 287  & 773  & 331$\pm$191 & 191  & 1160  & 272  & 217  & 303  & 242 \tabularnewline
+180m  & 256$\pm$143 & 285  & 823  & 250$\pm$148 & 175  & 1197  & 337  & 176  & 379  & 191 \tabularnewline
+360m  & 421$\pm$208 & 179  & 1013  & 411 $\pm$215 & 275  & 1338  & 346  & 222  & 392  & 250 \tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+%
+We note that all mean effective sample sizes are greater than 100, indicating that even 2,000 iterations are sufficient to obtain Monte Carlo  an order of magnitude below the posterior standard deviation of each parameter.
+
+\subsection{Frequentist evaluations}
+\label{proteomics:sec:frequentist_evaluations}
+
+\subsubsection{Coverage analysis}
+\label{proteomics:sec:coverage}
+
+We first used our simulated replicates to evaluate the frequency coverage of our posterior intervals, focusing on those for $\zeta_i$.
+The results of these evaluations are summarized in Figure \ref{proteomics:fig:coverage_mu_hpd}; corresponding results for coverage vs. $m_i$ are similar and provided in the supplement.
+%
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth, page=1]{figures/proteomics/figures_coverage_sim}
+\caption{Coverage of HPD intervals vs. $\mu_i$ by simulated gradient length and Bayesian level.
+\label{proteomics:fig:coverage_mu_hpd}}
+\end{figure}
+%
+We find that our posterior intervals are well-calibrated for the regimes of interest.
+Across all three simulated gradient lengths, we obtain 67\% coverage for our 68\% posterior intervals, 89\% mean coverage for our 90\% posterior intervals, 94\% mean coverage for our 95\% posterior intervals, and 98\% mean coverage for our 99\% posterior intervals.
+These demonstrate that, despite the complexity of our Bayesian method, it can provide inferences with frequentist guarantees.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=\textwidth, page=3]{figures/proteomics/figures_coverage_sim}
+%\caption{Coverage of HPD intervals vs. $m_i$ by simulated gradient length and Bayesian level.
+%\label{proteomics:fig:coverage_mi_hpd}}
+%\end{figure}
+
+\subsubsection{Comparison with exiting methods}
+\label{proteomics:sec:compperf}
+
+We compared the performance of our model-based abundance estimates with several standard methods for absolute protein quantitation.
+Many of these methods were originally developed for relative quantitation and are converted to absolute measures by appropriate rescaling.
+All methods used in this comparison are of the form
+\begin{equation}
+ \hat{\zeta}_i = \log_{10}\left( \hat{T} \frac{10^{\hat{\mu}_i}}{\sum_i 10^{\hat{\mu}_i}} \right) .
+\end{equation}
+%
+We compare the performance of our method to two classes of common methods: intensity-based estimators and count-based estimators.
+We set $\hat{T} = \sum_i 10^{\mu_i}$ for all of these estimators.
+Among intensity-based estimators, we consider simple summed intensities  (\ref{proteomics:eq:summed_intensity}) and median observed intensity  (\ref{proteomics:eq:median_intensity}) \citep[e.g.,][]{Cox:2008uu}.
+We also evaluate two variants based on estimators from the spectral counting literature: mean observed intensity (\ref{proteomics:eq:mean_intensity}) and adjusted mean observed intensity (\ref{proteomics:eq:adj_mean_obs_intensity})
+\begin{eqnarray}
+\hat \mu_{i}^{si} &=& \log_{10} \left( \sum_{kl} 10^{y^{obs}_{ikl}} \right),
+\label{proteomics:eq:summed_intensity} \\
+\hat \mu_{i}^{med} &=& \text{Med}_{kl}(y_{ikl}),
+\label{proteomics:eq:median_intensity} \\
+\hat \mu_{i}^{mi} &=& \log_{10}\left( \sum_{kl} 10^{y^{obs}_{ikl}}/m_i^{obs} \right),
+\label{proteomics:eq:mean_intensity} \\
+\hat \mu_{i}^{ami} &=& \log_{10}\left( \sum_{kl} 10^{y^{obs}_{ikl}}/\sum_{k} s^{obs}_{ik} \right) .
+\label{proteomics:eq:adj_mean_obs_intensity}
+\end{eqnarray}
+%
+In the above, $m_i$ is the (known) number of possible peptides that are generated by digesting protein $i$ using a particular enzyme.
+
+Another common approach, known as spectral counting, disregards the intensity measurements and uses counts of the observed states associated with each protein.
+A range of such methods have been developed relative quantitation, including basic spectral counting \citep[e.g.,][]{Liu:2004hv}, average spectral counts \citep[e.g.,][]{Weiss:2010ik}, and the proportion of peptides identified (PPI) \citep{Rappsilber2002}.
+However, these are not directly suitable for absolute quantitation due to a lack of normalization.
+\citet{Ishihama:2005ir} defined an exponentially-modified protein abundance index (emPAI) to address these issues:
+%
+\begin{equation}
+\hat \mu_{i}^{emPAI} = \log_{10}\left( 10^{\sum_k \mathbb{I}(s_{ik}^{obs} > 0) / m_i } - 1 \right) .
+\label{proteomics:eq:empai}
+\end{equation}
+This provides a commonly-used representative of the count-based class of methods.
+
+We summarize the results of these comparisons in Figures \ref{proteomics:fig:compare_relative_error} and \ref{proteomics:fig:compare_bias}.
+%
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth, page=3]{figures/proteomics/figures_relative_error_sim}
+\caption{Relative efficiency of standard methods ($MSE_{Method} / MSE_{Model-based}$) vs. $\mu_i$ and $m_i$ by block (left and right columns, respectively). Relative MSE axis is logarithmic. Solid black line at 1 corresponds to the model-based method's efficiency, by definition.
+\label{proteomics:fig:compare_relative_error}}
+\end{figure}
+%
+Complete tabular results are available in Supplementary Tables \ref{proteomics:}.
+From Figure \ref{proteomics:fig:compare_relative_error}, we see that our method reduces the overall MSE of abundance estimates by a factor of 5--10 relative to intensity-based estimates and by a factor of 6--150 relative to emPAI.
+Most intensity-based estimators exhibit consistent efficiency relative to ours, although the median intensity estimator's efficiency improves to nearly 1 as abundance increases.
+However, this estimator's efficiency is quite poor for low-abundance proteins with approximately 20 times the model-based estimator's MSE.
+The efficiency of emPAI increases by an order of magnitude over the range of simulated abundances and decreases slightly with protein length $m_i$, demonstrating the value of intensity information in low-abundance regimes.
+By carefully combining count and intensity information, we obtain consistent reductions in MSE relative to both classes of methods for all values of $\mu_i$ and $m_i$.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth, page=3]{figures/proteomics/figures_bias_sim}
+\caption{Bias of $\hat{\zeta}_i$ for standard methods and posterior mean from model vs. $\mu_i$ and $m_i$ by gradient length (left and right columns, respectively).
+\label{proteomics:fig:compare_bias}}
+\end{figure}
+%
+Turning to bias, we see that the model-based estimator provides lower bias than both classes of standard methods.
+Summed intensity shows a slight negative bias (between -0.7 and 0), while mean and average mean observed intensity show a positive bias of similar magnitude.
+The median intensity estimator shows a far larger positive bias (nearly 2 orders of magnitude) at low abundances.
+The biases of all four intensity-based estimators diminish as abundance increases.
+The emPAI estimator shows a large positive bias that also decreases in magnitude with abundance.
+The bias of the summed intensity estimator diminishes from approximately -0.7 to 0 as protein length increases; the biases of our other estimators exhibits little sensitivity to protein length.
+Again, we see that our model-based approach enables us to combine count and intensity information into estimators that outperform both classes of standard methods.
+
+ %%% %%% %%%
+ %%% %%% %%%
+
+
+\section{Empirical results}
+\label{proteomics:sec:empirical}
+
+Having established our method's properties on simulated data, we turn to actual experimental data.
+We use a quantitative protein standard, described in Section \ref{proteomics:sec:data}, for these experiments.
+This standard provides known abundances for evaluation with a realistic set of proteins.
+In Section \ref{proteomics:sec:checkassumptions}, we use these experiments to check our model assumptions and demonstrate their implications for real data.
+In Section \ref{proteomics:sec:dataanalysis}, we assess the comparative performance of the proposed methods with respect to the standard methods presented in Section \ref{proteomics:sec:compperf}.
+
+ %%% %%% %%%
+ %%% %%% %%%
+
+\subsection{Data}
+\label{proteomics:sec:data}
+
+We conducted a set of LC/MS-MS experiments using the Universal Proteome Standard 2 (UPS2), a constructed biological sample that contains 48 human proteins.
+These proteins are present in six concentrations, ranging from .5fM to 50,000 fM, with eight known proteins at each concentration.
+These proteins are selected to span a broad range of physical properties (size and hydrophobicity) within each concentration, removing a potential confounding factor while reflecting the actual variation among proteins in typical samples.
+The concentration specified for each protein in the standard was confirmed by the manufacturer using multiple methods, so we are comfortable taking the concentrations reported by the manufacturer as ground truth for subsequent analyses.
+With its high dynamic range, the standard provides a realistic and stringent test of our method.
+
+We ran five LC/MS-MS experiments using this standard at three gradient lengths, 90, 180, and 360 minutes, with two, two, and one replicates per gradient length, respectively.
+Each gradient length implies a different set of parameters for the missing data mechanism.
+Longer gradients allow for the observation of a greater variety MS2 spectra and is expected to decrease the degree of intensity-based missingness.
+However, longer gradients can also reduce the dynamic range of observed intensities and require substantially greater effort from the experimenter.
+Our experiments allow us to explore these tradeoffs in as we evaluate our method.
+The 90 minute gradients reflect the degree of censoring typically observed in analyses of more complex mixtures, while the 180 and 360 minute gradients provide a ``sanity check'' of our method's behavior in a setting with less missing data.
+
+ %%% %%% %%%
+ %%% %%% %%%
+
+\subsection{Exploratory analysis and model checking}
+\label{proteomics:sec:checkassumptions}
+
+Using the experimental data, we examined the distributions of intensities, identifications, and states to check the assumptions of our model.
+Figure \ref{proteomics:fig:EDA-Figure} summarizes these results.
+%
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/proteomics/New_EDA_Multipanel_Figure}
+\caption{Exploratory data analysis using the UPS2 quantitative protein standard.
+\label{proteomics:fig:EDA-Figure}}
+\end{figure}
+%
+Panel A of this figure shows the observed distribution of intensities by concentration.
+It is immediately clear from these histograms that the number of intensities observed and the median observed intensity increases strongly with the concentration.
+The distributions of observed intensities are also right-skewed for each concentration level, which is consistent with the combination of intensity-dependent censoring and an underlying log-normal distribution of intensities.
+
+Panels B, C, and D show the relationship between concentration and identification, median intensity, and $s_{ik}^{obs}$ in greater detail.
+The median observed intensity by protein increases with the protein's concentration, although the former has far less dynamic range than the latter (2 orders of magnitude vs. 5).
+Intensity-based censoring at the state level explains this discrepancy, as the lowest-intensity ions are preferentially removed from the sample.
+%
+We also compared the number of states that peptides were detected in across protein concentrations.
+The physical process that generates distinct peptide states is known to be independent of protein or peptide abundance, so the number of \emph{possible} peptide states must be invariant to the peptide's concentration.
+Since it is not possible to determine the number of possible states per for peptide \emph{a priori}, we model this value as an IID random variable in our model.
+However, we observe a strong relationship between the number of observed peptide states and concentration in the experimental data.
+This supports the assumption of intensity-dependent state-level censoring in our model.
+
+The proportion of peptides identified per protein ranges nearly 1 for the most abundant proteins to approximately 5\% for the least abundant, while the 
+This is mostly attributable to selection for abundant ions within the MS-MS equipment, as panel E demonstrates.
+By design, the subset of peptides selected for fragmentation is determined by the instrument's software in real time as the sample is analyzed.
+While we focus on the subset of peptides that are both detected by the mass spectrometer and successfully identified, nearly all of the peptides in the sample can be quantified in terms of their total intensity\footnote{
+Software is able to quantify peptides that were not identified is due to the both mass accuracy of the mass spectrometer and the effective separation of the sample by chromatography.
+The software used to process the experimental data \citep{Cox:2008uu} is able to identify and integrate over all unique profiles in the m/z $\times$ intensity $\times$ retention time space, as shown in Figure \ref{proteomics:fig:Mass_Spec_Overview} C.
+This allows quantitation of the majority of peptides; however, since the majority of these are not identified, there is no way to map them to a specific protein.
+Hence, we exclude them from our model-based inference.}.
+This allows us to investigate the intensity-dependence of the peptide identification process in detail and validate our model assumptions.
+Comparing the distributions of identified and unidentified state-level intensities in Panel E shows that (1) the distribution of identified intensities stochastically dominates that of the unidentified intensities and (2) there is substantial overlap between these distributions.
+(1) is consistent with Theorem \ref{proteomics:thm:dominance}, while (2) is consistent with the assumption of a stochastic censoring mechanism.
+
+ %%% %%% %%%
+ %%% %%% %%%
+
+\subsection{Comparison of empirical results}
+\label{proteomics:sec:dataanalysis}
+
+We used the experiments described in Section \ref{proteomics:sec:data} to evaluate our method's performance against the standard methods described in Section \ref{proteomics:sec:compperf}.
+We summarize these results in Figure \ref{proteomics:fig:UPS2 results} and Table \ref{proteomics:tab:UPS2 results} and provide complete tables of results in our online supplement.
+%
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/proteomics/figures_draft_ups2}
+\caption{Inferred protein abundances from experiments with UPS2 standard.
+\label{proteomics:fig:UPS2 results}}
+\end{figure}
+%
+\begin{table}
+\centering
+\caption{Mean squared errors $\pm$ standard errors from experiments with UPS2 standard.
+\label{proteomics:tab:UPS2 results}}
+\begin{tabular}{l|ccccc}
+  \hline
+Gradient & Posterior mean & Summed intensity & Mean obs. intensity & Median intensity & emPAI \\ 
+  \hline
+90m & $0.41 \pm 0.11$ & $1.06 \pm 0.12$ & $2.45 \pm 0.16$ & $3.18 \pm 0.13$ & $2.81 \pm 0.10$ \\ 
+  180m & $0.34 \pm 0.07$ & $0.76 \pm 0.14$ & $1.82 \pm 0.21$ & $2.26 \pm 0.21$ & $3.03 \pm 0.12$ \\ 
+  360m & $0.37 \pm 0.06$ & $0.65 \pm 0.07$ & $1.26 \pm 0.08$ & $1.87 \pm 0.06$ & $3.55 \pm 0.13$ \\ 
+   \hline
+\end{tabular}
+\end{table}
+%
+We restrict our attention here to the best-performing subset of the estimators presented in Section \ref{proteomics:sec:compperf}.
+We see from Table \ref{proteomics:tab:UPS2 results} that our method's performance is particularly strong on short gradients, providing a factor of 2.6 reduction in MSE relative to the best standard estimator (summed intensity) for the 90 minute gradients and a factor of 2.2 reduction for the 180 minute gradients.
+On the longest gradient (360 minutes), our method's MSE is a factor of 1.8 lower than than that of the best standard estimator.
+This behavior matches our expectations based on the relevant properties of the underlying experimental processes.
+Detailed modeling of the missing data mechanism yields the largest gains when the sample is least separated and there are fewer possible spectra---in the shortest gradients.
+In the longest gradient, intensity-based missingness diminishes in importance relative to other factors.
+
+From Figure \ref{proteomics:fig:UPS2 results}, we note that our method's improvements are greatest for low-abundance proteins.
+All estimators considered provide reasonably good estimates of $\zeta_i$ for the highest-abundance proteins.
+However, most of the standard estimators exhibit a substantial positive bias (1-2 orders of magnitude) for the lowest-abundance proteins, particularly on short gradients.
+In contrast, our method provides consistently accurate estimates for low-abundance proteins across all gradient lengths.
+We discuss the implications of this capability for biological applications in Section \ref{proteomics:sec:remarks}.
+%However, the mean intensity estimator appears to perform better on this measure.
+%This estimator implicitly imputes zeros for all unobserved peptide intensities by using the number of predicted peptides $m_i$ as a denominator, correcting for some of the positive bias in observed intensities.
+%This implicit correction is not sufficient to yield accurate results on the shorter gradients, though.
+
+
+
+ %%% %%% %%%
+ %%% %%% %%%
+
+\section{Concluding remarks}
+\label{proteomics:sec:remarks}
+
+We have presented a model-based approach to label-free absolute quantitation in LC/MS-MS proteomics experiments.
+As the results of Sections \ref{proteomics:sec:simulations} and \ref{proteomics:sec:empirical} show, accounting for non-ignorable missing data in the proteomics context improves estimates of absolute abundances.
+Our method also provides well-calibrated measures of uncertainty, as the results of Sections \ref{proteomics:sec:coverage} and \ref{proteomics:sec:dataanalysis} show.
+Below, we provide some broader context and particular insights on this class of methods and problems, focusing on the role of non-ignorable missing data in complex experiments, efficient computation with missing data of variable dimension, and the role of absolute quantitation in biological analyses.
+We also discussion extensions of the methods presented to the semi-supervised setting and distributed computational environments.
+
+\subsection{Modeling and inference}
+
+The core of our model for LC-MS/MS proteomics data is the structure of our non-ignorable missing data mechanism.
+We explicitly account for the dependence of censoring probabilities on unobserved peptide intensities at the level of individual peptide states.
+This creates an additional complication, as the number of possible states per peptide is unknown.
+Thus, we must account for truncation at the state level in addition to censoring at the peptide level.
+However, we do know that the distribution of then number possible peptide states is invariant to the peptide's concentration.
+Incorporating this information into our model allows us to extract information from the number of states observed per peptide ($s_{ik}^{obs}$).
+
+Working with state-level data provides fine-grained measures of missingness, which provide a great deal of information on low-abundance proteins when used properly.
+For high-abundance proteins, the vast majority of peptide states are observed, providing the majority of the information on the underlying distribution of the number of states per peptides.
+Our model uses this information to improve inferences on the abundances of low-abundance proteins, leveraging all of the available information from their intensity and state information.
+Extracting all of this information requires a sophisticated approach to inference and computation, however.
+
+The presence of state-level censoring with an unknown number of states per peptide makes inference under our missing data model particularly challenging.
+The dimension of our missing data $\bm M$ varies across draws, requiring more specialized computational strategies than standard Metropolis-Hastings updates.
+We implemented an exact marginal draw from the conditional distribution of $\bm M$ given $\bm \Theta$ using a combination of unidimensional numerical integration and efficient rejection sampling, as detailed in Section \ref{proteomics:sec:missingDataDraw}.
+The reductions in autocorrelation provided by this marginal update more than offset the computational costs of rejection sampling and numerical approximation.
+This allows for efficient inference in the presence of missing data of unknown dimension, as the results of Section \ref{proteomics:sec:simulations} demonstrate.
+We believe that this technique can provide effective computational techniques for a range of non-ignorable missing data problems originating from complex experimental techniques.
+
+\subsection{Applications}
+
+Absolute quantitation provides a different view on biological processes than relative quantitation, enabling the study of new phenomena.
+Whereas relative quantitation can only measure the protein-by-protein differences in abundances across experiments, absolute quantitation provides estimates of the abundances of different proteins within a single population of cells.
+Such information is somewhat interesting for high-abundance proteins, but it promises the greatest insights from the study of low-abundance ones.
+
+Reliable, accurate quantitation of low-abundance proteins also makes LC/MS-MS methods applicable to new classes of biological investigations.
+Two of the most promising areas are the study of mistranslation and transcription factors.
+Both involve proteins which appear at low concentrations but can have an outsized biological impact.
+In the case of mistranslation, the cell must spend a great deal of energy handling defective proteins; the rate of mistranslation represents the largest determinant of these costs.
+Transcription factors regulate the conversion of DNA into mRNA, providing one of the primary mechanisms of control and feedback for cellular functions.
+Our method allows for reliable estimates of these proteins' concentrations within large populations of cells, opening new areas for high-throughput research.
+
+\subsection{Extensions}
+
+We are developing two extensions of the proposed methodology with a focus on larger, shallower datasets.
+In relatively shallow datasets, few proteins are observed and, due to intensity-based censoring, the dynamic range of observed intensities is compressed.
+This makes estimation of the censoring parameters ($\eta$ and $\pi^{rnd}$) from observed data difficult, reducing the precision of our estimates.
+The quantitative protein standard described in Section \ref{proteomics:sec:data} provides a potential solution to this problem.
+Such a standard can be spiked into the biological sample of interest and used as a calibration source.
+A semi-supervised version of the model presented in Section \ref{proteomics:sec:model} can use the known properties of this standard to enable reliable inferences about the censoring mechanism in shallow samples.
+As an additional benefit, this supervision could simplify the conversion of our estimates between the intensity and abundance scales.
+
+To tackle larger datasets, including full-proteome quantitation for complex organisms, we are also developing a distributed variant of the MCMC algorithm presented here.
+The goal is to scale the sampler across computational clusters with minimal communication within iterations.
+The conditional independence structure of the model presented in Section \ref{proteomics:sec:model} makes such distribution both appealing and feasible.
+
+We see a rich range of opportunities for statistical research in this area.
+The field of MS-MS proteomics is young, and it can provide a unique view on the details of biological processes.
+Extracting this technology's full value requires care, deep subject-matter knowledge, and sophisticated statistical techniques, but the rewards are great.
+We hope that more statisticians will enter this field and continue to build strong methodological foundations to advance biological research.
+
+ %%% %%% %%%
+ %%% %%% %%%
+ %%% %%% %%%
+
+\subsection*{Acknowledgments}
+
+This work was partially supported by the National Science Foundation under grants no.\ DMS-0907009 and no.\ IIS-1017967, by the National Institute of Health under grant no.\ R01 GM-096193, all to Harvard University. Additional funding was provided by the Harvard Medical School's Milton Fund.
+%%
+%The views and conclusions contained in this document are those of the  authors and should not be interpreted as representing the official policies, either expressed or implied, of the National Institute of Health, the Army Research Office, the National Science Foundation, or the U.S. government.
+
+ %%% %%% %%%
+ %%% %%% %%%
+ %%% %%% %%%
+
+%\appendix
+
+\section{Proof of Theorem \ref{proteomics:thm:dominance}}
+
+\begin{proof}
+Define $Y$ as a random variable with a distribution given by
+%
+\begin{equation}
+\nonumber
+\dd F_Y(y) = \frac{1}{w} g(y) \dd F_x(y)
+\end{equation}
+%
+where $w \equiv \int_{\Reals} g(t) \dd F_x(t) \equiv P(Z=1)$. We assume we are in a non-trivial case, so $w \in (0,1)$.
+%
+Then, define $h \equiv g^{-1}(w)$. Consider the difference $D(t) \equiv F_X(t) - F_Y(t)$. This difference is equivalent to
+%
+\begin{equation}
+\nonumber
+D(t) = \int_{\Reals} \left(1 - \frac{1}{w}g(x) \right) \dd F_X(x)
+\end{equation}
+%
+We now consider two cases:
+\begin{enumerate}
+\item[(1)] If $t \leq h$, then we have $g(x) \leq w$ for all $x \in (-\infty, h])$ by monotonicity. Thus, over the same range, $\left(1 - \frac{1}{w}g(x) \right) \geq 0$, so $D(t) \geq 0$.
+
+\item[(2)] If $t > h$, then
+%
+\begin{equation}
+\nonumber
+D(t) = \int_{-\infty}^h \left(1 - \frac{1}{w}g(x) \right) \dd F_X(x) + 
+	\int_{h}^t \left(1 - \frac{1}{w}g(x) \right) \dd F_X(x)
+\end{equation}
+%
+Now, we have $D(h) \geq 0$ from case (1) and we know $D(h) \rightarrow 0$ as $t \rightarrow \infty$ as it is the difference of CDFs. By monotonicity, for $x \geq h$, $g(x) \geq w$, so $1 - \frac{1}{w}g(x) \leq 0$ for $x \in [h,t]$. Thus, as $\dd F_X(x) \geq 0$, we know that $\int_{h}^t \left(1 - \frac{1}{w}g(x)\right) \dd F_X(x)$ is (weakly) monotone decreasing in $t$ and $\leq 0$. Thus, $D(t)$ increases monotonically to $D(h)$, then decreases monotonically to zero from $h$ as $t \rightarrow \infty$.
+\end{enumerate}
+%
+Therefore, for any value of $t$, we have shown that $D(t) \geq 0$. Thus, $Y$ stochastically dominates $X$.
+
+\end{proof}

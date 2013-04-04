@@ -1,4 +1,4 @@
-\begin{thebibliography}{90}
+\begin{thebibliography}{108}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
@@ -107,6 +107,11 @@ Cox, D.~R. (1972), \enquote{{Regression Models and Life-Tables},}
   \textit{Journal of the Royal Statistical Society. Series B (Methodological)},
   34, 187----220.
 
+\bibitem[{Cox and Mann(2008)}]{Cox:2008uu}
+Cox, J. and Mann, M. (2008), \enquote{{MaxQuant enables high peptide
+  identification rates, individualized ppb-range mass accuracies and
+  proteome-wide protein quantification},} \textit{Nat Biotechnol}.
+
 \bibitem[{Davey(2012)}]{Davey2012}
 Davey, A. (2012), \enquote{{Massive Data Streams},} \textit{Presented at
   SolarStat 2012}.
@@ -119,6 +124,11 @@ D\'{e}sert, F.-X., Mac\'{\i}as-P\'{e}rez, J.~F., Mayet, F., Giardino, G.,
   Tristram, M. (2008), \enquote{{Submillimetre point sources from the Archeops
   experiment: very cold clumps in the Galactic plane},} \textit{Astronomy and
   Astrophysics}, 481, 411--421.
+
+\bibitem[{Dicker et~al.(2010)Dicker, Lin, and Ivanov}]{Dicker:2010ea}
+Dicker, L., Lin, X., and Ivanov, A.~R. (2010), \enquote{{Increased power for
+  the analysis of label-free LC-MS/MS proteomics data by combining spectral
+  counts and peptide peak attributes.}} \textit{Mol Cell Proteomics}.
 
 \bibitem[{Dupac et~al.(2003)Dupac, Bernard, Boudet, Giard, Lamarre, M�ny,
   Pajot, Ristorcelli, Serra, Stepnik, and Torre}]{Dupac2003}
@@ -156,6 +166,11 @@ Geman, D., D'Avignon, C., Naiman, D.~Q., and Winslow, R.~L. (2004),
   \enquote{{Classifying Gene Expression Profiles from Pairwise mRNA
   Comparisons},} \textit{Statistical applications in genetics and molecular
   biology}, 3.
+
+\bibitem[{Ghaemmagham et~al.(2003)Ghaemmagham, O'Shea, and
+  Weissman}]{Ghaemmagham:2003tu}
+Ghaemmagham, S., O'Shea, E., and Weissman, J. (2003), \enquote{{Global analysis
+  of protein expression in yeast},} \textit{Nature}.
 
 \bibitem[{Gkikopoulos et~al.(2011)Gkikopoulos, Schofield, Singh, Pinskaya,
   Mellor, Smolle, Workman, Barton, and Owen-Hughes}]{Gkikopoulos2011}
@@ -198,6 +213,13 @@ Irizarry, R.~A., Wu, Z., and Jaffee, H.~A. (2006), \enquote{{Comparison of
   Affymetrix GeneChip expression measures.}} \textit{Bioinformatics (Oxford,
   England)}, 22, 789--94.
 
+\bibitem[{Ishihama et~al.(2005)Ishihama, Oda, Tabata, Sato, Nagasu, Rappsilber,
+  and Mann}]{Ishihama:2005ir}
+Ishihama, Y., Oda, Y., Tabata, T., Sato, T., Nagasu, T., Rappsilber, J., and
+  Mann, M. (2005), \enquote{{Exponentially modified protein abundance index
+  (emPAI) for estimation of absolute protein amount in proteomics by the number
+  of sequenced peptides per protein.}} \textit{Mol Cell Proteomics}.
+
 \bibitem[{Jansen and Verstrepen(2011)}]{Jansen2011}
 Jansen, A. and Verstrepen, K.~J. (2011), \enquote{{Nucleosome Positioning in
   Saccharomyces cerevisiae.}} \textit{Microbiology and molecular biology
@@ -211,6 +233,13 @@ Jeffreys, H. (1946), \enquote{{An Invariant Form for the Prior Probability in
 \bibitem[{Kadane(1993)}]{Kadane1993}
 Kadane, J.~B. (1993), \enquote{{Several Bayesians: A review},} \textit{Test},
   2, 1--32.
+
+\bibitem[{Karpievitch et~al.(2009)Karpievitch, Stanley, Taverner, Huang,
+  Adkins, Ansong, Heffron, Metz, Qian, and Yoon}]{Karpievitch:2009wb}
+Karpievitch, Y., Stanley, J., Taverner, T., Huang, J., Adkins, J., Ansong, C.,
+  Heffron, F., Metz, T., Qian, W., and Yoon, H. (2009), \enquote{{A statistical
+  framework for protein quantitation in bottom-up MS-based proteomics},}
+  \textit{BIOINFORMATICS}.
 
 \bibitem[{Kass and Wasserman(1996)}]{Kass1996}
 Kass, R.~E. and Wasserman, L. (1996), \enquote{{The Selection of Prior
@@ -249,6 +278,26 @@ Lindley, D., Tversky, A., and Brown, R. (1979), \enquote{{On the reconciliation
   of probability assessments},} \textit{Journal of the Royal Statistical
   Society. Series A.}, 142, 146--180.
 
+\bibitem[{Liu et~al.(2004)Liu, Sadygov, and Yates}]{Liu:2004hv}
+Liu, H., Sadygov, R.~G., and Yates, J.~R. (2004), \enquote{{A model for random
+  sampling and estimation of relative protein abundance in shotgun
+  proteomics.}} \textit{Anal Chem}.
+
+\bibitem[{Liu and Pierce(1994)}]{Liu1994}
+Liu, Q. and Pierce, D. (1994), \enquote{{A note on Gauss-Hermite quadrature},}
+  \textit{Biometrika}, 81, 624--629.
+
+\bibitem[{Lu et~al.(2006)Lu, Vogel, Wang, Yao, and Marcotte}]{Lu:2006p10143}
+Lu, P., Vogel, C., Wang, R., Yao, X., and Marcotte, E. (2006),
+  \enquote{{Absolute protein expression profiling estimates the relative
+  contributions of transcriptional and translational regulation},} \textit{Nat
+  Biotechnol}.
+
+\bibitem[{Luo et~al.(2009)Luo, Colangelo, and Sessa}]{Luo:2009ff}
+Luo, R., Colangelo, C., and Sessa, W. (2009), \enquote{{Bayesian Analysis of
+  iTRAQ Data with Nonrandom Missingness: Identification of Differentially
+  Expressed Proteins},} \textit{Statistics in Biosciences}.
+
 \bibitem[{McGee and Chen(2006)}]{McGee2006}
 McGee, M. and Chen, Z. (2006), \enquote{{Parameter estimation for the
   exponential-normal convolution model for background correction of Affymetrix
@@ -270,6 +319,9 @@ Meng, X.-L. and Xie, X. (2012), \enquote{{I} Got More Data, My Model Is More
   Refined, But My Estimator Is Getting Worse! {Am} {I} Just Dumb?}
   \textit{Econometric Reviews (special issue on Bayesian Inference and
   Information Theoretic Methods: In Memory of Arnold Zellner)}, to appear.
+
+\bibitem[{Michalski et~al.(2011)Michalski, Cox, and Mann}]{Michalski:2011gm}
+Michalski, A., Cox, J., and Mann, M. (2011), \textit{J Proteome Res}.
 
 \bibitem[{Mitra and Gupta(2011)}]{Mitra2011}
 Mitra, R. and Gupta, M. (2011), \enquote{{A continuous-index Bayesian hidden
@@ -301,6 +353,13 @@ Nguyen, X., Wainwright, M.~J., and Jordan, M.~I. (2009), \enquote{{On surrogate
 Nielsen, S. r.~F. (2003), \enquote{{Proper and Improper Multiple Imputation},}
   \textit{International Statistical Review}, 71, 593--607.
 
+\bibitem[{Old et~al.(2005)Old, Meyer-Arendt, Aveline-Wolf, Pierce, Mendoza,
+  Sevinsky, Resing, and Ahn}]{Old:2005jf}
+Old, W.~M., Meyer-Arendt, K., Aveline-Wolf, L., Pierce, K.~G., Mendoza, A.,
+  Sevinsky, J.~R., Resing, K.~A., and Ahn, N.~G. (2005), \enquote{{Comparison
+  of label-free methods for quantifying human proteins by shotgun proteomics.}}
+  \textit{Mol Cell Proteomics}.
+
 \bibitem[{Paradis et~al.(2010)Paradis, Veneziani, Noriega-Crespo, Paladini,
   Piacentini, Bernard, de~Bernardis, Calzoletti, Faustini, Martin, Masi,
   Montier, Natoli, Ristorcelli, Thompson, Traficante, and
@@ -329,6 +388,12 @@ Polishko, A., Ponts, N., {Le Roch}, K.~G., and Lonardi, S. (2012),
 \bibitem[{Quackenbush(2002)}]{Quackenbush2002}
 Quackenbush, J. (2002), \enquote{{Microarray data normalization and
   transformation.}} \textit{Nature genetics}, 32 Suppl, 496--501.
+
+\bibitem[{Rappsilber et~al.(2002)Rappsilber, Ryder, Lamond, and
+  Mann}]{Rappsilber2002}
+Rappsilber, J., Ryder, U., Lamond, A.~I., and Mann, M. (2002),
+  \enquote{Large-Scale Proteomic Analysis of the Human Spliceosome,}
+  \textit{Genome Research}, 12, 1231--1245.
 
 \bibitem[{Rashid et~al.(2011)Rashid, Giresi, Ibrahim, Sun, and
   Lieb}]{Rashid2011}
@@ -360,11 +425,25 @@ Rubin, D.~B. (1987), \textit{{Multiple Imputation for Nonresponse in Surveys}},
 Savage, L. (1976), \enquote{{On rereading RA Fisher},} \textit{The Annals of
   Statistics}, 4, 441--500.
 
+\bibitem[{Schulze and Usadel(2010)}]{Schulze:2010fk}
+Schulze, W.~X. and Usadel, B. (2010), \enquote{{Quantitation in
+  mass-spectrometry-based proteomics.}} \textit{Annu Rev Plant Biol}.
+
 \bibitem[{Schwartzman et~al.(2011)Schwartzman, Jaffe, Gavrilov, and
   Meyer}]{Schwartzman2011a}
 Schwartzman, A., Jaffe, A., Gavrilov, Y., and Meyer, C.~A. (2011),
   \enquote{Multiple Testing of Local Maxima for Detection of Peaks in
   {C}h{IP}-{S}eq Data,} .
+
+\bibitem[{Scigelova et~al.(2011)Scigelova, Hornshaw, Giannakopulos, and
+  Makarov}]{Scigelova:2011dt}
+Scigelova, M., Hornshaw, M., Giannakopulos, A., and Makarov, A. (2011),
+  \enquote{{Fourier transform mass spectrometry.}} \textit{Mol Cell
+  Proteomics}.
+
+\bibitem[{Scigelova and Makarov(2006)}]{Scigelova:2006p10560}
+Scigelova, M. and Makarov, A. (2006), \enquote{{Orbitrap mass analyzer-overview
+  and applications in proteomics},} \textit{Proteomics}.
 
 \bibitem[{Segal et~al.(2006)Segal, {Fondufe-Mittendorf}, Chen, Thastrom, Field,
   Moore, Wang, and Widom}]{sega:fond:chen:thas:2006}
@@ -392,6 +471,10 @@ Smyth, G.~K. (2005), \enquote{{Limma : Linear Models for Microarray Data},} in
   Bioconductor}, eds. Gentelman, R., Carey, V., Dudoit, S., Irizarry, R., and
   Huber, W., New York: Springer, no. 2005, pp. 397--420.
 
+\bibitem[{Steen and Mann(2004)}]{Steen:2004tk}
+Steen, H. and Mann, M. (2004), \enquote{{The ABC's (and XYZ's) of peptide
+  sequencing},} \textit{Nat Rev Mol Cell Biol}.
+
 \bibitem[{Storey and Tibshirani(2003)}]{StoreyTibshirani2003}
 Storey, J. and Tibshirani, R. (2003), \enquote{Statistical significance for
   genomewide studies,} \textit{Proceedings of the National Academy of Sciences
@@ -413,6 +496,13 @@ Tan, A.~C., Naiman, D.~Q., Xu, L., Winslow, R.~L., and Geman, D. (2005),
   \enquote{{Simple decision rules for classifying human cancers from gene
   expression profiles.}} \textit{Bioinformatics (Oxford, England)}, 21,
   3896--904.
+
+\bibitem[{Thakur et~al.(2011)Thakur, Geiger, Chatterjee, Bandilla, Froehlich,
+  Cox, and Mann}]{Thakur:2011kz}
+Thakur, S.~S., Geiger, T., Chatterjee, B., Bandilla, P., Froehlich, F., Cox,
+  J., and Mann, M. (2011), \enquote{{Deep and highly sensitive proteome
+  coverage by LC-MS-MS without pre-fractionation.}} \textit{Mol Cell
+  Proteomics}.
 
 \bibitem[{Tirosh(2012)}]{Tirosh2012}
 Tirosh, I. (2012), \enquote{{Computational analysis of nucleosome
@@ -443,6 +533,13 @@ van Dyk, D., Connors, A., Esch, D., Freeman, P., Kang, H., Karovska, M.,
 Weiner, A., Hughes, A., Yassour, M., Rando, O.~J., and Friedman, N. (2010),
   \enquote{{High-resolution nucleosome mapping reveals transcription-dependent
   promoter packaging.}} \textit{Genome research}, 20, 90--100.
+
+\bibitem[{Weiss et~al.(2010)Weiss, Schrimpf, Hengartner, Lercher, and von
+  Mering}]{Weiss:2010ik}
+Weiss, M., Schrimpf, S., Hengartner, M.~O., Lercher, M.~J., and von Mering, C.
+  (2010), \enquote{{Shotgun proteomics data from multiple organisms reveals
+  remarkable quantitative conservation of the eukaryotic core proteome.}}
+  \textit{Proteomics}.
 
 \bibitem[{Xie and Meng(2012)}]{Xie2012}
 Xie, X. and Meng, X.-L. (2012), \enquote{Exploring Multi-party Inferences: What
