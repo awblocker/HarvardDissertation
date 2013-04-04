@@ -46,7 +46,7 @@
 %End Andy's package additions
 
 \RequirePackage{lettrine}%big letter at start of chapter
-\RequirePackage[width=6.5in, height=8.5in, letterpaper]{geometry}
+\RequirePackage[width=6in, height=8.5in, letterpaper]{geometry}
 
 
 \RequirePackage{fancyhdr} 
@@ -56,7 +56,8 @@
 \RequirePackage{setspace} 
 \RequirePackage{booktabs} % for much better looking tables
 \RequirePackage[labelfont={sf,bf,small},textfont={sf,small},justification=RaggedRight,margin=0pt, figurewithin=section, tablewithin=section]{caption}
-\onehalfspacing
+%\onehalfspacing
+\doublespacing
 %\raggedright
 
 \parindent 12pt
@@ -173,7 +174,7 @@
 	
 	
 %Andys Spacing 
-%Be more forgiving, and stretch word spacing out more so that wormds don't run out into the margins..
+%Be more forgiving, and stretch word spacing out more so that words don't run out into the margins..
 \emergencystretch=1.5em
 %End Andy Spacing
 
