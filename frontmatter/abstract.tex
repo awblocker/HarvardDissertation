@@ -1,7 +1,25 @@
-% the abstract
+%!TEX TS-program = xelatex
+% !TEX root = ../thesis.tex
+% Do not delete; used to set build system
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
+The rise of high-throughput scientific experimentation and data collection has introduced new classes of statistical and computational challenges.
+The technologies driving this data explosion are subject to complex new forms of measurement error, requiring sophisticated statistical approaches.
+Simultaneously, statistical computing must adapt to larger volumes of data and new computational environments, particularly parallel and distributed settings.
+This dissertation presents several computational and theoretical contributions to these challenges.
 
-Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum, magna diam molestie sapien, non aliquet massa pede eu diam. Aliquam iaculis. Fusce et ipsum et nulla tristique facilisis. Donec eget sem sit amet ligula viverra gravida. Etiam vehicula urna vel turpis. Suspendisse sagittis ante a urna. Morbi a est quis orci consequat rutrum. Nullam egestas feugiat felis. Integer adipiscing semper ligula. Nunc molestie, nisl sit amet cursus convallis, sapien lectus pretium metus, vitae pretium enim wisi id lectus. Donec vestibulum. Etiam vel nibh. Nulla facilisi. Mauris pharetra. Donec augue. Fusce ultrices, neque id dignissim ultrices, tellus mauris dictum elit, vel lacinia enim metus eu nunc.
+In chapter 1, we consider the problem of estimating the genome-wide distribution of nucleosome positions from paired-end sequencing data.
+We develop a modeling approach based on nonparametric templates that controls for variability due to enzymatic digestion.
+We use this to construct a calibrated Bayesian method to detect local concentrations of nucleosome positions.
+Inference is carried out via a distributed HMC algorithm that scales linearly in complexity with the length of the genome being analyzed.
+We provide MPI-based implementations of the proposed methods, stand-alone and on Amazon EC2, which can provide inferences on an entire S. cerevisiae genome in less than 1 hour on EC2.
 
-Proin at eros non eros adipiscing mollis. Donec semper turpis sed diam. Sed consequat ligula nec tortor. Integer eget sem. Ut vitae enim eu est vehicula gravida. Morbi ipsum ipsum, porta nec, tempor id, auctor vitae, purus. Pellentesque neque. Nulla luctus erat vitae libero. Integer nec enim. Phasellus aliquam enim et tortor. Quisque aliquet, quam elementum condimentum feugiat, tellus odio consectetuer wisi, vel nonummy sem neque in elit. Curabitur eleifend wisi iaculis ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non velit non ligula laoreet ultrices. Praesent ultricies facilisis nisl. Vivamus luctus elit sit amet mi.
+We then present a method for absolute quantitation from LC-MS/MS proteomics experiments in chapter 2.
+We present a Bayesian model for the non-ignorable missing data mechanism induced by this technology, which includes an unusual combination of censoring and truncation.
+We provide a scalable MCMC sampler for inference in this setting, enabling full-proteome analyses using cluster computing environments.
+A set of simulation studies and actual experiments demonstrate this approach's validity and utility.
+
+We close in chapter 3 by proposing a theoretical framework for the analysis of preprocessing under the banner of multiphase inference.
+Preprocessing forms an oft-neglected foundation for a wide range of statistical and scientific analyses.
+We provide some initial theoretical foundations for this area, including distributed preprocessing, building upon previous work in multiple imputation.
+We demonstrate that multiphase inferences can, in some cases, even surpass standard single-phase estimators in efficiency and robustness.
+Our work suggests several rich paths for further research into the statistical principles underlying preprocessing.
