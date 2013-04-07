@@ -750,13 +750,13 @@ In Section \ref{proteomics:sec:dataanalysis}, we assess the comparative performa
 \subsection{Data}
 \label{proteomics:sec:data}
 
-We conducted a set of LC/MS-MS experiments using the Universal Proteome Standard 2 (UPS2), a constructed biological sample that contains 48 human proteins.
+We conducted a set of LC-MS/MS experiments using the Universal Proteome Standard 2 (UPS2), a constructed biological sample that contains 48 human proteins.
 These proteins are present in six concentrations, ranging from .5fM to 50,000 fM, with eight known proteins at each concentration.
 These proteins are selected to span a broad range of physical properties (size and hydrophobicity) within each concentration, removing a potential confounding factor while reflecting the actual variation among proteins in typical samples.
 The concentration specified for each protein in the standard was confirmed by the manufacturer using multiple methods, so we are comfortable taking the concentrations reported by the manufacturer as ground truth for subsequent analyses.
 With its high dynamic range, the standard provides a realistic and stringent test of our method.
 
-We ran five LC/MS-MS experiments using this standard at three gradient lengths, 90, 180, and 360 minutes, with two, two, and one replicates per gradient length, respectively.
+We ran five LC-MS/MS experiments using this standard at three gradient lengths, 90, 180, and 360 minutes, with two, two, and one replicates per gradient length, respectively.
 Each gradient length implies a different set of parameters for the missing data mechanism.
 Longer gradients allow for the observation of a greater variety MS2 spectra and is expected to decrease the degree of intensity-based missingness.
 However, longer gradients can also reduce the dynamic range of observed intensities and require substantially greater effort from the experimenter.
@@ -873,7 +873,7 @@ We discuss the implications of this capability for biological applications in Se
 \section{Concluding remarks}
 \label{proteomics:sec:remarks}
 
-We have presented a model-based approach to label-free absolute quantitation in LC/MS-MS proteomics experiments.
+We have presented a model-based approach to label-free absolute quantitation in LC-MS/MS proteomics experiments.
 As the results of Sections \ref{proteomics:sec:simulations} and \ref{proteomics:sec:empirical} show, accounting for non-ignorable missing data in the proteomics context improves estimates of absolute abundances.
 Our method also provides well-calibrated measures of uncertainty, as the results of Sections \ref{proteomics:sec:coverage} and \ref{proteomics:sec:dataanalysis} show.
 Below, we provide some broader context and particular insights on this class of methods and problems, focusing on the role of non-ignorable missing data in complex experiments, efficient computation with missing data of variable dimension, and the role of absolute quantitation in biological analyses.
@@ -906,7 +906,7 @@ Absolute quantitation provides a different view on biological processes than rel
 Whereas relative quantitation can only measure the protein-by-protein differences in abundances across experiments, absolute quantitation provides estimates of the abundances of different proteins within a single population of cells.
 Such information is somewhat interesting for high-abundance proteins, but it promises the greatest insights from the study of low-abundance ones.
 
-Reliable, accurate quantitation of low-abundance proteins also makes LC/MS-MS methods applicable to new classes of biological investigations.
+Reliable, accurate quantitation of low-abundance proteins also makes LC-MS/MS methods applicable to new classes of biological investigations.
 Two of the most promising areas are the study of mistranslation and transcription factors.
 Both involve proteins which appear at low concentrations but can have an outsized biological impact.
 In the case of mistranslation, the cell must spend a great deal of energy handling defective proteins; the rate of mistranslation represents the largest determinant of these costs.
