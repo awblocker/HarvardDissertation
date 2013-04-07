@@ -12,10 +12,10 @@
 
 
 \section{Details of MCMC algorithm}
-\label{sec:mcmcDetails}
+\label{supp:proteomics:sec:mcmcDetails}
 
 \subsection{Gibbs updates for $\bm \mu$ and $\bm \gamma$}
-\label{sc:draw_intensity_parameters}
+\label{supp:proteomics:sc:draw_intensity_parameters}
 
 Conditional on the missing data $\bm M$ and all other parameters, the conditional posterior distribution of the peptide- and protein-level mean parameters $\bm \mu$ and $\bm \gamma$ are standard Normal draws.
 The conditional posterior of the peptide-level means is
@@ -44,7 +44,7 @@ Similarly, the conditional posterior distribution for the state-level precisions
 \end{equation*}
 
 \subsubsection{Metropolis-Hastings updates for variance hyperparameters}
-\label{sec:var_hyperparam_updates}
+\label{supp:proteomics:sec:var_hyperparam_updates}
 
 As a result of our weakly-informative log-normal priors on the shape parameters $\alpha_\sigma$ and $\alpha_\tau$, their conditional posterior is not available in closed-form.
 To handle these updates, we use conditional independence chain Metropolis-Hastings draws.
@@ -57,7 +57,7 @@ Specifically, we propose from a multivariate log-t distribution given by
 \widehat{\log\alpha_{\sigma}} \\
 \widehat{\log\beta_{\sigma}}
 \end{array}\right) +
-\sqrt{\frac{\nu}{\nu - 2}} \hat{\mathcal{I}}(\widehat{\log\alpha_{\sigma}},\widehat{\log\beta_{\sigma}})^{-1/2} \bm{t_{\nu}} \label{eqn:alpha_and_beta_sigma_multivar_log_normal_prop}
+\sqrt{\frac{\nu}{\nu - 2}} \hat{\mathcal{I}}(\widehat{\log\alpha_{\sigma}},\widehat{\log\beta_{\sigma}})^{-1/2} \bm{t_{\nu}} \label{supp:proteomics:eqn:alpha_and_beta_sigma_multivar_log_normal_prop}
 \end{eqnarray}
 where $\widehat{\log\alpha_{\sigma}}$ and $\widehat{\log\beta_{\sigma}}$ are the conditional posterior modes of $\log\alpha_{\sigma}$ and $\log\beta_\sigma$, $\hat{\mathcal{I}}(\log\alpha_\sigma,\log\beta_\sigma)$ is the negative Hessian of the log-conditional posterior evaluated at the posterior mode, and $\bm{t_{\nu}}$ is a vector of independent and identically distributed $t_{\nu}$ random variables.
 
@@ -66,13 +66,13 @@ This requires only univariate optimization as the mode of $\log \beta_\sigma$ gi
 \begin{eqnarray}
 \hat{\beta}_{\sigma} = \frac{n\alpha_{\sigma} + \alpha_{0 \sigma}}{\sum_{i=1}^{n}\sigma_{i}^{-2}} .
 \end{eqnarray}
-We provide an example of this approximation's behavior in Figure \ref{fig:Normal-approximation-to-log-gamma-pars}.
+We provide an example of this approximation's behavior in Figure \ref{supp:proteomic:fig:Normal-approximation-to-log-gamma-pars}.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/proteomics/gamma_normal_approx}
 
-\caption{Normal approximation to the conditional posterior of $(\log \alpha_\sigma, \log \beta_\sigma)$. Contours of the log-conditional posterior and proposal for $\alpha_\sigma=10$ and $\beta_\sigma=5$ with $n=1000$ observations.\label{fig:Normal-approximation-to-log-gamma-pars}} 
+\caption{Normal approximation to the conditional posterior of $(\log \alpha_\sigma, \log \beta_\sigma)$. Contours of the log-conditional posterior and proposal for $\alpha_\sigma=10$ and $\beta_\sigma=5$ with $n=1000$ observations.\label{supp:proteomics:fig:Normal-approximation-to-log-gamma-pars}} 
 \end{figure}
 
 
@@ -104,14 +104,14 @@ where $\bm{t}_\nu$ is defined as before.
 
 
 \subsection{Metropolis-Hastings update for number of states parameters $(r, \lambda)$}
-\label{sec:draw_number_of_states_hyperparameters}
+\label{supp:proteomics:sec:draw_number_of_states_hyperparameters}
 
 The conditional posterior distribution of $(r, \lambda)$ is not of conjugate form regardless of the prior distribution.
 For our inference, we take $r \sim LogNormal(\mu_{0r}, \sigma^2_{0r})$ independent of $\lambda \sim Beta(\alpha_{0\lambda}, \beta_{0\lambda})$ a priori.
 We construct a proposal for these parameters by first transforming them to $(\log r, \logit \lambda)$.
 We then estimate a normal approximation to the joint conditional posterior of these transformed parameters.
 
-As in Section \ref{sec:var_hyperparam_updates}, we can analytically maximize  the conditional posterior over one parameter given the other.
+As in Section \ref{supp:proteomic:sec:var_hyperparam_updates}, we can analytically maximize  the conditional posterior over one parameter given the other.
 Maximizing over $\log r$ yields
 %
 \begin{equation*}
@@ -132,7 +132,7 @@ Following this optimization, we compute the negative Hessian of the log-conditio
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth]{figures/proteomics/Neg_Bin_Parameter_Draw}
-\caption{Conditional posterior contours for $(r, \lambda)$.\label{fig:Negative-binomial-parameters}}
+\caption{Conditional posterior contours for $(r, \lambda)$.\label{supp:proteomics:fig:Negative-binomial-parameters}}
 \end{figure}
 
 
@@ -146,7 +146,7 @@ Following this optimization, we compute the negative Hessian of the log-conditio
 
 \begin{sidewaystable}
 \begin{center}
-\caption{Simulation analysis of protein abundance estimates by $\zeta_i$ and $m_i$, 90m gradient. All estimates are $\pm$ one standard deviation. \label{tab:sim_estimates_90m}}
+\caption{Simulation analysis of protein abundance estimates by $\zeta_i$ and $m_i$, 90m gradient. All estimates are $\pm$ one standard deviation. \label{supp:proteomics:tab:sim_estimates_90m}}
 \begin{tabular}{ccc|c|ccccc}
  Grad. & $\zeta_i$ & $m_i$ & Posterior Mean & Sum Int. & Mean Int. & Med. Int. & AMI & emPAI \\ 
   \hline
@@ -193,7 +193,7 @@ Following this optimization, we compute the negative Hessian of the log-conditio
 
 \begin{sidewaystable}
 \begin{center}
-\caption{Simulation analysis of protein abundance estimates by $\zeta_i$ and $m_i$, 180m gradient. All estimates are $\pm$ one standard deviation. \label{tab:sim_estimates_180m}}
+\caption{Simulation analysis of protein abundance estimates by $\zeta_i$ and $m_i$, 180m gradient. All estimates are $\pm$ one standard deviation. \label{supp:proteomics:tab:sim_estimates_180m}}
 \begin{tabular}{ccc|c|ccccc}
  Grad. & $\zeta_i$ & $m_i$ & Posterior Mean & Sum Int. & Mean Int. & Med. Int. & AMI & emPAI \\ 
  \hline
@@ -240,7 +240,7 @@ Following this optimization, we compute the negative Hessian of the log-conditio
 
 \begin{sidewaystable}
 \begin{center}
-\caption{Simulation analysis of protein abundance estimates by $\zeta_i$ and $m_i$, 360m gradient. All estimates are $\pm$ one standard deviation. \label{tab:sim_estimates_360m}}
+\caption{Simulation analysis of protein abundance estimates by $\zeta_i$ and $m_i$, 360m gradient. All estimates are $\pm$ one standard deviation. \label{supp:proteomics:tab:sim_estimates_360m}}
 \begin{tabular}{ccc|c|ccccc}
  Grad. & $\zeta_i$ & $m_i$ & Posterior Mean & Sum Int. & Mean Int. & Med. Int. & AMI & emPAI \\ 
  \hline
@@ -291,7 +291,7 @@ Following this optimization, we compute the negative Hessian of the log-conditio
 \begin{table}
 \begin{center}
 \caption{Coverage of HPD posterior intervals for $\zeta_i$ in simulation study, 90m gradient
-\label{tab:sim_coverage_90m}}
+\label{supp:proteomics:tab:sim_coverage_90m}}
 \begin{tabular}{ccc|cccc}
  Grad. & $\zeta_i$ & $m_i$ & 68\% & 90\% & 95\% & 99\% \\ 
   \hline
@@ -338,7 +338,7 @@ Following this optimization, we compute the negative Hessian of the log-conditio
 \begin{table}
 \begin{center}
 \caption{Coverage of HPD posterior intervals for $\zeta_i$ in simulation study, 180m gradient
-\label{tab:sim_coverage_180m}}
+\label{supp:proteomics:tab:sim_coverage_180m}}
 \begin{tabular}{ccc|cccc}
  Grad. & $\zeta_i$ & $m_i$ & 68\% & 90\% & 95\% & 99\% \\ 
   \hline
@@ -385,7 +385,7 @@ Following this optimization, we compute the negative Hessian of the log-conditio
 \begin{table}
 \begin{center}
 \caption{Coverage of HPD posterior intervals for $\zeta_i$ in simulation study, 360m gradient
-\label{tab:sim_coverage_360m}}
+\label{supp:proteomics:tab:sim_coverage_360m}}
 \begin{tabular}{ccc|cccc}
  Grad. & $\zeta_i$ & $m_i$ & 68\% & 90\% & 95\% & 99\% \\ 
  \hline
@@ -454,7 +454,7 @@ The dark horizontal line each plot is the true abundance.}
 \begin{landscape}
 \begin{longtable}{cccc|cc|ccccc}
 \caption{Detailed empirical results for UPS2 experiments, 90m gradients
-\label{tab:ups2_90m}} \\
+\label{supp:proteomics:tab:ups2_90m}} \\
  Protein & $\zeta_i$ & Grad. & Rep. & $\hat{\zeta}_i$ & 90\% HPD Int. & Sum Int. & Mean Int. & Med. Int. & AMI & emPAI \\
 \hline
 \endfirsthead
@@ -537,7 +537,7 @@ P02788ups & -0.30 & 90m &   1 & 0.04 & $(-1.26, 1.40)$ & 1.53 & 2.58 & 2.92 & 2.
 \begin{landscape}
 \begin{longtable}{cccc|cc|ccccc}
 \caption{Detailed empirical results for UPS2 experiments, 180m gradients
-\label{tab:ups2_180m}} \\
+\label{supp:proteomics:tab:ups2_180m}} \\
  Protein & $\zeta_i$ & Grad. & Rep. & $\hat{\zeta}_i$ & 90\% HPD Int. & Sum Int. & Mean Int. & Med. Int. & AMI & emPAI \\
 \hline
 \endfirsthead
@@ -624,7 +624,7 @@ P02788ups & -0.30 & 180m &   1 & 0.47 & $(-0.48, 1.40)$ & 0.68 & 1.76 & 2.14 & 1
 \begin{landscape}
 \begin{longtable}{cccc|cc|ccccc}
 \caption{Detailed empirical results for UPS2 experiments, 360m gradient
-\label{tab:ups2_360m}} \\
+\label{supp:proteomics:tab:ups2_360m}} \\
  Protein & $\zeta_i$ & Grad. & Rep. & $\hat{\zeta}_i$ & 90\% HPD Int. & Sum Int. & Mean Int. & Med. Int. & AMI & emPAI \\
 \hline
 \endfirsthead
