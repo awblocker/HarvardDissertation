@@ -66,7 +66,7 @@ This requires only univariate optimization as the mode of $\log \beta_\sigma$ gi
 \begin{eqnarray}
 \hat{\beta}_{\sigma} = \frac{n\alpha_{\sigma} + \alpha_{0 \sigma}}{\sum_{i=1}^{n}\sigma_{i}^{-2}} .
 \end{eqnarray}
-We provide an example of this approximation's behavior in Figure \ref{supp:proteomic:fig:Normal-approximation-to-log-gamma-pars}.
+We provide an example of this approximation's behavior in Figure \ref{supp:proteomics:fig:Normal-approximation-to-log-gamma-pars}.
 
 \begin{figure}
 \centering
@@ -111,7 +111,7 @@ For our inference, we take $r \sim LogNormal(\mu_{0r}, \sigma^2_{0r})$ independe
 We construct a proposal for these parameters by first transforming them to $(\log r, \logit \lambda)$.
 We then estimate a normal approximation to the joint conditional posterior of these transformed parameters.
 
-As in Section \ref{supp:proteomic:sec:var_hyperparam_updates}, we can analytically maximize  the conditional posterior over one parameter given the other.
+As in Section \ref{supp:proteomics:sec:var_hyperparam_updates}, we can analytically maximize  the conditional posterior over one parameter given the other.
 Maximizing over $\log r$ yields
 %
 \begin{equation*}
