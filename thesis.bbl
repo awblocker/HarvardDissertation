@@ -1,4 +1,4 @@
-\begin{thebibliography}{108}
+\begin{thebibliography}{116}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
@@ -41,6 +41,40 @@ Anderson, L.~D., Zavagno, A., Rod\'{o}n, J.~A., Russeil, D., Abergel, A., Ade,
 \bibitem[{Barski and Zhao(2009)}]{bars:zhao:2009}
 Barski, A. and Zhao, K. (2009), \enquote{Genomic location analysis by
   {C}h{IP}-{S}eq,} \textit{Journal of Cellular Biochemistry}, 107, 11--18.
+
+\bibitem[{Bell et~al.(2009)Bell, Deutsch, Au, Kearney, Beavis, Sechi, Nilsson,
+  Bergeron, Beardslee, Chappell, Meredith, Sheffield, Gray, Hajivandi, Pope,
+  Predki, Kullolli, Hincapie, Hancock, Jia, Song, Li, Wei, Yang, Wang, Ying,
+  Zhang, Cai, Qian, He, Meyer, Stephan, Eisenacher, Marcus, Langenfeld, May,
+  Carr, Ahmad, Zhu, Smith, Hanash, Struthers, Wang, Zhang, An, Goldman,
+  Carlsohn, van~der Post, Hung, Sarracino, Parker, Krastins, Kucherlapati,
+  Bourassa, Poirier, Kapp, Patsiouras, Moritz, Simpson, Houle, LaBoissiere,
+  Metalnikov, Nguyen, Pawson, Wong, Cociorva, Yates~III, Ellison,
+  Lopez-Campistrous, Semchuk, Wang, Ping, Elia, Dunn, Wynne, Walker, Strahler,
+  Andrews, Hood, Bigbee, Conrads, Smith, Borchers, Lajoie, Bendall, Speicher,
+  Speicher, Fujimoto, Nakamura, Paik, Cho, Kwon, Lee, Jeong, Chung, Miller,
+  Grimm, Williams, Dorschel, Falkner, Martens, and no}]{Bell:2009il}
+Bell, A.~W., Deutsch, E.~W., Au, C.~E., Kearney, R.~E., Beavis, R., Sechi, S.,
+  Nilsson, T., Bergeron, J. J.~M., Beardslee, T.~A., Chappell, T., Meredith,
+  G., Sheffield, P., Gray, P., Hajivandi, M., Pope, M., Predki, P., Kullolli,
+  M., Hincapie, M., Hancock, W.~S., Jia, W., Song, L., Li, L., Wei, J., Yang,
+  B., Wang, J., Ying, W., Zhang, Y., Cai, Y., Qian, X., He, F., Meyer, H.~E.,
+  Stephan, C., Eisenacher, M., Marcus, K., Langenfeld, E., May, C., Carr,
+  S.~A., Ahmad, R., Zhu, W., Smith, J.~W., Hanash, S.~M., Struthers, J.~J.,
+  Wang, H., Zhang, Q., An, Y., Goldman, R., Carlsohn, E., van~der Post, S.,
+  Hung, K.~E., Sarracino, D.~A., Parker, K., Krastins, B., Kucherlapati, R.,
+  Bourassa, S., Poirier, G.~G., Kapp, E., Patsiouras, H., Moritz, R., Simpson,
+  R., Houle, B., LaBoissiere, S., Metalnikov, P., Nguyen, V., Pawson, T., Wong,
+  C. C.~L., Cociorva, D., Yates~III, J.~R., Ellison, M.~J., Lopez-Campistrous,
+  A., Semchuk, P., Wang, Y., Ping, P., Elia, G., Dunn, M.~J., Wynne, K.,
+  Walker, A.~K., Strahler, J.~R., Andrews, P.~C., Hood, B.~L., Bigbee, W.~L.,
+  Conrads, T.~P., Smith, D., Borchers, C.~H., Lajoie, G.~A., Bendall, S.~C.,
+  Speicher, K.~D., Speicher, D.~W., Fujimoto, M., Nakamura, K., Paik, Y.-K.,
+  Cho, S.~Y., Kwon, M.-S., Lee, H.-J., Jeong, S.-K., Chung, A.~S., Miller,
+  C.~A., Grimm, R., Williams, K., Dorschel, C., Falkner, J.~A., Martens, L.,
+  and no, J. A. V.~i. (2009), \enquote{{A HUPO test sample study reveals common
+  problems in mass spectrometry|[ndash]|based proteomics},} \textit{Nat Meth},
+  6, 423--430.
 
 \bibitem[{Berger(1985)}]{Berger1985}
 Berger, J.~O. (1985), \textit{{Statistical Decision Theory and Bayesian
@@ -116,6 +150,13 @@ Cox, J. and Mann, M. (2008), \enquote{{MaxQuant enables high peptide
 Davey, A. (2012), \enquote{{Massive Data Streams},} \textit{Presented at
   SolarStat 2012}.
 
+\bibitem[{de~Godoy et~al.(2008)de~Godoy, Olsen, Cox, Nielsen, Hubner,
+  Fr{\"o}hlich, Walther, and Mann}]{deGodoy:2008jk}
+de~Godoy, L. M.~F., Olsen, J.~V., Cox, J., Nielsen, M.~L., Hubner, N.~C.,
+  Fr{\"o}hlich, F., Walther, T.~C., and Mann, M. (2008),
+  \enquote{{Comprehensive mass-spectrometry-based proteome quantification of
+  haploid versus diploid yeast},} \textit{Nature}.
+
 \bibitem[{D\'{e}sert et~al.(2008)D\'{e}sert, Mac\'{\i}as-P\'{e}rez, Mayet,
   Giardino, Renault, Aumont, Beno\^{\i}t, Bernard, Ponthieu, and
   Tristram}]{Desert2008}
@@ -136,6 +177,11 @@ Dupac, X., Bernard, J.-P., Boudet, N., Giard, M., Lamarre, J.-M., M�ny, C.,
   Pajot, F., Ristorcelli, I., Serra, G., Stepnik, B., and Torre, J.-P. (2003),
   \enquote{{Inverse temperature dependence of the dust submillimeter spectral
   index},} \textit{Astronomy and Astrophysics}, 404, L11--L15.
+
+\bibitem[{Eng et~al.(1994)Eng, McCormack, and Yates}]{Eng:1994fj}
+Eng, J.~K., McCormack, A.~L., and Yates, J.~R. (1994), \enquote{{An approach to
+  correlate tandem mass spectral data of peptides with amino acid sequences in
+  a protein database},} \textit{J Am Soc Mass Spectrom}, 5, 976--989.
 
 \bibitem[{Farrell(1968)}]{Farrell1968}
 Farrell, R.~H. (1968), \enquote{{On a Necessary and Sufficient Condition for
@@ -166,6 +212,12 @@ Geman, D., D'Avignon, C., Naiman, D.~Q., and Winslow, R.~L. (2004),
   \enquote{{Classifying Gene Expression Profiles from Pairwise mRNA
   Comparisons},} \textit{Statistical applications in genetics and molecular
   biology}, 3.
+
+\bibitem[{Gerber et~al.(2003)Gerber, Rush, Stemman, Kirschner, and
+  Gygi}]{Gerber:2003kq}
+Gerber, S.~A., Rush, J., Stemman, O., Kirschner, M.~W., and Gygi, S.~P. (2003),
+  \enquote{{Absolute quantification of proteins and phosphoproteins from cell
+  lysates by tandem MS.}} \textit{Proc Natl Acad Sci USA}, 100, 6940--6945.
 
 \bibitem[{Ghaemmagham et~al.(2003)Ghaemmagham, O'Shea, and
   Weissman}]{Ghaemmagham:2003tu}
@@ -298,6 +350,12 @@ Luo, R., Colangelo, C., and Sessa, W. (2009), \enquote{{Bayesian Analysis of
   iTRAQ Data with Nonrandom Missingness: Identification of Differentially
   Expressed Proteins},} \textit{Statistics in Biosciences}.
 
+\bibitem[{Makawita and Diamandis(2010)}]{Makawita:2010eg}
+Makawita, S. and Diamandis, E.~P. (2010), \enquote{{The bottleneck in the
+  cancer biomarker pipeline and protein quantification through mass
+  spectrometry-based approaches: current strategies for candidate
+  verification.}} \textit{Clin. Chem.}
+
 \bibitem[{McGee and Chen(2006)}]{McGee2006}
 McGee, M. and Chen, Z. (2006), \enquote{{Parameter estimation for the
   exponential-normal convolution model for background correction of Affymetrix
@@ -321,7 +379,10 @@ Meng, X.-L. and Xie, X. (2012), \enquote{{I} Got More Data, My Model Is More
   Information Theoretic Methods: In Memory of Arnold Zellner)}, to appear.
 
 \bibitem[{Michalski et~al.(2011)Michalski, Cox, and Mann}]{Michalski:2011gm}
-Michalski, A., Cox, J., and Mann, M. (2011), \textit{J Proteome Res}.
+Michalski, A., Cox, J., and Mann, M. (2011), \enquote{{More than 100,000
+  Detectable Peptide Species Elute in Single Shotgun Proteomics Runs but the
+  Majority is Inaccessible to Data-Dependent LC−MS/MS},} \textit{J Proteome
+  Res}, 10, 1785--1793.
 
 \bibitem[{Mitra and Gupta(2011)}]{Mitra2011}
 Mitra, R. and Gupta, M. (2011), \enquote{{A continuous-index Bayesian hidden
@@ -360,6 +421,13 @@ Old, W.~M., Meyer-Arendt, K., Aveline-Wolf, L., Pierce, K.~G., Mendoza, A.,
   of label-free methods for quantifying human proteins by shotgun proteomics.}}
   \textit{Mol Cell Proteomics}.
 
+\bibitem[{Ong et~al.(2002)Ong, Blagoev, Kratchmarova, Kristensen, Steen,
+  Pandey, and Mann}]{Ong:2002tf}
+Ong, S.-E., Blagoev, B., Kratchmarova, I., Kristensen, D.~B., Steen, H.,
+  Pandey, A., and Mann, M. (2002), \enquote{{Stable isotope labeling by amino
+  acids in cell culture, SILAC, as a simple and accurate approach to expression
+  proteomics.}} \textit{Mol Cell Proteomics}.
+
 \bibitem[{Paradis et~al.(2010)Paradis, Veneziani, Noriega-Crespo, Paladini,
   Piacentini, Bernard, de~Bernardis, Calzoletti, Faustini, Martin, Masi,
   Montier, Natoli, Ristorcelli, Thompson, Traficante, and
@@ -378,6 +446,13 @@ Park, P.~J. (2009), \enquote{{C}h{IP}-{S}eq: {A}dvantages and challenges of a
 \bibitem[{Pepke et~al.(2009)Pepke, Wold, and Mortazavi}]{Pepke2009}
 Pepke, S., Wold, B., and Mortazavi, A. (2009), \enquote{{Computation for
   ChIP-seq and RNA-seq studies.}} \textit{Nature methods}, 6, S22--32.
+
+\bibitem[{Perkins et~al.(1999)Perkins, Pappin, Creasy, and
+  Cottrell}]{Perkins:1999ed}
+Perkins, D.~N., Pappin, D.~J., Creasy, D.~M., and Cottrell, J.~S. (1999),
+  \enquote{{Probability-based protein identification by searching sequence
+  databases using mass spectrometry data.}} \textit{Electrophoresis}, 20,
+  3551--3567.
 
 \bibitem[{Polishko et~al.(2012)Polishko, Ponts, {Le Roch}, and
   Lonardi}]{Polishko2012}
@@ -425,10 +500,6 @@ Rubin, D.~B. (1987), \textit{{Multiple Imputation for Nonresponse in Surveys}},
 Savage, L. (1976), \enquote{{On rereading RA Fisher},} \textit{The Annals of
   Statistics}, 4, 441--500.
 
-\bibitem[{Schulze and Usadel(2010)}]{Schulze:2010fk}
-Schulze, W.~X. and Usadel, B. (2010), \enquote{{Quantitation in
-  mass-spectrometry-based proteomics.}} \textit{Annu Rev Plant Biol}.
-
 \bibitem[{Schwartzman et~al.(2011)Schwartzman, Jaffe, Gavrilov, and
   Meyer}]{Schwartzman2011a}
 Schwartzman, A., Jaffe, A., Gavrilov, Y., and Meyer, C.~A. (2011),
@@ -465,6 +536,11 @@ Shivaswamy, S., Bhinge, A., Zhao, Y., Jones, S., Hirst, M., and Iyer, V.~R.
   eukaryotic genome in response to transcriptional perturbation.}} \textit{PLoS
   biology}, 6, e65.
 
+\bibitem[{Silva(2005)}]{Silva:2005cn}
+Silva, J.~C. (2005), \enquote{{Absolute Quantification of Proteins by LCMSE: A
+  Virtue of Parallel ms Acquisition},} \textit{Mol Cell Proteomics}, 5,
+  144--156.
+
 \bibitem[{Smyth(2005)}]{Smyth2005}
 Smyth, G.~K. (2005), \enquote{{Limma : Linear Models for Microarray Data},} in
   \textit{Bioinformatics and Computational Biology Solutions using R and
@@ -490,6 +566,21 @@ Sun, W., Buck, M.~J., Patel, M., and Davis, I.~J. (2009{\natexlab{a}}),
 Sun, W., Xie, W., Xu, F., Grunstein, M., and Li, K.-C. (2009{\natexlab{b}}),
   \enquote{{Dissecting nucleosome free regions by a segmental semi-Markov
   model.}} \textit{PloS one}, 4, e4721.
+
+\bibitem[{Tabb et~al.(2010)Tabb, Vega-Montoto, Rudnick, Variyath, Ham, Bunk,
+  Kilpatrick, Billheimer, Blackman, Cardasis, Carr, Clauser, Jaffe, Kowalski,
+  Neubert, Regnier, Schilling, Tegeler, Wang, Wang, Whiteaker, Zimmerman,
+  Fisher, Gibson, Kinsinger, Mesri, Rodriguez, Stein, Tempst, Paulovich,
+  Liebler, and Spiegelman}]{Tabb:2010bc}
+Tabb, D.~L., Vega-Montoto, L., Rudnick, P.~A., Variyath, A.~M., Ham, A.-J.~L.,
+  Bunk, D.~M., Kilpatrick, L.~E., Billheimer, D.~D., Blackman, R.~K., Cardasis,
+  H.~L., Carr, S.~A., Clauser, K.~R., Jaffe, J.~D., Kowalski, K.~A., Neubert,
+  T.~A., Regnier, F.~E., Schilling, B., Tegeler, T.~J., Wang, M., Wang, P.,
+  Whiteaker, J.~R., Zimmerman, L.~J., Fisher, S.~J., Gibson, B.~W., Kinsinger,
+  C.~R., Mesri, M., Rodriguez, H., Stein, S.~E., Tempst, P., Paulovich, A.~G.,
+  Liebler, D.~C., and Spiegelman, C. (2010), \enquote{{Repeatability and
+  Reproducibility in Proteomic Identifications by Liquid
+  Chromatography−Tandem Mass Spectrometry},} \textit{J Proteome Res}.
 
 \bibitem[{Tan et~al.(2005)Tan, Naiman, Xu, Winslow, and Geman}]{Tan2005}
 Tan, A.~C., Naiman, D.~Q., Xu, L., Winslow, R.~L., and Geman, D. (2005),
