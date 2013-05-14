@@ -1,5 +1,5 @@
 %!TEX TS-program = xelatex
-% !TEX root = ../thesis.tex
+%!TEX root = ../thesis.tex
 % Do not delete; used to set build system
 
 %\begin{savequote}[75mm] 
@@ -233,7 +233,7 @@ This Poisson-multinomial structure for the observed reads is marginally equivale
 
 In detail, denote the length of the sequence of interest $N$, and the width of the template $2w+1$ as above.
 %
-Then we can define the digestion (or basis) matrix $X$ as an $(N\,\times\,N - \ell_0)$ matrix where each row corresponds to a shifted version of the template.
+Then we can define the digestion (or basis) matrix $X$ as an $(N\,\times\,N - 2 \lfloor \ell_0 / 2 \rfloor)$ matrix where each row corresponds to a shifted version of the template.
 The matrix $X$ is fully specified as follows,
 \begin{equation}
 % Aligned vector version
@@ -246,7 +246,7 @@ The matrix $X$ is fully specified as follows,
 	    \end{pmatrix}
 \end{equation}
 %
-Using the $(N - \ell_0)$-dimensional constrained vector of coefficients $\bm
+Using the $(N - 2 \lfloor \ell_0 / 2 \rfloor)$-dimensional constrained vector of coefficients $\bm
 \beta \geq 0$, we obtain an $N$-dimensional vector of expected counts $\bm
 \lambda$ using Equation \ref{nucleosomes:eq:linear_model}.
 %
@@ -343,7 +343,7 @@ Thus, the relative magnitudes of the entries of $\bm \beta$ within such a window
 Choosing $p = 0$ yields a measure of relative concentration at each base pair in the chromosome.
 However, choosing $p > 0$ is generally preferred to account for biological variation in nucleosome positions.
 These estimands come with a useful baseline.
-Assuming a uniform local distribution of nucleosome positions across cells in the population would imply $C_{p,l}(k) = \frac{p}{l}$.
+Assuming a uniform local distribution of nucleosome positions across cells in the population would imply $C_{p,l}(k) = \frac{(2p+1)}{(2l+1)}$.
 Deviations from this baseline provide a normalized measure of local concentration.
 We present strategies for the detection of local nucleosome concentrations based on these estimands in Section \ref{nucleosomes:sec:detection}.
 
@@ -535,7 +535,7 @@ However, they are much faster than expected, as the log-conditional posterior's 
 % AWB: See sentence below.
 In particular, all matrix-vector products involving the $X$ matrix can be computed as convolutions with the template vector $\bm t$ instead, reducing the complexity of such products from $O(B^2)$ to $O(B \log B)$.
 Details of distributed algorithm, computational infrastructure, and tuning of the HMC are given in the online supplement. % [\cite{supplementInference}].
-A Python implementation of the sampler is available on GitHub, \url{www.github.com/awblocker/cplate}	
+A Python implementation of the sampler is available on GitHub, \url{www.github.com/awblocker/cplate}.
 %% EDO :: PROVIDE THE URL
 % AWB: Done. Repository is currently private.
 
@@ -546,7 +546,7 @@ Recall from Section \ref{nucleosomes:sec:estimands} that we quantify  local conc
 %% EDO :: PLS MAKE THIS ESTIMAND CAPITAL C THROUGHOUT, FOR CONSISTENCY WITH THE OTHER TWO ESTIMADS; ALSO AVOID CONFLICTS WITH COVERAGE STATISTICS WE USED TO ESTIMATE THE SEGMENTATION
 % AWB: Done
 
-We can estimate $P(C_{p,l}(k) > p / l \mid \bm y)$ for each base pair $k$ using the MCMC sampler described in Section \ref{nucleosomes:sec:estimation}.
+We can estimate $P(C_{p,l}(k) > (2p+1) / (2l+1) \mid \bm y)$ for each base pair $k$ using the MCMC sampler described in Section \ref{nucleosomes:sec:estimation}.
 However, we require greater security in our detection results than the Bayesian approach alone can provide.
 To quantify the operating characteristics of our procedure and provide frequentist guarantees on its performance, we turn to a permutation null.
 
@@ -556,9 +556,9 @@ This null hypothesis rests on the same idea as Fisher's exact test: we condition
 We approximate this null distribution by repeatedly randomly permuting the observed reads within each segment.
 
 We then run our MCMC sampler on each such draw from the null, using the template and segmentation estimated from the observed data.
-From the sampler's output, we obtain an estimate of the distribution of $P(C_{p,l}(k) > p / l | \bm y)$ over positions $k$ under the null.
+From the sampler's output, we obtain an estimate of the distribution of $P(C_{p,l}(k) > (2p+1) / (2l+1) | \bm y)$ over positions $k$ under the null.
 We compare this to the distribution of posterior probabilities for the observed data and set a detection threshold to control the FDR using the method of \citet{StoreyTibshirani2003}.
-For example, with the datasets analyzed in Section \ref{nucleosomes:sec:results}, we have typically found that a threshold of approximately $0.8$ on $P(C_{p,l}(k) > p / l | \bm y)$ yields a FDR of 5\% or less.
+For example, with the datasets analyzed in Section \ref{nucleosomes:sec:results}, we have typically found that a threshold of approximately $0.8$ on $P(C_{p,l}(k) > (2p+1) / (2l+1) | \bm y)$ yields a FDR of 5\% or less.
 This approach provides a secure detection procedure with both Bayesian and frequentist interpretations.
 
 
@@ -598,7 +598,7 @@ For instance, sweeping $\tau_0$ over two orders of magnitude (0.01--1) showed li
 
 To assess the performance of the proposed methods, we generated  artificial chromosomes using the classical principles of experimental design.
 These artificial chromosomes consist of a series of genes, each containing a set of nucleosome positions.
-We fix the length of each gene to 3501bp, consisting of a 1000bp promoter region, of a 2500bp coding region, and of a 1bp transcription start site (TSS).
+We fix the length of each gene to 3501bp, consisting of a 1000bp promoter region, a 2500bp coding region, and a 1bp transcription start site (TSS).
 
 We designed a simulation with three factors, varied at the gene level: coverage (the expected number of reads per gene), the spacing between primary nucleosome positions and alternative positions (which we refer to as offset), and the relative magnitudes of  primary and alternative positions.
 Coverage had 10 levels, spanning the 5th to 95th percentile observed gene-level coverages in increments of 10\%.
@@ -752,7 +752,7 @@ Coverage$\cdot$Offset$\cdot$Effective Magnitude  & 2.1476  & 2.52  & 1.8962  & 2
 The ANOVA and logistic regression analyses support these observations and provide further insights into the role of interactions between the design factors.
 ANOVA results in Table \ref{nucleosomes:tab:clusterAnova} indicate that alternative position offset, effective magnitude, and their interaction account for the vast majority of variation in absolute position errors (approximately 75\% of total variation and 94\% of explained variation) for both methods.
 Logistic regression results in Table \ref{nucleosomes:tab:clusterGlm} suggest that the power of the proposed method and of the Parzen window estimator respond similarly to the experimental factors.
-The marginal effects of offset and effective magnitude are strongly negative and positve, respectively, but the offset-effective magnitude interaction effect is overwhelmingly large and positive.
+The marginal effects of offset and effective magnitude are strongly negative and positive, respectively, but the offset-effective magnitude interaction effect is overwhelmingly large and positive.
 Coverage has a weak marginal effect on power, but it enters more strongly in the interaction with effective magnitude and in the three-way interaction.
 
 Taken together, these results demonstrate that the proposed method offers improved performance relative to the standard method in the field, for estimating cluster locations.
