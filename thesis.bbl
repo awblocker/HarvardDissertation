@@ -1,4 +1,4 @@
-\begin{thebibliography}{118}
+\begin{thebibliography}{119}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
@@ -76,8 +76,8 @@ Bell, A.~W., Deutsch, E.~W., Au, C.~E., Kearney, R.~E., Beavis, R., Sechi, S.,
   Cho, S.~Y., Kwon, M.-S., Lee, H.-J., Jeong, S.-K., Chung, A.~S., Miller,
   C.~A., Grimm, R., Williams, K., Dorschel, C., Falkner, J.~A., Martens, L.,
   and no, J. A. V.~i. (2009), \enquote{{A HUPO test sample study reveals common
-  problems in mass spectrometry|[ndash]|based proteomics},} \textit{Nat Meth},
-  6, 423--430.
+  problems in mass spectrometry---based proteomics},} \textit{Nat Meth}, 6,
+  423--430.
 
 \bibitem[{Benjamini and Hochberg(1995)}]{Benjamini1995}
 Benjamini, Y. and Hochberg, Y. (1995), \enquote{Controlling the false discovery
@@ -206,6 +206,12 @@ Farrell, R.~H. (1968), \enquote{{On a necessary and sufficient condition for
 Flores, O. and Orozco, M. (2011), \enquote{{nucleR: a package for
   non-parametric nucleosome positioning.}} \textit{Bioinformatics (Oxford,
   England)}, 27, 2149--50.
+
+\bibitem[{Franks et~al.(2013)Franks, Csardi, Choi, Drummond, and
+  Airoldi}]{Franks:2013}
+Franks, A.~M., Csardi, G., Choi, D.~S., Drummond, D.~A., and Airoldi, E.~M.
+  (2013), \enquote{Estimating a structured covariance matrix from multi-lab
+  measurements in high-throughput biology,} Under review.
 
 \bibitem[{Fu et~al.(2012)Fu, Tang, Feng, Liu, and Zhang}]{Fu2012}
 Fu, K., Tang, Q., Feng, J., Liu, X.~S., and Zhang, Y. (2012), \enquote{{DiNuP:
