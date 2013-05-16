@@ -314,6 +314,21 @@ We assume that $T$ is known and fixed. While this assumption is often challenged
 \section{Inference and estimation}
 \label{proteomics:sec:estimation}
 
+\ifx\nofigures\undefined
+\begin{table}
+\caption{Prior Distributions. \label{proteomics:table:priors}}
+\begin{eqnarray*}
+\log(\alpha_\sigma) &\sim& N(\mu_{0 \alpha_\sigma}, v_{0 \alpha_\sigma}) \\
+\beta_\sigma &\sim& Gamma(\alpha_{0 \sigma}, \beta_{0 \sigma}) \\
+\log(\alpha_\tau) &\sim& N(\mu_{0 \alpha_\tau}, v_{0 \alpha_\tau}) \\
+\beta_\tau &\sim& Gamma(\alpha_{0 \tau}, \beta_{0 \tau}) \\
+\mbox{\ensuremath{\pi}}^{rnd} & \sim & Beta(\alpha_{0\pi}, \beta_{0\pi})\\
+\lambda & \sim & Beta(\alpha_{0 \lambda}, \beta_{0 \lambda})\\
+r & \sim & Gamma(\alpha_{0r}, \beta_{0r})
+\end{eqnarray*}
+\end{table}
+\fi
+
 We develop a highly efficient Monte Carlo Markov Chain algorithm to perform inference with the proposed model on proteome-wide data sets with hundreds of thousands of peptide states.
 We design a Metropolis-within-Gibbs algorithm, alternating between updates for the missing data and parameters.
 The algorithm consists of the following steps within each iteration:
@@ -332,21 +347,7 @@ The algorithm consists of the following steps within each iteration:
 The updates of $\bm{\Theta} | \bm{Y^{obs}}, M$ are of a standard form.
 In Section \ref{proteomics:sec:missingDataDraw}, we provide the details of the exact update of $\bm M$ given $\bm \Theta$.
 We leave further details of our inference strategy are contained in the Appendix, which includes the complete specification the updates for $\bm \Theta$ given $\bm M$.
-
-\ifx\nofigures\undefined
-\begin{table}
-\caption{Prior Distributions.}
-\begin{eqnarray*}
-\log(\alpha_\sigma) &\sim& N(\mu_{0 \alpha_\sigma}, v_{0 \alpha_\sigma}) \\
-\beta_\sigma &\sim& Gamma(\alpha_{0 \sigma}, \beta_{0 \sigma}) \\
-\log(\alpha_\tau) &\sim& N(\mu_{0 \alpha_\tau}, v_{0 \alpha_\tau}) \\
-\beta_\tau &\sim& Gamma(\alpha_{0 \tau}, \beta_{0 \tau}) \\
-\mbox{\ensuremath{\pi}}^{rnd} & \sim & Beta(\alpha_{0\pi}, \beta_{0\pi})\\
-\lambda & \sim & Beta(\alpha_{0 \lambda}, \beta_{0 \lambda})\\
-r & \sim & Gamma(\alpha_{0r}, \beta_{0r})
-\end{eqnarray*}
-\end{table}
-\fi
+Table \ref{proteomics:table:priors} provides the prior distributions used in our inference; we provide the specific parameter values used in Appendix \ref{ch:supp:proteomics}.
 
 
 \subsection{Draw the censored peptide latent variables, $\mathbf{M} \vert \bm \Theta$.}
