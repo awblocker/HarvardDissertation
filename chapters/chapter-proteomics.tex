@@ -286,7 +286,7 @@ Suppose $X \sim F_X(x)$; that is, $X$ has a cumulative distribution function tha
 \end{theorem}
 %
 This result establishes that observed intensities will be biased upwards relative to the complete ones.
-We use this result for model checking in Section \ref{proteomics:sec:checkassumptions}. A proof is provided in Appendix \ref{proteomics:sec:proof1}.
+We use this result for model checking in Section \ref{proteomics:sec:checkassumptions}. A proof is provided in Section \ref{proteomics:sec:proof1}.
 
 
  %%% %%% %%%
@@ -324,12 +324,12 @@ We assume that $T$ is known and fixed. While this assumption is often challenged
 \beta_\tau &\sim& Gamma(\alpha_{0 \tau}, \beta_{0 \tau}) \\
 \mbox{\ensuremath{\pi}}^{rnd} & \sim & Beta(\alpha_{0\pi}, \beta_{0\pi})\\
 \lambda & \sim & Beta(\alpha_{0 \lambda}, \beta_{0 \lambda})\\
-r & \sim & Gamma(\alpha_{0r}, \beta_{0r})
+\log(r) & \sim & N(\mu_{0r}, v_{0r})
 \end{eqnarray*}
 \end{table}
 \fi
 
-We develop a highly efficient Monte Carlo Markov Chain algorithm to perform inference with the proposed model on proteome-wide data sets with hundreds of thousands of peptide states.
+We develop an efficient Monte Carlo Markov Chain algorithm to perform inference with the proposed model on proteome-wide data sets with hundreds of thousands of peptide states.
 We design a Metropolis-within-Gibbs algorithm, alternating between updates for the missing data and parameters.
 The algorithm consists of the following steps within each iteration:
 %

@@ -8,9 +8,17 @@
 %\qauthor{Quoteauthor Lastname} 
 %\end{savequote}
 
-\chapter{Supplemental algorithms and figures for ``Full-proteome absolute quantitation from label-free MSMS experiments''}
+\chapter{Supplemental algorithms and figures for ``Absolute protein quantitation: Inference with non-ignorable missing data in high throughput proteomics''}
 \label{ch:supp:proteomics}
 
+\section{Prior parameter settings}
+
+The parameters of all priors used in our inference were selected to provide weakly-informative regularization.
+Our results were generally insensitive to perturbations in these parameter values by a factor of two or more.
+For $\alpha_\sigma$ and $\alpha_\tau$, the convolution parameters of our inverse-Gamma prior, we take $\log(\alpha_{\cdot}) \sim N(2.65, 1)$, which implies a prior probability of 0.95 of falling between $2$ and $100$.
+This reflects a plausible range of variation while effectively ruling out degenerate cases.
+For the scale parameters $\beta_\sigma$ and $\beta_\tau$, we use independent $Gamma(1, 1)$ priors.
+We place uniform ($Beta(1,1)$) priors on $\pi^{rnd}$ and $\lambda$ and take $\log(r) \sim N(2.65, 1)$.
 
 \section{Details of MCMC algorithm}
 \label{supp:proteomics:sec:mcmcDetails}
