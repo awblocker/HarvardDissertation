@@ -521,7 +521,7 @@ and $U\sim Uniform(0,1)$.
 
 \subsubsection{Drawing from $p(\bm{R} \mid \bm s, \bm{Y}^{obs}, \bm{\Theta})$} \label{proteomics:sec:r_ik_mis_post}
 
-After drawing the number of states per peptide $s_ik$, we draw the latent random censoring indicators for each censored peptide, $R_{ikl}^{mis}$.
+After drawing the number of states per peptide $s_{ik}$, we draw the latent random censoring indicators for each censored peptide, $R_{ikl}^{mis}$.
 Because random censoring occurs before intensity-based censoring, if a peptide was randomly censored ($R_{ikl}=0$), then $p(I_{ikl}=1\vert R_{ikl}=0,\bm{\Theta})=0$ and $p(O_{ikl}=1\vert R_{ikl}=0,\bm{\Theta})=0$ as outlined in Figure \ref{proteomics:fig:Missing_Data_Indicators_Tree}.
 We then obtain the posterior probability that a peptide is randomly censored given that it is missing via a straightforward application of Bayes Theorem:
 \begin{eqnarray}
